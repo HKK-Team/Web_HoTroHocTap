@@ -1,0 +1,64 @@
+.information-lookup-box-login {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translate(-30%, -50%);
+}
+.information-lookup-box-secretary {
+  padding: 20px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.information-lookup-box {
+  border-radius: 5px 5px 5px 5px;
+}
+.Log-In {
+  background-color: #1976d2;
+  border-radius: 5px 5px 5px 5px;
+}
+.btn-login-email span{
+  color: white;
+}
+.icon-email {
+  color: white;
+}
+.btn {
+  margin: 10px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #1976d2;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  margin-top: 10px;
+  width: 200px;
+  margin-left: 40px;
+}
+.well span{
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  color: #1976d2;
+}
+.Logged {
+  width: 300px;
+  height: 70x;
+}
+.email span{
+  padding: 10px;
+  color:#1976d2;
+  text-align: center;
+  margin-left: 2px;
+}
+.Login-Secretary {
+  height: 30px;
+  background-color: #1976d2;
+  border-radius: 5px 5px 5px 5px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
+.Title{
+  color: black;
+  font-size: 20px;
+  font-style: unset;
+}

@@ -165,3 +165,24 @@ select {
     -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 }
+.userTitle{
+  margin-left: 35%;
+}
+.btnNhapDiem {
+  margin-left: 70%;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: #2b6b4c;
+  color: white;
+  cursor: pointer;
+  width: 150px;
+  font-size: 18px;
+}
+.btnNhapDiem:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+.btnNhapDiem:hover {
+  background-color: #3e8e41;
+}

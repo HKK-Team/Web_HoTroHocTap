@@ -59,7 +59,6 @@ const lecturersCtrl = {
     EditPassWord : async(req,res) =>{
         let user = await Lecturers.findById(req.body.id);
         const check = await bcrypt.compare(req.body.PassWord, user.Password)
-        console.log(check);
         if(!check) return res.status(400).json({msg : "Password incorrect, please try again."});
         if(req.body.newPassWord !== req.body.confirmPassWord)
         {

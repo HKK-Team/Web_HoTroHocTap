@@ -83,11 +83,10 @@ export default function InputScore() {
     },1000)
     toastSuccess("Input Score Successfully!");
   };
-  console.log(subjectScore)
   return (
     <div className="user">
       <div className="userTitleContainer">
-        <h1 className="userTitle">Thông Tin Sinh Viên</h1>
+        <h1 className="userTitle">Nhập Điểm Môn Học</h1>
       </div>
       <div className="userContainer">
         <div className="userShow">
@@ -196,13 +195,8 @@ export default function InputScore() {
                             <input class="skinny" name="Final_Score" type="text" placeholder="10.0" value={subjectScore.Final_Score} onChange={onChangeInput} required/><label>Final_Score</label>
                         </span>
                     </div>
+                    <button className = "btnNhapDiem">Nhập Điểm</button>
                 </div>
-            </div>
-            <div className="userUpdateRight">
-              <div className="userUpdateUpload">
-                <img className="userUpdateImg" src={data?.Image} alt="" />
-              </div>
-              <button className="userUpdateBtn">Update</button>
             </div>
           </form>
         </div>

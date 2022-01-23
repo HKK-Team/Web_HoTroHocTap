@@ -2,8 +2,8 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import { Fragment, useEffect } from "react";
 import Topbar from "./components/Topbar/Topbar";
 import "./app.css";
-import AccountLecturer from "./pages/AccoutLecturers/AccoutSecretary";
-import ViewListStudent from "./pages/ViewListStudent/ViewListStudent";
+import AccountLecturer from "./pages/AccoutLecturers/AccoutLecturer";
+import ViewListStudent from "./pages/ViewListStudents/ViewListStudent";
 import ProfileLecturer from "./pages/ProfileLecturers/ProfileLecturers";
 import { Routes, Route, useLocation } from "react-router-dom";
 import NotFound from "../utils/not_found/NotFound";
@@ -11,9 +11,10 @@ import { useDispatch } from "react-redux";
 import { getLecturersAccApiAsync } from "../api/lecturersAccountSlice";
 import { getStudentsAccApiAsync } from "./../api/studentsAccountSlice";
 import { getSubjectScoreApiAsync} from "../api/subjectScoreApi";
-import ViewStudentDetail from "./pages/ViewStudentDetail/ViewStudentDetail";
+import ViewStudentDetail from "./pages/ViewStudentDetails/ViewStudentDetail";
 import {getSubjectScoreClassApiAsync} from "../api/subjectScoreClassApi";
-import ViewStatusStudent from "./pages/ViewStatusStudent/ViewStatusStudent";
+import ViewStatusStudent from "./pages/ViewStatusStudents/ViewStatusStudent";
+import StudentStatusStatistic from "./pages/StudentStatusStatistics/StudentStatusStatistics";
 function PagesLecturers() {
   const isLogged = sessionStorage.getItem("LecturerLogin");
   const param = useLocation();
@@ -64,6 +65,11 @@ function PagesLecturers() {
             exact
             path="/HomeLecturer/accountLecturer"
             element={isLogged ? <AccountLecturer /> : NotFound()}
+          />
+          <Route
+            exact
+            path="/HomeLecturer/StudentStatusStatistic"
+            element={isLogged ? <StudentStatusStatistic /> : NotFound()}
           />
         </Routes>
 

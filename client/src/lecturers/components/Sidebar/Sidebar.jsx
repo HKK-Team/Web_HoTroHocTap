@@ -1,6 +1,5 @@
 import "./Sidebar.css";
 import ChatBubbleOutline from "@mui/icons-material/ChatBubbleOutline";
-import PermIdentity from "@mui/icons-material/PermIdentity";
 import DynamicFeed from "@mui/icons-material/DynamicFeed";
 import MailOutline from "@mui/icons-material/MailOutline";
 import EventNoteIcon from "@mui/icons-material/EventNote";
@@ -29,7 +28,7 @@ export default function Sidebar() {
             <NavLink to="/HomeLecturer/ViewStatusStudent" className="link">
               <Tooltip title="Xem Tình Trạng Sinh Viên">
                 <li className="sidebarListItem">
-                  <PermIdentity
+                  <MailOutline
                     className="sidebarIcon"
                     style={{ color: "#000000" }}
                   />
@@ -37,8 +36,8 @@ export default function Sidebar() {
                 </li>
               </Tooltip>
             </NavLink>
-            <NavLink to="/HomeLecturer/testSchedule" className="link">
-              <Tooltip title="Lịch thi">
+            <NavLink to="/HomeLecturer/StudentStatusStatistic" className="link">
+              <Tooltip title="Thống Kê Tình Trạng Sinh Viên">
                 <li className="sidebarListItem">
                   <EventNoteIcon
                     className="sidebarIcon"

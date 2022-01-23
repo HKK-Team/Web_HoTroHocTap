@@ -6,7 +6,7 @@ import {useParams } from "react-router-dom";
 import "./ViewStudentDetail.css";
 
 
-export default function SubjectsList() {
+export default function ViewStudentDetail() {
     const param = useParams();
     // get List student from class
     const data = useSelector((state) =>
@@ -49,7 +49,7 @@ export default function SubjectsList() {
     {
         field: "Final_Score",
         headerName: "Điểm tông kết",
-        width: 130,
+        width: 120,
     }
   ];
 
@@ -86,7 +86,7 @@ export default function SubjectsList() {
         rows={data}
         disableSelectionOnClick
         columns={columns}
-        density="compact"
+        density="comfortable"
         scrollbarSize={10}
         localeText={{
           toolbarDensity: "Size",

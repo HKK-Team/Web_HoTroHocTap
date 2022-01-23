@@ -32,6 +32,7 @@ const studentsCtrl = {
                     Phone : '',
                     Address : '',
                     ID : req.body.ID,
+                    Student_Id : req.body.Student_Id,
                     Education_Program : '',
                     Khoa : '',
                     Image : req.body.image,

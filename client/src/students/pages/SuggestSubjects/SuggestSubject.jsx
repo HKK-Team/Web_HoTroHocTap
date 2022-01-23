@@ -1,7 +1,7 @@
 import React from "react";
 import "./SuggestSubject.css";
 import { useSelector} from "react-redux";
-export default function ViewScore(){
+export default function SuggestSubject(){
     const score = useSelector((state) => state.Subject.SubjectApi);
     return(
     <div className="user">

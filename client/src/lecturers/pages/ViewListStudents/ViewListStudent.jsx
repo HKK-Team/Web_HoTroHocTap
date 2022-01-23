@@ -7,20 +7,20 @@ import HeaderTable from "../../components/headerTable/headerTable";
 import "./ViewListStudent.css";
 
 
-export default function SubjectsList() {
+export default function ViewListStudent() {
     // get lecturer account
     const lecturer = useSelector(
         (state) =>  state.LecturersAccount.LecturersAccountApi.data[0]
     );
     // get List student from class
     const data = useSelector((state) =>
-    state.StudentsAccount.StudentsAccountApi.data.filter(
-      (item) =>
-        item.Class === lecturer.Class_Advisor
-    )
+      state.StudentsAccount.StudentsAccountApi.data.filter(
+        (item) =>
+          item.Class === lecturer.Class_Advisor
+      )
     );
     const columns = [
-    { field: "_id", headerName: "ID", width: 220 },
+    { field: "Student_Id", headerName: "Mã Sinh Viên", width: 220 },
     { field: "FullName", headerName: "Họ Tên", width: 150 },
     {
       field: "Email",
@@ -46,7 +46,7 @@ export default function SubjectsList() {
     {
       field: "action",
       headerName: "Action",
-      width: 202,
+      width: 205,
       renderCell: (params) => {
         return (
           <>
@@ -95,9 +95,9 @@ export default function SubjectsList() {
         disableSelectionOnClick
         columns={columns}
         initialState={{
-          pinnedColumns: { left: ["_id"], right: ["action"] },
+          pinnedColumns: { left: ["Student_Id"], right: ["action"] },
         }}
-        density="compact"
+        density="comfortable"
         scrollbarSize={10}
         localeText={{
           toolbarDensity: "Size",

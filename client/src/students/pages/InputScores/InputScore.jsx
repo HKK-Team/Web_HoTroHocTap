@@ -10,8 +10,9 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-import {subjectsSlice} from "../../../api/subjectApi.js"
-export default function ProfileLecturers() {
+import {subjectsSlice} from "../../../api/subjectApi.js";
+import {toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
+export default function InputScore() {
   const data = useSelector(
     (state) => state.StudentsAccount.StudentsAccountApi.data[0]
   );
@@ -77,8 +78,10 @@ export default function ProfileLecturers() {
     e.preventDefault();
     
     axios.post("http://localhost:5000/subjectScore/inputSubjectScore", { ...subjectScore});
-    alert("Input Score Successfully!");
-    window.location.href = "/HomeStudent";
+    setTimeout(() =>{
+      window.location.href = "/HomeStudent";
+    },1000)
+    toastSuccess("Input Score Successfully!");
   };
   console.log(subjectScore)
   return (
@@ -180,17 +183,17 @@ export default function ProfileLecturers() {
                     </div>
                     <div className="row">
                         <span>
-                            <input class="skinny" name="Process_Score" type="text" placeholder="10.0" value={subjectScore.Process_Score} onChange={onChangeInput}/><label>Process_Score</label>
+                            <input class="skinny" name="Process_Score" type="text" placeholder="10.0" value={subjectScore.Process_Score} onChange={onChangeInput} required/><label>Process_Score</label>
                         </span>
                     </div>
                     <div className="row">
                         <span>
-                            <input class="skinny" name="Final_Exam_Score" type="text" placeholder="10.0" value={subjectScore.Final_Exam_Score} onChange={onChangeInput}/><label >Final_Exam_Score</label>
+                            <input class="skinny" name="Final_Exam_Score" type="text" placeholder="10.0" value={subjectScore.Final_Exam_Score} onChange={onChangeInput} required/><label >Final_Exam_Score</label>
                         </span>
                     </div>
                     <div className="row">
                         <span>
-                            <input class="skinny" name="Final_Score" type="text" placeholder="10.0" value={subjectScore.Final_Score} onChange={onChangeInput}/><label>Final_Score</label>
+                            <input class="skinny" name="Final_Score" type="text" placeholder="10.0" value={subjectScore.Final_Score} onChange={onChangeInput} required/><label>Final_Score</label>
                         </span>
                     </div>
                 </div>

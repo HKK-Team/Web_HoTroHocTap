@@ -7,8 +7,9 @@ import axios from "axios";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import "./ProfileLecturer.css";
+import {toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
 // chỉnh sửa thông tin Thư ký
-export default function ProfileSecretary() {
+export default function ProfileLecturer() {
   const data = useSelector(
     (state) => state.LecturersAccount.LecturersAccountApi.data[0]
   );
@@ -31,8 +32,10 @@ export default function ProfileSecretary() {
     e.preventDefault();
 
     axios.post("http://localhost:5000/lecturer/edituser", { ...profile });
-    alert("Update User Succesfully!");
-    window.location.href = "/HomeSecretary";
+    setTimeout(() =>{
+      window.location.href = "/HomeLecturer";
+    })
+    toastSuccess("Update User Succesfully!");
   };
   return (
     <div className="user">
@@ -84,7 +87,7 @@ export default function ProfileSecretary() {
                 style={{ color: "#000000" }}
               />
               <span className="userShowInfoTitle">
-                Class : {data?.Class_Advisor}
+              Class Advisor : {data?.Class_Advisor}
               </span>
             </div>
           </div>

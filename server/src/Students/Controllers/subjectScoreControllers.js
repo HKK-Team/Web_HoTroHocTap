@@ -1,4 +1,5 @@
 const SubjectScore = require('../Models/subjectScoreModels');
+const Students = require('../Models/userModels');
 class APIfeatures {
     constructor(query, queryString){
         this.query = query;
@@ -43,6 +44,26 @@ const SubjectScoreCtrl = {
                 Final_Score : req.body.Final_Score,
             });
             await newSubjectScore.save();
+            const student = await Students.findById(req.body.Student_Id)
+            const Number_Of_Subjects_Studied = student.Number_Of_Subjects_Studied + 1;
+            const Number_Of_Registered_Credits = student.Number_Of_Registered_Credits + req.body.Number_Of_Credits;
+            if(req.body.Final_Score>=5)
+            {
+                const Number_Of_Credits_Earned = student.Number_Of_Credits_Earned + req.body.Number_Of_Credits;
+                await Students.updateOne({_id : req.body.Student_Id},{
+                    Number_Of_Subjects_Studied,
+                    Number_Of_Registered_Credits,
+                    Number_Of_Credits_Earned
+                });
+            }
+            else{
+                const Outstanding_Number_Of_Credits  = student.Outstanding_Number_Of_Credits + req.body.Number_Of_Credits;
+                await Students.updateOne({_id : req.body.Student_Id},{
+                    Number_Of_Subjects_Studied : Number_Of_Subjects_Studied,
+                    Number_Of_Registered_Credits : Number_Of_Registered_Credits,
+                    Outstanding_Number_Of_Credits : Outstanding_Number_Of_Credits
+                });
+            }
             return res.status(200).json({msg :"Input Score Success!"});
         }
         catch (err) {

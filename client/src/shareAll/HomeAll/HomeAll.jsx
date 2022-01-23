@@ -2,21 +2,10 @@ import { FormControl, FormHelperText, Input, InputLabel } from "@mui/material";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import React, { Fragment, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import schedulesSlice from "../../lecturers/sliceApi/SchedulesSlice/schedulesSlice";
 import logo from "./../../../src/images/tdmu-elearning-banner.png";
 import "./HomeAll.css";
 export default function HomeAll() {
-  const keyWord = useSelector(
-    (state) => state.Schedules.filters.maVienChucVSTenLop
-  );
-  const dispatch = useDispatch();
-  const handleInputChange = (e) => {
-    dispatch(
-      schedulesSlice.actions.FilterKeyWord(e.target.value.toUpperCase())
-    );
-  };
 
   useEffect(() => {
     const topbarSecretary = document.querySelector(".topbarSecretary");
@@ -66,16 +55,14 @@ export default function HomeAll() {
             <Input
               id="my-input"
               aria-describedby="my-helper-text"
-              onChange={handleInputChange}
-              value={keyWord}
+              onChange=""
+              value=""
             />
             <Button
               variant="contained"
               size="small"
               style={{ marginTop: 10 }}
-              onClick={() => {
-                window.location.href = `/FilterSearch/${keyWord}`;
-              }}
+              onClick=""
             >
               Tìm
             </Button>

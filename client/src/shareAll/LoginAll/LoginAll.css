@@ -24,14 +24,23 @@
 .btn {
   margin: 10px;
   text-align: center;
-  border-radius: 5px;
-  background-color: #1976d2;
   color: white;
-  cursor: pointer;
-  padding: 5px;
   margin-top: 10px;
-  width: 200px;
   margin-left: 40px;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: #1976d2;
+  cursor: pointer;
+  width: 220px;
+  font-size: 18px;
+}
+.btn:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+.btn:hover {
+  background-color: #292bb6;
 }
 .well span{
   padding: 10px;
@@ -50,12 +59,23 @@
   margin-left: 2px;
 }
 .Login-Secretary {
-  height: 30px;
-  background-color: #1976d2;
-  border-radius: 5px 5px 5px 5px;
-  font-size: 16px;
+  text-align: center;
   color: white;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: #1976d2;
   cursor: pointer;
+  width: 150px;
+  font-size: 18px;
+}
+.Login-Secretary:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+.Login-Secretary:hover {
+  background-color: #292bb6;
 }
 .Title{
   color: black;

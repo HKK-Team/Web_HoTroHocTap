@@ -1,4 +1,5 @@
 const Lecturers = require('../Models/lecturerModels');
+const bcrypt = require('bcrypt')
 class APIfeatures {
     constructor(query, queryString){
         this.query = query;
@@ -26,7 +27,8 @@ const lecturersCtrl = {
         {
             return res.status(400).json({msg: "Email doesn't Exist!"});
         }
-        if(lecturer.Password !== req.body.password){
+        const isMatch = await bcrypt.compare(req.body.password, lecturer.Password)
+        if(!isMatch){
             return res.status(400).json({msg: "Password incorrect!"});
         }
         return res.status(200).json({msg : "Login SuccessFully!"})
@@ -53,6 +55,19 @@ const lecturersCtrl = {
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
+    },
+    EditPassWord : async(req,res) =>{
+        let user = await Lecturers.findById(req.body.id);
+        const check = await bcrypt.compare(req.body.PassWord, user.Password)
+        console.log(check);
+        if(!check) return res.status(400).json({msg : "Password incorrect, please try again."});
+        if(req.body.newPassWord !== req.body.confirmPassWord)
+        {
+            return res.status(400).json({msg: "Confirm PassWord incorrect!"});
+        }
+        const passwordHash = await bcrypt.hash(req.body.newPassWord, 10);
+        await Lecturers.findOneAndUpdate({_id : req.body.id},{Password : passwordHash});
+        return res.status(200).json({msg : "Bạn đã đổi mật khẩu thành công!"});
     }
 }
 module.exports = lecturersCtrl

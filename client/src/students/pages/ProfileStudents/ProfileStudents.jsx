@@ -6,7 +6,8 @@ import ClassIcon from '@mui/icons-material/Class';
 import axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-export default function ProfileLecturers() {
+import {toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
+export default function ProfileStudent() {
   const data = useSelector(
     (state) => state.StudentsAccount.StudentsAccountApi.data[0]
   );
@@ -28,8 +29,10 @@ export default function ProfileLecturers() {
     e.preventDefault();
     
     axios.post("http://localhost:5000/lecturer/edituser", { ...profile });
-    alert("Update User Succesfully!");
-    window.location.href = "/HomeLecturers";
+    setTimeout(() =>{
+      window.location.href = "/HomeLecturers";
+    },1000)
+    toastSuccess("Update User Succesfully!");
   };
   return (
     <div className="user">

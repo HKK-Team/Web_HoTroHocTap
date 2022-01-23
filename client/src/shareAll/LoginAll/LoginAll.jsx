@@ -8,6 +8,7 @@ import { FormControl, FormHelperText, Input, InputLabel } from "@mui/material";
 import { Link } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import axios from "axios";
+import {toastError,toastSuccess}from "../toastMassage/toastMassage.js";
 // import { GoogleLogout } from 'react-google-login';
 export default function LoginAll() {
   // Student login
@@ -17,6 +18,7 @@ export default function LoginAll() {
     fullName: "",
     email: "",
     ID: "",
+    Student_Id : "",
     image: "",
     accessToken: "",
     token_ID: "",
@@ -34,6 +36,7 @@ export default function LoginAll() {
       firstName: response.profileObj.familyName,
       lastName: response.profileObj.givenName,
       ID: response.profileObj.googleId,
+      Student_Id: response.profileObj.email.slice(0,13),
       image: response.profileObj.imageUrl,
       accessToken: response.accessToken,
       token_ID: response.tokenObj.id_token,
@@ -49,14 +52,17 @@ export default function LoginAll() {
       await axios.post("http://localhost:5000/student/login",{...student});
       sessionStorage.setItem("StudentLogin", true);
       sessionStorage.setItem("StudentEmail",student.email);
-      alert("Bạn đã đăng nhập Google thành công!");
-      window.location.href = "/HomeStudent";
+      setTimeout(() => {
+        window.location.href = "/HomeStudent";
+      },1000)
+      toastSuccess("Bạn đã đăng nhập Google thành công!");
     } else {
-      alert(
+      toastError(
         "Email của bạn không tồn tại trong cơ sở dữ liệu. Xin vui lòng đăng nhập lại!"
       );
     }
   };
+  console.log(student);
   const check = () => {
     if (lecturer.email !== "") {
       return (
@@ -90,10 +96,12 @@ export default function LoginAll() {
       await axios.post("http://localhost:5000/lecturer/login", { ...lecturer });
       sessionStorage.setItem("LecturerLogin", true);
       sessionStorage.setItem("LecturerEmail", lecturer.email);
-      alert("Bạn đã đăng nhập thành công!");
-      window.location.href = "/HomeLecturer";
+      setTimeout(() =>{
+        window.location.href = "/HomeLecturer";
+      },1000);
+      toastSuccess("Bạn đã đăng nhập thành công!");
     } catch (err) {
-      alert("Sai tên tài khoản hoặc mật khẩu. Xin vui lòng đăng nhập lại!");
+      toastError("Sai tên tài khoản hoặc mật khẩu. Xin vui lòng đăng nhập lại!");
     }
   };
   return (

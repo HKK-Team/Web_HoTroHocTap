@@ -13,9 +13,9 @@ import NotFound from "../../utils/not_found/NotFound";
 import SideBarStudent from "./../components/SideBarStudents/SideBarStudents";
 import TopBarStudent from "./../components/TopBarStudents/TopBarStudents";
 import ProfileStudent from "./../pages/ProfileStudents/ProfileStudents";
-import InputScore from "./InputScore/InputScore";
-import ViewScore from "./ViewScore/ViewScore";
-import SuggestSubject from "./SuggestSubject/SuggestSubject"
+import InputScore from "./InputScores/InputScore";
+import ViewScore from "./ViewScores/ViewScore";
+import SuggestSubject from "./SuggestSubjects/SuggestSubject"
 function PagesStudents() {
   const [isLogged] = sessionStorage.getItem("StudentLogin") || "";
   const param = useLocation();

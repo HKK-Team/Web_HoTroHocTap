@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import "./ViewStatusStudent.css";
 
 
-export default function SubjectsList() {
+export default function ViewStatusStudent() {
     // get lecturer account
     const lecturer = useSelector(
         (state) =>  state.LecturersAccount.LecturersAccountApi.data[0]
@@ -19,8 +19,14 @@ export default function SubjectsList() {
     )
     );
     const columns = [
-    { field: "_id", headerName: "ID", width: 220 },
-    { field: "FullName", headerName: "Họ Tên", width: 150 },
+    { field: "Student_Id",
+      headerName: "Mã Sinh Viên",
+      width: 220 
+    },
+    { field: "FullName",
+      headerName: "Họ Tên",
+      width: 150 
+    },
     {
       field: "Email",
       headerName: "Email",
@@ -30,22 +36,42 @@ export default function SubjectsList() {
     {
         field: "Class",
         headerName: "Lớp",
-        width: 150,
+        width: 90,
       },
     {
       field: "Khoa",
       headerName: "Khoa",
-      width: 150,
+      width: 80,
     },
     {
       field: "Phone",
       headerName: "Số điện thoại",
-      width: 130,
+      width: 110,
+    },
+    {
+        field: "Number_Of_Subjects_Studied",
+        headerName: "Số môn đã học",
+        width: 125,
+    },
+    {
+        field: "Number_Of_Registered_Credits",
+        headerName: "Số tín chỉ đăng ký",
+        width: 140,
+    },
+    {
+        field: "Number_Of_Credits_Earned",
+        headerName: "Số tín chỉ đạt được",
+        width: 150,
+    },
+    {
+        field: "Outstanding_Number_Of_Credits",
+        headerName: "Số tín chỉ còn nợ",
+        width: 140,
     },
     {
       field: "action",
       headerName: "Action",
-      width: 202,
+      width: 150,
       renderCell: (params) => {
         return (
           <>
@@ -82,7 +108,7 @@ export default function SubjectsList() {
   return (
     <div className="productList">
       <div className="header-table">
-        <h1 className="header-table-title">Thống Kê Quá Tình Trạng Sinh Viên</h1>
+        <h1 className="header-table-title">Gửi Mail Cảnh Báo Tình Trạng Học Tập</h1>
       </div>
       <DataGridPro
         className={classes.root}
@@ -91,9 +117,9 @@ export default function SubjectsList() {
         disableSelectionOnClick
         columns={columns}
         initialState={{
-          pinnedColumns: { left: ["_id"], right: ["action"] },
+          pinnedColumns: { left: ["Student_Id"], right: ["action"] },
         }}
-        density="compact"
+        density="comfortable"
         scrollbarSize={10}
         localeText={{
           toolbarDensity: "Size",

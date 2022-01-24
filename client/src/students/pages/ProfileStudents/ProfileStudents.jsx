@@ -3,6 +3,8 @@ import PermIdentity from "@mui/icons-material/MailOutline";
 import MailOutline from "@mui/icons-material/PermIdentity";
 import Publish from "@mui/icons-material/Publish";
 import ClassIcon from '@mui/icons-material/Class';
+import SchoolIcon from '@mui/icons-material/School';
+import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
@@ -82,6 +84,20 @@ export default function ProfileStudent() {
                 style={{ color: "#000000" }}
               />
               <span className="userShowInfoTitle">Class :  {data?.Class}</span>
+            </div>
+            <div className="userShowInfo">
+              <LocalLibraryIcon
+                className="userShowIcon"
+                style={{ color: "#000000" }}
+              />
+              <span className="userShowInfoTitle">Current_Semester :  {data?.Current_Semester}</span>
+            </div>
+            <div className="userShowInfo">
+              <SchoolIcon
+                className="userShowIcon"
+                style={{ color: "#000000" }}
+              />
+              <span className="userShowInfoTitle">Study Year :  {data?.Study_Year}</span>
             </div>
           </div>
         </div>

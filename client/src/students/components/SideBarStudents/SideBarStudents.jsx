@@ -48,8 +48,8 @@ export default function SideBarLecturers() {
                 </li>
               </Tooltip>
             </NavLink>
-            <NavLink to="/HomeStudent/testScheduleStudent" className="link">
-            <Tooltip title="Xem tín chỉ">
+            <NavLink to="/HomeStudent/SuggestSubjectSemester" className="link">
+            <Tooltip title="Gợi ý môn học cho học kỳ tới">
                 <li className="sidebarListItem">
                   <PreviewIcon
                     className="sidebarIcon"

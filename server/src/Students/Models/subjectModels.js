@@ -6,7 +6,7 @@ const SubjectSchema = new Schema({
     Number_Of_Credits : Number,
     Start_Time : Date,
     End_Time : Date,
-    Class_Id : String,
+    Semester : String,
     Khoa : String,
     Education_Program : String,
     Practice : Number,

@@ -58,10 +58,12 @@ const SubjectScoreCtrl = {
             }
             else{
                 const Outstanding_Number_Of_Credits  = student.Outstanding_Number_Of_Credits + req.body.Number_Of_Credits;
+                const Number_Of_Subjects_Debt = student.Number_Of_Subjects_Debt + 1;
                 await Students.updateOne({_id : req.body.Student_Id},{
                     Number_Of_Subjects_Studied : Number_Of_Subjects_Studied,
                     Number_Of_Registered_Credits : Number_Of_Registered_Credits,
-                    Outstanding_Number_Of_Credits : Outstanding_Number_Of_Credits
+                    Outstanding_Number_Of_Credits : Outstanding_Number_Of_Credits,
+                    Number_Of_Subjects_Debt : Number_Of_Subjects_Debt
                 });
             }
             return res.status(200).json({msg :"Input Score Success!"});

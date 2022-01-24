@@ -76,7 +76,7 @@ export default function ViewScore(){
                         </div>
                     </div>
                 </div>
-                    <span className= "year">Bảng điểm tất cả môn học tính tới thời điểm hiện tại.</span>
+                    <h3 className= "year">Bảng điểm tất cả môn học tính tới thời điểm hiện tại.</h3>
                     <table class="container">
                         <thead>
                             <tr>
@@ -92,7 +92,7 @@ export default function ViewScore(){
                         <tbody id = "myTbody">
                             {score.data.map(item =>(
                                 <tr>
-                                    <td>{item.Subject_Name}</td>
+                                    <td className = "name">{item.Subject_Name}</td>
                                     <td>{item.Subject_Id}</td>
                                     <td>{item.Number_Of_Credits}</td>
                                     <td>{item.Process_Score}</td>

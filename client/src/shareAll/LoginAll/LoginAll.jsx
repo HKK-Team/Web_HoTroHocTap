@@ -62,7 +62,6 @@ export default function LoginAll() {
       );
     }
   };
-  console.log(student);
   const check = () => {
     if (lecturer.email !== "") {
       return (

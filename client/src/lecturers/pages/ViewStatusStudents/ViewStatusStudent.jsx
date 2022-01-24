@@ -54,6 +54,11 @@ export default function ViewStatusStudent() {
         width: 125,
     },
     {
+      field: "Number_Of_Subjects_Debt",
+      headerName: "Số môn mắc nợ",
+      width: 135,
+  },
+    {
         field: "Number_Of_Registered_Credits",
         headerName: "Số tín chỉ đăng ký",
         width: 140,

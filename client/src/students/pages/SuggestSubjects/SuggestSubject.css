@@ -87,7 +87,7 @@
     background-color: #1F2739;
  }
  
- .container td:first-child { color: #FB667A; }
+ /* .container td:first-child { color: #FB667A; } */
  
  .container tr:hover {
     background-color: #464A52;
@@ -118,7 +118,7 @@
     background-color: #2C3446;
  }
  .year{
-    color: #FB667A;
+   color: yellowgreen;
  }
  .user-infor{
     flex: 1;

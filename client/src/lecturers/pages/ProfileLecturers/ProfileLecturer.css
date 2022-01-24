@@ -31,7 +31,7 @@
     padding: 20px;
     -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-    height: 300px;
+    height: 350px;
   }
   
   .userUpdate {
@@ -147,14 +147,23 @@
   }
   
   .userUpdateButton{
-      border-radius: 5px;
+      border-radius: 10px;
+      text-align: center;
       border: none;
-      padding: 5px;
+      padding: 5px 10px;
       cursor: pointer;
-      background-color: darkblue;
+      background-color: #1976d2;
       color: white;
       font-weight: 600;
-      margin-bottom: 300px;
+      margin-bottom: 320px;
+      font-size: 18px;
+  }
+  .userUpdateButton:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+  }
+  
+  .userUpdateButton:hover {
+    background-color: #292bb6;
   }
   .title-tag{
     margin-top: 30px;

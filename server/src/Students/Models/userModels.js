@@ -19,6 +19,8 @@ const studentSchema = new Schema({
     Token_ID : String,
     Api : String,
     Class : String,
+    Study_Year : String,
+    Current_Semester : String,
     Number_Of_Subjects_Studied : {
         type : Number,
         default : 0
@@ -35,7 +37,10 @@ const studentSchema = new Schema({
         type : Number,
         default : 0
     },
-    
+    Number_Of_Subjects_Debt : {
+        type : Number,
+        default : 0
+    }
 
 })
 module.exports = mongoose.model('student',studentSchema);

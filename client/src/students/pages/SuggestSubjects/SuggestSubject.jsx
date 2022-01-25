@@ -6,8 +6,9 @@ export default function SuggestSubject(){
     const subject = useSelector((state) => state.Subject.SubjectApi);
     const Subjects = useSelector(state => state.SubjectScore.SubjectScoreApi);
     // Suggest subjects debt
-    var SubjectsDebt = Subjects.data.filter(item =>(item.Final_Score<=5))
+    var SubjectsDebt = Subjects.data.filter(item =>(item.Final_Score<5))
     var SuggestSD = [];
+    // var SuggestSLV = [];
     for(let i = 0;i<subject.data.length;i++)
     {
       for(let j = 0 ;j < SubjectsDebt.length;j++)
@@ -18,6 +19,19 @@ export default function SuggestSubject(){
       }
     }
     // Suggest subject with level
+    var SubjectsPass = Subjects.data;
+    var SuggestSP = [];
+    for(let i = 0;i<subject.data.length;i++)
+    {
+      for(let j = 0;j<SubjectsPass.length;j++)
+      {
+        if(subject.data[i].Subject_Id === SubjectsPass[j].Id_Next_Subject)
+        {
+          SuggestSP.push(subject.data[i]);
+        }
+      }
+    }
+    var arSubjectSP = SuggestSP.filter(item => !SubjectsPass.map(sj => sj.Subject_Id).includes(item.Subject_Id));
     return(
     <div className="user">
       <div className="userContainer">
@@ -32,7 +46,7 @@ export default function SuggestSubject(){
                         <tr>
                           <th><h1 className = "sbn">Subject Name</h1></th>
                           <th><h1>Subject Id</h1></th>
-                          <th><h1>Number Of Credits</h1></th>
+                          <th><h1>Credits</h1></th>
                           <th><h1>Start Time</h1></th>
                           <th><h1>End Time</h1></th>
                           <th><h1>Theory</h1></th>
@@ -61,19 +75,20 @@ export default function SuggestSubject(){
                     <table class="container">
                       <thead>
                         <tr>
-                          <th><h1>Subject Name</h1></th>
+                          <th><h1 className = "SN">Subject Name</h1></th>
                           <th><h1>Subject Id</h1></th>
-                          <th><h1>Number Of Credits</h1></th>
+                          <th><h1>Credits</h1></th>
                           <th><h1>Start Time</h1></th>
                           <th><h1>End Time</h1></th>
                           <th><h1>Theory</h1></th>
                           <th><h1>Practice</h1></th>
-                          <th><h1>General Period</h1></th>
+                          <th><h1 className = "GP">General Period</h1></th>
+                          <th><h1>Level</h1></th>
                           <th><h1 className = "result">Education Program</h1></th>
                         </tr>
                       </thead>
                       <tbody id = "myTbody">
-                        {SuggestSD.map(item =>(
+                        {arSubjectSP.map(item =>(
                           <tr>
                             <td>{item.Subject_Name}</td>
                             <td>{item.Subject_Id}</td>
@@ -82,7 +97,8 @@ export default function SuggestSubject(){
                             <td>{item.End_Time.slice(0,10)}</td>
                             <td>{item.Theory}</td>
                             <td>{item.Practice}</td>
-                            <td>{item.General_Period}</td>
+                            <td className = "GP">{item.General_Period}</td>
+                            <td>{item.Level}</td>
                             <td>{item.Education_Program}</td>
                           </tr>
                             ))}

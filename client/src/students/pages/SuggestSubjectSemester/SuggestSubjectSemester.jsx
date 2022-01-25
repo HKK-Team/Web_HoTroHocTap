@@ -20,7 +20,7 @@ export default function SuggestSubjectSemester(){
                 <table class="container">
                     <thead>
                         <tr>
-                          <th><h1>Subject Name</h1></th>
+                          <th><h1 className = "name">Subject Name</h1></th>
                           <th><h1>Subject Id</h1></th>
                           <th><h1>Number Of Credits</h1></th>
                           <th><h1>Start Time</h1></th>

@@ -49,8 +49,9 @@ export default function InputScore() {
     Subject_Name: keySubjectName[0],
     Number_Of_Credits: subjects.data[0].Number_Of_Credits,
     Class : data?.Class,
-    Class_Subject_Id : keyClass[0],
+    Class_Subject_Id : "cq.01",
     Education_Program : data.Education_Program,
+    Id_Next_Subject : subjects.data[0].Id_Next_Subject,
     Process_Score : '',
     Final_Exam_Score : '',
     Final_Score : ''
@@ -62,7 +63,8 @@ export default function InputScore() {
     });
     const id = SubjectID.map((item)=>(item.Subject_Id));
     const NOC = SubjectID.map((item)=>(item.Number_Of_Credits));
-    setsubjectScore({ ...subjectScore, Subject_Name : event.target.value ,Subject_Id : id[0],Number_Of_Credits : NOC[0]})
+    const INS = SubjectID.map((item) =>(item.Id_Next_Subject));
+    setsubjectScore({ ...subjectScore, Subject_Name : event.target.value ,Subject_Id : id[0],Number_Of_Credits : NOC[0],Id_Next_Subject : INS[0]})
     dispatch(subjectsSlice.actions.FilterSubjectName(event.target.value));
   };
   const handleChangeee = (event) => {

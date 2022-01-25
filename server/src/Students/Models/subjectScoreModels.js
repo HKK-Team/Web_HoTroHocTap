@@ -10,6 +10,7 @@ const SubjectScoreSchema = new Schema({
     Class : String,
     Class_Subject_Id : String,
     Education_Program : String,
+    Id_Next_Subject : String,
     Process_Score : Number,
     Final_Exam_Score : Number,
     Final_Score : Number,

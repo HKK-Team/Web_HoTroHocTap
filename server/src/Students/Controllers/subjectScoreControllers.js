@@ -39,6 +39,7 @@ const SubjectScoreCtrl = {
                 Class : req.body.Class,
                 Class_Subject_Id : req.body.Class_Subject_Id,
                 Education_Program : req.body.Education_Program,
+                Id_Next_Subject : req.body.Id_Next_Subject,
                 Process_Score : req.body.Process_Score,
                 Final_Exam_Score : req.body.Final_Exam_Score,
                 Final_Score : req.body.Final_Score,

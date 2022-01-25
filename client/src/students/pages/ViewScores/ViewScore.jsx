@@ -80,7 +80,7 @@ export default function ViewScore(){
                     <table class="container">
                         <thead>
                             <tr>
-                            <th><h1>Subject Name</h1></th>
+                            <th><h1 className = "name">Subject Name</h1></th>
                             <th><h1>Subject Id</h1></th>
                             <th><h1>Number Of Credits</h1></th>
                             <th><h1>Process Score</h1></th>
@@ -92,7 +92,7 @@ export default function ViewScore(){
                         <tbody id = "myTbody">
                             {score.data.map(item =>(
                                 <tr>
-                                    <td className = "name">{item.Subject_Name}</td>
+                                    <td>{item.Subject_Name}</td>
                                     <td>{item.Subject_Id}</td>
                                     <td>{item.Number_Of_Credits}</td>
                                     <td>{item.Process_Score}</td>

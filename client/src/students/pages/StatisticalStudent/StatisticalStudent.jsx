@@ -1,9 +1,10 @@
-import "./StudentStatusStatistics.css";
+import "./StatisticalStudent.css";
 import React from "react";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import PermIdentity from "@mui/icons-material/MailOutline";
 import MailOutline from "@mui/icons-material/PermIdentity";
 import ClassIcon from "@mui/icons-material/Class";
+import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 import {
     LineChart,
     Line,
@@ -15,73 +16,118 @@ import {
 import { useSelector} from "react-redux";
 export default function Home({data, dataKey, grid ,color}) {
     const Profile = useSelector(
-        (state) => state.LecturersAccount.LecturersAccountApi.data[0]
+        (state) => state.StudentsAccount.StudentsAccountApi.data[0]
     );
-    const student = useSelector((state) =>
-    state.StudentsAccount.StudentsAccountApi.data.filter(
-      (item) =>
-        item.Class === Profile.Class_Advisor
-    )
-    );
-    // get student subject debt
-    var SSD = 0;
-    student.map(item => item.Number_Of_Subjects_Debt > 0 ? SSD ++ : SSD += 0);
-    var SSE = 0;
-    student.map(item => item.Number_Of_Subjects_Debt === 0 ? SSE ++ : SSE += 0);
+    const score = useSelector((state) => state.SubjectScore.SubjectScoreApi);
+    // get avg score
+    var avgFinalScore = 0;
+    var avgNumberofCredis = 0;
+    score.data.map(item =>(
+        avgNumberofCredis +=item.Number_Of_Credits
+    ));
+    score.data.map(item =>(
+        avgFinalScore += item.Final_Score*item.Number_Of_Credits
+    ));
+    // get avgCredis earned
+    var avgCredis = 0;
+    score.data.map(item => ((item.Semester !== Profile.Current_Semester) && (item.Final_Score>=5)) ? avgCredis += item.Number_Of_Credits : avgCredis += 0);
+    // get % number of credis
+    var PercentCredis = ((Profile.Number_Of_Credits_Earned/avgCredis)-1)*100;
+    var iconCredis;
+    if(PercentCredis>=0)
+    {
+        iconCredis = <ArrowUpward className="featuredIcon"/>
+    }
+    else{
+        iconCredis = <ArrowDownward className="featuredIcon negative" />
+    }
+    // get % number of credis dept
+    var PercentCredisDP = (1-(150-Profile.Number_Of_Credits_Earned)/(150-avgCredis))*100;
+    var iconCredisDP;
+    if(PercentCredisDP>=0)
+    {
+        iconCredisDP = <ArrowUpward className="featuredIcon"/>
+    }
+    else{
+        iconCredis = <ArrowDownward className="featuredIcon negative" />
+    }
+    var avgScore = 0;
+    score.data.map(item => (item.Semester !== Profile.Current_Semester) ? avgScore += (item.Final_Score*item.Number_Of_Credits) : avgScore+=0);
+    var avgN = 0;
+    score.data.map(item => (item.Semester !== Profile.Current_Semester) ? avgN += item.Number_Of_Credits : avgN += 0);
+    var avgScoreSemester = avgScore/avgN;
+    var avgScores = ((Math.round((avgFinalScore/avgNumberofCredis)*100)/100)/avgScoreSemester- 1)*100;
+    var iconCredisSS;
+    if(avgScores>=0)
+    {
+        iconCredisSS = <ArrowUpward className="featuredIcon"/>
+    }
+    else{
+        iconCredisSS = <ArrowDownward className="featuredIcon negative"/>
+    }
+    // get 10 subjects with the highest GPA
+    var arr = score.data;
+    arr.map(item => item.Final_Score)
+    var ar = [];
+    for(let i = 0 ;i<arr.length;i++)
+    {
+        ar.push(arr[i])
+    };
     function compare( a, b ) {
-        if ( a.GPA > b.GPA ){
+        if ( a.Final_Score > b.Final_Score ){
           return -1;
         }
-        if ( a.GPA < b.GPA ){
+        if ( a.Final_Score < b.Final_Score ){
           return 1;
         }
         return 0;
     };
-    student.sort(compare);
+    ar.sort(compare);
     return (
         <div className="homeStudent">
             <div className="featured">
                 <div className="featuredItem">
-                    <span className="featuredTitle">Số sinh viên còn đi học</span>
+                    <span className="featuredTitle">Số môn đã học</span>
                     <div className="featuredSubjectContainer">
                         <span className="featuredSubject">
-                            {student.length}
+                            {Profile.Number_Of_Subjects_Studied}
                         </span>
                         <span className="featuredSubjectRate">
                     </span>
                     </div>
-                    <span className="featuredSub">Trên tổng số 60 sinh viên.</span>
+                    <span className="featuredSub">Trên tổng số 59 môn học.</span>
                 </div>
 
                 <div className="featuredItem">
-                    <span className="featuredTitle">Số sinh viên đã nghỉ học</span>
+                    <span className="featuredTitle">Tổng số tín chỉ đạt được</span>
                     <div className="featuredSubjectContainer">
-                        <span className="featuredSubject">{60-student.length}</span>
+                        <span className="featuredSubject">{Profile.Number_Of_Credits_Earned}</span>
                         <span className="featuredSubjectRate">
+                            {Math.abs(Math.round((PercentCredis*100))/100)}%{iconCredis}
                         </span>
                     </div>
-                    <span className="featuredSub">Trên tổng số 60 sinh viên.</span>
+                    <span className="featuredSub">So với học kì trước</span>
                 </div>
 
                 <div className="featuredItem">
-                    <span className="featuredTitle">Số sinh viên nợ môn</span>
+                    <span className="featuredTitle">Số tín chỉ còn thiếu</span>
                     <div className="featuredSubjectContainer">
-                        <span className="featuredSubject">{SSD}</span>
+                        <span className="featuredSubject">{150-Profile.Number_Of_Credits_Earned}</span>
                         <span className="featuredSubjectRate">
-                            
+                            {Math.abs(Math.round((PercentCredisDP*100))/100)}%{iconCredisDP}
                         </span>
                     </div>
-                    <span className="featuredSub">Trên tổng số 60 sinh viên.</span>
+                    <span className="featuredSub">So với học kì trước</span>
                 </div>
                 <div className="featuredItem">
-                    <span className="featuredTitle">Số sinh viên đã hoàn thành</span>
+                    <span className="featuredTitle">Điểm trung bình tích lũy</span>
                     <div className="featuredSubjectContainer">
-                    <span className="featuredSubject">{SSE}</span>
+                    <span className="featuredSubject">{Math.round((avgFinalScore/avgNumberofCredis)*100)/100}</span>
                     <span className="featuredSubjectRate">
-                        
+                        {Math.abs(Math.round((avgScores*100))/100)}%{iconCredisSS}
                     </span>
                     </div>
-                    <span className="featuredSub">Trên tổng số 60 sinh viên.</span>
+                    <span className="featuredSub">So với học kì trước</span>
                 </div>
             </div>
             <div className="chart">
@@ -97,7 +143,7 @@ export default function Home({data, dataKey, grid ,color}) {
             </div>
             <div className="homeWidgets">
                 <div className="widgetSm">
-                    <span className="widgetSmTitle">Thông tin giảng viên</span>
+                    <span className="widgetSmTitle">Thông tin cá nhân</span>
                     <div className="userShowTop">
                         <img
                         src={Profile.Image}
@@ -143,22 +189,22 @@ export default function Home({data, dataKey, grid ,color}) {
                     </div>
                 </div>
                 <div className="widgetLg">
-                <h3 className="widgetLgTitle">Top 10 sinh viên có điểm trung bình tích lũy cao nhất </h3>
+                <h3 className="widgetLgTitle">Top 10 môn học có điểm trung bình cao nhất </h3>
                 <table className="widgetLgTable">
                     <tr className="widgetLgTr">
-                    <th className="widgetLgTh">Tên sinh viên</th>
-                    <th className="widgetLgTh">Mã sinh viên</th>
-                    <th className="widgetLgTh">Email</th>
-                    <th className="widgetLgTh">Số điện thoại</th>
+                    <th className="widgetLgTh">Tên môn học</th>
+                    <th className="widgetLgTh">Mã môn học</th>
+                    <th className="widgetLgTh">Số tín chỉ</th>
+                    <th className="widgetLgTh">Chương trình đào tạo</th>
                     <th className="widgetLgTh">Điểm trung bình</th>
                     </tr>
-                    {student.slice(0,5).map(item =>(
+                    {ar.slice(0,10).map(item =>(
                         <tr>
-                            <td>{item.FullName}</td>
-                            <td>{item.Student_Id}</td>
-                            <td>{item.Email}</td>
-                            <td>{item.Phone}</td>
-                            <td>{item.GPA}</td>
+                            <td>{item.Subject_Name}</td>
+                            <td>{item.Subject_Id}</td>
+                            <td>{item.Number_Of_Credits}</td>
+                            <td>{item.Education_Program}</td>
+                            <td>{item.Final_Score}</td>
                         </tr>
                     ))}
                 </table>

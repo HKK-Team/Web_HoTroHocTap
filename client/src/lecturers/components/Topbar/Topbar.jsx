@@ -7,6 +7,7 @@ import MenuItem from "@mui/material/MenuItem";
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "./../../../images/tdmu-elearning-banner.png";
+import {toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
 
 export default function Topbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -21,12 +22,17 @@ export default function Topbar() {
     window.sessionStorage.removeItem("LecturerLogin");
     window.sessionStorage.removeItem("LecturerEmail");
   };
+  const user = () =>{
+    toastSuccess("Hello")
+  }
   return (
     <div className="topbarSecretary">
       <div className="topbarWrapper">
         <div className="topLeft">
-          <img src={logo} alt="" className="logo" />
-          {/* <span className="logo">HKK team</span> */}
+          <Link to = "/HomeLecturer">
+            <img src={logo} alt="" className="logo" />
+            {/* <span className="logo">HKK team</span> */}
+          </Link>
         </div>
         <div className="topRight">
           <div className="topbarIconContainer">
@@ -76,9 +82,7 @@ export default function Topbar() {
               src="https://as2.ftcdn.net/v2/jpg/02/50/31/95/500_F_250319577_BuOE8gd49LUD41DFH6eY3mahs0Q6n8Jp.jpg"
               alt=""
               className="topAvatar"
-              onClick={() => {
-                alert("hello");
-              }}
+              onClick={user}
             />
           </div>
           <div className="topbarIconContainer">

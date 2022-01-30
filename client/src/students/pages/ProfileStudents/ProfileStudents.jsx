@@ -30,9 +30,9 @@ export default function ProfileStudent() {
   const EditUserSubmit = async (e) => {
     e.preventDefault();
     
-    axios.post("http://localhost:5000/lecturer/edituser", { ...profile });
+    axios.post("http://localhost:5000/student/edituser", { ...profile });
     setTimeout(() =>{
-      window.location.href = "/HomeLecturers";
+      window.location.href = "/HomeStudent";
     },1000)
     toastSuccess("Update User Succesfully!");
   };

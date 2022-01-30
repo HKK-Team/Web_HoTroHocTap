@@ -168,3 +168,11 @@
  .name{
     margin-left: 40%;
  }
+ .user-infor:hover {
+   box-shadow: 2px 3px 15px rgb(56, 51, 104);
+   transform: translateY(-1px);
+ }
+ .avg:hover {
+   box-shadow: 2px 3px 15px rgb(56, 51, 104);
+   transform: translateY(-1px);
+ }

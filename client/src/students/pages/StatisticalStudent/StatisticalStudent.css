@@ -16,10 +16,7 @@
     max-height: 320px;
     overflow: auto;
   }
-  .widgetLg:hover {
-    box-shadow: 2px 3px 15px #999;
-    transform: translateY(-1px);
-  }
+  
   .widgetLgTitle {
     font-size: 22px;
     font-weight: 600;
@@ -93,10 +90,7 @@
     padding: 20px;
     margin-right: 20px;
 }
-.widgetSm:hover{
-  box-shadow: 2px 3px 15px #999;
-  transform: translateY(-1px);
-}
+
 .widgetSmTitle{
     font-size: 22px;
     font-weight: 600;
@@ -168,10 +162,7 @@
     -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   }
-  .featuredItem:hover{
-    box-shadow: 2px 3px 15px #999;
-    transform: translateY(-1px);
-  }
+  
   .featuredTitle{
       font-size: 20px;
   }

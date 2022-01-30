@@ -53,8 +53,10 @@ export default function InputScore() {
     Education_Program : data.Education_Program,
     Id_Next_Subject : subjects.data[0].Id_Next_Subject,
     Process_Score : '',
+    Semester : subjects.data[0].Semester,
     Final_Exam_Score : '',
-    Final_Score : ''
+    Final_Score : '',
+    GPA : ''
   });
   const handleChange = (event) => {
     setkey(event.target.value);
@@ -64,7 +66,8 @@ export default function InputScore() {
     const id = SubjectID.map((item)=>(item.Subject_Id));
     const NOC = SubjectID.map((item)=>(item.Number_Of_Credits));
     const INS = SubjectID.map((item) =>(item.Id_Next_Subject));
-    setsubjectScore({ ...subjectScore, Subject_Name : event.target.value ,Subject_Id : id[0],Number_Of_Credits : NOC[0],Id_Next_Subject : INS[0]})
+    const HK = SubjectID.map(item => item.Semester)
+    setsubjectScore({ ...subjectScore, Subject_Name : event.target.value ,Subject_Id : id[0],Number_Of_Credits : NOC[0],Id_Next_Subject : INS[0],Semester : HK[0]})
     dispatch(subjectsSlice.actions.FilterSubjectName(event.target.value));
   };
   const handleChangeee = (event) => {
@@ -85,6 +88,20 @@ export default function InputScore() {
     },1000)
     toastSuccess("Input Score Successfully!");
   };
+  // set GPA
+  const score = useSelector((state) => state.SubjectScore.SubjectScoreApi);
+  var avgFinalScore = 0;
+  var avgNumberofCredis = 0;
+  score.data.map(item =>(
+      avgNumberofCredis +=item.Number_Of_Credits
+  ));
+  score.data.map(item =>(
+      avgFinalScore += item.Final_Score*item.Number_Of_Credits
+  ));
+  var avgScore = Math.round((avgFinalScore + parseFloat(subjectScore.Final_Score * subjectScore.Number_Of_Credits)) / (avgNumberofCredis + parseInt(subjectScore.Number_Of_Credits)) * 100) / 100;
+  const setScore = () =>{
+    setsubjectScore({...subjectScore,GPA : avgScore})
+  }
   return (
     <div className="user">
       <div className="userTitleContainer">
@@ -197,7 +214,7 @@ export default function InputScore() {
                             <input class="skinny" name="Final_Score" type="text" placeholder="10.0" value={subjectScore.Final_Score} onChange={onChangeInput} required/><label>Final_Score</label>
                         </span>
                     </div>
-                    <button className = "btnNhapDiem">Nhập Điểm</button>
+                    <button className = "btnNhapDiem" onClick = {setScore}>Nhập Điểm</button>
                 </div>
             </div>
           </form>

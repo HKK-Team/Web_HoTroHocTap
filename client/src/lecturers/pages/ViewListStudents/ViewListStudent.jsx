@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import HeaderTable from "../../components/headerTable/headerTable";
 import "./ViewListStudent.css";
 
-
 export default function ViewListStudent() {
     // get lecturer account
     const lecturer = useSelector(

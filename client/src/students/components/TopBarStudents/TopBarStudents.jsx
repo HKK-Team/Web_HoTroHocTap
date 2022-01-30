@@ -26,8 +26,10 @@ export default function TopBarLecturers() {
     <div className="topBarLecturers">
       <div className="topbarWrapper">
         <div className="topLeft">
-          <img src={logo} alt="" className="logo" />
-          {/* <span className="logo">HKK team</span> */}
+          <Link to = "/HomeStudent">
+            <img src={logo} alt="" className="logo" />
+            {/* <span className="logo">HKK team</span> */}
+          </Link>
         </div>
         <div className="topRight">
           <div className="topbarIconContainer">

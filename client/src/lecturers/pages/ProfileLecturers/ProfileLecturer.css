@@ -145,6 +145,10 @@
   .userUpdateIcon{
       cursor: pointer;
   }
+  .userUpdateButton:hover{
+    box-shadow: 2px 3px 15px rgb(35, 37, 66);
+    transform: translateY(-1px);
+  }
   
   .userUpdateButton{
       border-radius: 10px;

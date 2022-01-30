@@ -17,6 +17,7 @@ import InputScore from "./InputScores/InputScore";
 import ViewScore from "./ViewScores/ViewScore";
 import SuggestSubject from "./SuggestSubjects/SuggestSubject"
 import SuggestSubjectSemester from "./SuggestSubjectSemester/SuggestSubjectSemester";
+import StatisticalStudent from "./StatisticalStudent/StatisticalStudent";
 function PagesStudents() {
   const [isLogged] = sessionStorage.getItem("StudentLogin") || "";
   const param = useLocation();
@@ -67,6 +68,11 @@ function PagesStudents() {
             exact
             path="/HomeStudent/profileStudent"
             element={isLogged ? <ProfileStudent /> : <NotFound />}
+          />
+          <Route
+            exact
+            path="/HomeStudent/Statistical"
+            element={isLogged ? <StatisticalStudent/> : <NotFound />}
           />
           <Route
             exact

@@ -184,5 +184,11 @@ select {
 }
 
 .btnNhapDiem:hover {
+  box-shadow: 2px 3px 15px rgb(30, 73, 53);
+  transform: translateY(-1px);
   background-color: #3e8e41;
+}
+.userShow:hover {
+  box-shadow: 2px 3px 15px #999;
+  transform: translateY(-1px);
 }

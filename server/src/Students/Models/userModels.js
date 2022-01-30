@@ -40,6 +40,10 @@ const studentSchema = new Schema({
     Number_Of_Subjects_Debt : {
         type : Number,
         default : 0
+    },
+    GPA : {
+        type : Number,
+        default : 0
     }
 
 })

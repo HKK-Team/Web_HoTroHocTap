@@ -17,16 +17,21 @@ import {
   export const subjectScoreClassSlice = createSlice({
     name: "SubjectScoreClass", // lưu lại tên chỉ định để dễ dàng quản lý store
     initialState: { // thực hiện những action lưu lại trên store và trả về cho UI
-      SubjectScoreClassApi: { data: [], loading: false}
+      SubjectScoreClassApi: { data: [], loading: false, error: "" }
   },
     reducers: { },
     extraReducers: {
       [getSubjectScoreClassApiAsync.pending]: (state) => {
         state.SubjectScoreClassApi.loading = true;
       },
-      [getSubjectScoreClassApiAsync.fulfilled]: (state, action) => {
-        state.SubjectScoreClassApi.data = [...action.payload];
+      [getSubjectScoreClassApiAsync.rejected]: (state, action) => {
+        state.SubjectScoreClassApi.loading = false;
+        state.SubjectScoreClassApi.error = action.error.massage;
       },
+      [getSubjectScoreClassApiAsync.fulfilled]: (state, action) => {
+        state.SubjectScoreClassApi.loading = false;
+        state.SubjectScoreClassApi.data = [...action.payload];
+      }
     },
   });
   export default subjectScoreClassSlice;

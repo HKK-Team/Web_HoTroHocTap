@@ -40,6 +40,7 @@ const SubjectScoreCtrl = {
                 Class_Subject_Id : req.body.Class_Subject_Id,
                 Education_Program : req.body.Education_Program,
                 Id_Next_Subject : req.body.Id_Next_Subject,
+                Semester : req.body.Semester,
                 Process_Score : req.body.Process_Score,
                 Final_Exam_Score : req.body.Final_Exam_Score,
                 Final_Score : req.body.Final_Score,
@@ -54,7 +55,8 @@ const SubjectScoreCtrl = {
                 await Students.updateOne({_id : req.body.Student_Id},{
                     Number_Of_Subjects_Studied,
                     Number_Of_Registered_Credits,
-                    Number_Of_Credits_Earned
+                    Number_Of_Credits_Earned,
+                    GPA : req.body.GPA
                 });
             }
             else{
@@ -64,7 +66,8 @@ const SubjectScoreCtrl = {
                     Number_Of_Subjects_Studied : Number_Of_Subjects_Studied,
                     Number_Of_Registered_Credits : Number_Of_Registered_Credits,
                     Outstanding_Number_Of_Credits : Outstanding_Number_Of_Credits,
-                    Number_Of_Subjects_Debt : Number_Of_Subjects_Debt
+                    Number_Of_Subjects_Debt : Number_Of_Subjects_Debt,
+                    GPA : req.body.GPA
                 });
             }
             return res.status(200).json({msg :"Input Score Success!"});

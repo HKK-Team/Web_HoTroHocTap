@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 // import { Link } from "react-router-dom";
 import "./ViewStatusStudent.css";
 
-
 export default function ViewStatusStudent() {
     // get lecturer account
     const lecturer = useSelector(

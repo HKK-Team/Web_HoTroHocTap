@@ -21,7 +21,7 @@ export default function ViewScore(){
     var avgNOC = 0;
     score.data.map(item =>(
         (item.Final_Score) >= 5 ? avgNOC+=item.Number_Of_Credits : avgNOC += 0
-    ))
+    ));
     return(
     <div className="user">
       <div className="userContainer">

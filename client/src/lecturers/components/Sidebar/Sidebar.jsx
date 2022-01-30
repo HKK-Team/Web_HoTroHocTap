@@ -2,10 +2,10 @@ import "./Sidebar.css";
 import ChatBubbleOutline from "@mui/icons-material/ChatBubbleOutline";
 import DynamicFeed from "@mui/icons-material/DynamicFeed";
 import MailOutline from "@mui/icons-material/MailOutline";
-import EventNoteIcon from "@mui/icons-material/EventNote";
 import ClassIcon from '@mui/icons-material/Class';
 import { NavLink } from "react-router-dom";
 import { Tooltip } from "@mui/material";
+import InsightsIcon from '@mui/icons-material/Insights';
 
 export default function Sidebar() {
   return (
@@ -36,14 +36,19 @@ export default function Sidebar() {
                 </li>
               </Tooltip>
             </NavLink>
+          </ul>
+        </div>
+        <div className="sidebarMenu">
+          <h3 className="sidebarTitle">Thống kê</h3>
+          <ul className="sidebarList">
             <NavLink to="/HomeLecturer/StudentStatusStatistic" className="link">
               <Tooltip title="Thống Kê Tình Trạng Sinh Viên">
                 <li className="sidebarListItem">
-                  <EventNoteIcon
+                  <InsightsIcon
                     className="sidebarIcon"
                     style={{ color: "#000000" }}
                   />
-                  {/* Lịch thi */}
+                  {/* Home */}
                 </li>
               </Tooltip>
             </NavLink>

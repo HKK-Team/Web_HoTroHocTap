@@ -6,7 +6,7 @@ export default function SuggestSubject(){
     const subject = useSelector((state) => state.Subject.SubjectApi);
     const Subjects = useSelector(state => state.SubjectScore.SubjectScoreApi);
     // Suggest subjects debt
-    var SubjectsDebt = Subjects.data.filter(item =>(item.Final_Score<5))
+    var SubjectsDebt = Subjects.data.filter(item =>(item.Final_Score<5));
     var SuggestSD = [];
     // var SuggestSLV = [];
     for(let i = 0;i<subject.data.length;i++)
@@ -17,7 +17,7 @@ export default function SuggestSubject(){
           SuggestSD.push(subject.data[i]);
         }
       }
-    }
+    };
     // Suggest subject with level
     var SubjectsPass = Subjects.data;
     var SuggestSP = [];
@@ -30,7 +30,7 @@ export default function SuggestSubject(){
           SuggestSP.push(subject.data[i]);
         }
       }
-    }
+    };
     var arSubjectSP = SuggestSP.filter(item => !SubjectsPass.map(sj => sj.Subject_Id).includes(item.Subject_Id));
     return(
     <div className="user">

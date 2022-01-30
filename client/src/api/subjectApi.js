@@ -17,7 +17,7 @@ import {
   export const subjectsSlice = createSlice({
     name: "Subjects", // lưu lại tên chỉ định để dễ dàng quản lý store
     initialState: { // thực hiện những action lưu lại trên store và trả về cho UI
-      SubjectApi: { data: [] },
+      SubjectApi: { data: [], loading: false, error: "" },
       filters: { subjectname: "",subjectId : "",classId : ""}
   },
     reducers: { // lưu lại những action
@@ -32,7 +32,15 @@ import {
       },
     },
     extraReducers: {
+      [getSubjectApiAsync.pending]: (state) => {
+        state.SubjectApi.loading = true;
+      },
+      [getSubjectApiAsync.rejected]: (state, action) => {
+        state.SubjectApi.loading = false;
+        state.SubjectApi.error = action.error.massage;
+      },
       [getSubjectApiAsync.fulfilled]: (state, action) => {
+        state.SubjectApi.loading = false;
         state.SubjectApi.data = [...action.payload];
       },
     },

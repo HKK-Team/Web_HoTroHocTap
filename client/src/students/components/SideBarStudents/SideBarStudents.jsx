@@ -8,6 +8,7 @@ import FeaturedPlayListIcon from '@mui/icons-material/FeaturedPlayList';
 import PreviewIcon from '@mui/icons-material/Preview';
 import { NavLink } from "react-router-dom";
 import { Tooltip } from "@mui/material";
+import InsightsIcon from '@mui/icons-material/Insights';
 export default function SideBarLecturers() {
   return (
     <div className="sidebarAdmin">
@@ -56,6 +57,22 @@ export default function SideBarLecturers() {
                     style={{ color: "#000000" }}
                   />
                   {/* Xem tín chỉ */}
+                </li>
+              </Tooltip>
+            </NavLink>
+          </ul>
+        </div>
+        <div className="sidebarMenu">
+          <h3 className="sidebarTitle">Thống kê</h3>
+          <ul className="sidebarList">
+            <NavLink to="/HomeStudent/Statistical" className="link">
+              <Tooltip title="Home Students">
+                <li className="sidebarListItem">
+                  <InsightsIcon
+                    className="sidebarIcon"
+                    style={{ color: "#000000" }}
+                  />
+                  {/* Home */}
                 </li>
               </Tooltip>
             </NavLink>

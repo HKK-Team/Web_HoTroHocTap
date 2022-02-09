@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import HeaderTable from "../../components/headerTable/headerTable";
 import "./ViewListStudent.css";
-
+import Loading from "./../../../utils/loading/Loading";
 export default function ViewListStudent() {
     // get lecturer account
     const lecturer = useSelector(
@@ -79,7 +79,10 @@ export default function ViewListStudent() {
   );
 
   const classes = useStyles();
-
+  if(!lecturer)
+  {
+    return <Loading/>
+  }
   return (
     <div className="productList">
       <HeaderTable

@@ -48,7 +48,7 @@
     top: 0;
     left: 0;
     padding: 7px 10px;
-    text-shadow: 0 1px 0 rgba(19, 74, 70, 0.4);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.822);
     transition: all .3s ease-in-out;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
@@ -191,4 +191,26 @@ select {
 .userShow:hover {
   box-shadow: 2px 3px 15px #999;
   transform: translateY(-1px);
+}
+.image-excel{
+  width: 20px;
+  height: 20px;
+}
+.btnExcel{
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: #2b6b4c;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+}
+.btnExcel:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+.btnExcel:hover {
+  box-shadow: 2px 3px 15px rgb(30, 73, 53);
+  transform: translateY(-1px);
+  background-color: #3e8e41;
 }

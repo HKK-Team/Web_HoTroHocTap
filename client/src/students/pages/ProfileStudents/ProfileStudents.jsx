@@ -9,6 +9,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import {toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
+import Loading from "./../../../utils/loading/Loading";
 export default function ProfileStudent() {
   const data = useSelector(
     (state) => state.StudentsAccount.StudentsAccountApi.data[0]
@@ -36,6 +37,10 @@ export default function ProfileStudent() {
     },1000)
     toastSuccess("Update User Succesfully!");
   };
+  if(!data)
+  {
+    return <Loading/>
+  }
   return (
     <div className="user">
       <div className="userTitleContainer">

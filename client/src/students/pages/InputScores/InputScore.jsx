@@ -12,6 +12,8 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import {subjectsSlice} from "../../../api/subjectApi.js";
 import {toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
+import CreditScoreIcon from '@mui/icons-material/CreditScore';
+import Loading from "./../../../utils/loading/Loading";
 export default function InputScore() {
   const data = useSelector(
     (state) => state.StudentsAccount.StudentsAccountApi.data[0]
@@ -101,6 +103,9 @@ export default function InputScore() {
   var avgScore = Math.round((avgFinalScore + parseFloat(subjectScore.Final_Score * subjectScore.Number_Of_Credits)) / (avgNumberofCredis + parseInt(subjectScore.Number_Of_Credits)) * 100) / 100;
   const setScore = () =>{
     setsubjectScore({...subjectScore,GPA : avgScore})
+  }
+  if(!data){
+    return <Loading/>
   }
   return (
     <div className="user">
@@ -214,8 +219,11 @@ export default function InputScore() {
                             <input class="skinny" name="Final_Score" type="text" placeholder="10.0" value={subjectScore.Final_Score} onChange={onChangeInput} required/><label>Final_Score</label>
                         </span>
                     </div>
-                    <button className = "btnNhapDiem" onClick = {setScore}>Nhập Điểm</button>
+                    <button className = "btnNhapDiem" onClick = {setScore}><CreditScoreIcon/> Nhập Điểm</button>
                 </div>
+            </div>
+            <div className="userUpdateRight">
+              <button className="btnExcel"><img src="https://icons.iconarchive.com/icons/carlosjj/microsoft-office-2013/256/Excel-icon.png" className = "image-excel" alt=""/> Nhập Điểm Từ File Excel</button>
             </div>
           </form>
         </div>

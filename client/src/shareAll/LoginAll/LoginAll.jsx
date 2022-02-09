@@ -186,36 +186,36 @@ export default function LoginAll() {
           <form className="form-login-secretary" onSubmit={loginSubmit}>
             <div className="information-lookup-box-secretary">
               <h2 className = "Title">Giảng Viên</h2>
-              <FormControl style={{ width: "100%" }}>
-                <InputLabel htmlFor="my-input">Email</InputLabel>
-                <Input
-                  id="my-input"
-                  aria-describedby="my-helper-text"
-                  type="text"
-                  name="email"
-                  value={lecturer.email}
-                  onChange={onChangeInput}
-                  required
-                />
-                <FormHelperText id="my-helper-text">
-                  Hãy nhập email
-                </FormHelperText>
-              </FormControl>
-              <FormControl style={{ marginTop: 20, width: "100%" }}>
-                <InputLabel htmlFor="my-input">PassWord</InputLabel>
-                <Input
-                  id="my-input"
-                  aria-describedby="my-helper-text"
-                  type="password"
-                  name="password"
-                  value={lecturer.password}
-                  onChange={onChangeInput}
-                  required
-                />
-                <FormHelperText id="my-helper-text">
-                  Hãy nhập mật khẩu
-                </FormHelperText>
-              </FormControl>
+                <FormControl style={{ width: "100%" }}>
+                  <InputLabel htmlFor="my-input">Email</InputLabel>
+                  <Input
+                    id="my-input"
+                    aria-describedby="my-helper-text"
+                    type="text"
+                    name="email"
+                    value={lecturer.email}
+                    onChange={onChangeInput}
+                    required
+                  />
+                  <FormHelperText id="my-helper-text">
+                    Hãy nhập email
+                  </FormHelperText>
+                </FormControl>
+                <FormControl style={{ marginTop: 20, width: "100%" }}>
+                  <InputLabel htmlFor="my-input">PassWord</InputLabel>
+                  <Input
+                    id="my-input"
+                    aria-describedby="my-helper-text"
+                    type="password"
+                    name="password"
+                    value={lecturer.password}
+                    onChange={onChangeInput}
+                    required
+                  />
+                  <FormHelperText id="my-helper-text">
+                    Hãy nhập mật khẩu
+                  </FormHelperText>
+                </FormControl>
               <button
                 className="Login-Secretary"
                 variant="contained"

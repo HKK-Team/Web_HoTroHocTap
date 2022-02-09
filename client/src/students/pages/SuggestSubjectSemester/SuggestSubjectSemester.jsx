@@ -1,6 +1,7 @@
 import React from "react";
 import "./SuggestSubjectSemester.css";
 import { useSelector} from "react-redux";
+import Loading from "./../../../utils/loading/Loading";
 export default function SuggestSubjectSemester(){
     const Profile = useSelector(
         (state) => state.StudentsAccount.StudentsAccountApi.data[0]
@@ -8,7 +9,11 @@ export default function SuggestSubjectSemester(){
     // ép kiểu để lấy tên hk tiếp theo
     let Semester = Profile.Current_Semester.slice(0,2) + (parseInt(Profile.Current_Semester.slice(2,3)) + 1);
     // Get subject
-    const SuggestSD = useSelector((state) => state.Subject.SubjectApi.data.filter(item => item.Semester ===Semester));
+    const SuggestSD = useSelector((state) => state.Subject.SubjectApi.data.filter(item => item.Semester === Semester)); 
+    if(!Profile)
+    {
+      return <Loading/>
+    }
     return(
     <div className="user">
       <div className="userContainer">

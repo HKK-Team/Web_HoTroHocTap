@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/styles";
 import { createTheme } from "@mui/material/styles";
 import { DataGridPro, GridToolbar } from "@mui/x-data-grid-pro";
 import { useSelector } from "react-redux";
+import Loading from "./../../../utils/loading/Loading";
 // import { Link } from "react-router-dom";
 import "./ViewStatusStudent.css";
 
@@ -108,7 +109,10 @@ export default function ViewStatusStudent() {
   );
 
   const classes = useStyles();
-
+  if(!lecturer)
+  {
+    return <Loading/>
+  }
   return (
     <div className="productList">
       <div className="header-table">

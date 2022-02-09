@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import "./ProfileLecturer.css";
 import {toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
+import Loading from "./../../../utils/loading/Loading";
 // chỉnh sửa thông tin Thư ký
 export default function ProfileLecturer() {
   const data = useSelector(
@@ -37,6 +38,10 @@ export default function ProfileLecturer() {
     })
     toastSuccess("Update User Succesfully!");
   };
+  if(!data)
+  {
+    return <Loading/>
+  }
   return (
     <div className="user">
       <div className="userTitleContainer">

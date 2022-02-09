@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import { useSelector } from "react-redux";
 import "./AccountLecturer.css";
 import {toastError,toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
+import Loading from "./../../../utils/loading/Loading";
 export default function AccountLecturer() {
   // get user
   const lecturer = useSelector(
@@ -33,6 +34,10 @@ export default function AccountLecturer() {
       toastError(err.response.data.msg)
     }
   };
+  if(!lecturer)
+  {
+    return <Loading/>
+  }
   return (
     <div className="user">
       <div className="userTitleContainer">

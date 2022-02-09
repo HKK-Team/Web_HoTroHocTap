@@ -82,3 +82,19 @@
   font-size: 20px;
   font-style: unset;
 }
+@media only screen and (max-width : 600px){
+  .form-login-secretary{
+    width: 250px;
+    height: 260px;
+  }
+  .Log-In{
+    width: 240px;
+    margin-right: 60px;
+  }
+  .information-lookup-box-secretary{
+    height: 250px;
+  }
+  .Title{
+    padding: 0;
+  }
+}

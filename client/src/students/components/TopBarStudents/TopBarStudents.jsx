@@ -60,14 +60,6 @@ export default function TopBarLecturers() {
                 </Link>
               </MenuItem>
               <MenuItem>
-                <Link
-                  to="/HomeStudent/profileStudent"
-                  style={{ color: "black" }}
-                >
-                  My Account
-                </Link>
-              </MenuItem>
-              <MenuItem>
                 <a href="/login" onClick={logout}>
                   Logout
                 </a>

@@ -4,6 +4,7 @@ import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import PermIdentity from "@mui/icons-material/MailOutline";
 import MailOutline from "@mui/icons-material/PermIdentity";
 import ClassIcon from "@mui/icons-material/Class";
+import Loading from "./../../../utils/loading/Loading";
 import {
     LineChart,
     Line,
@@ -38,6 +39,14 @@ export default function Home({data, dataKey, grid ,color}) {
         return 0;
     };
     student.sort(compare);
+    if(!Profile)
+    {
+        return <Loading/>
+    }
+    if(!student)
+    {
+        return <Loading/>
+    }
     return (
         <div className="homeStudent">
             <div className="featured">
@@ -138,7 +147,7 @@ export default function Home({data, dataKey, grid ,color}) {
                             className="userShowIcon"
                             style={{ color: "#000000" }}
                         />
-                        <span className="userShowInfoTitle">Class :  {Profile?.Class}</span>
+                        <span className="userShowInfoTitle">Class :  {Profile?.Class_Advisor}</span>
                         </div>
                     </div>
                 </div>

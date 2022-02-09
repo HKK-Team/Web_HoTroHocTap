@@ -5,16 +5,10 @@ import PermIdentity from "@mui/icons-material/MailOutline";
 import MailOutline from "@mui/icons-material/PermIdentity";
 import ClassIcon from "@mui/icons-material/Class";
 import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
-import {
-    LineChart,
-    Line,
-    XAxis,
-    CartesianGrid,
-    Tooltip,
-    ResponsiveContainer,
-} from "recharts";
+import Loading from "./../../../utils/loading/Loading";
 import { useSelector} from "react-redux";
-export default function Home({data, dataKey, grid ,color}) {
+import Chart from "../../components/Chart/Chart";
+export default function Home() {
     const Profile = useSelector(
         (state) => state.StudentsAccount.StudentsAccountApi.data[0]
     );
@@ -83,6 +77,84 @@ export default function Home({data, dataKey, grid ,color}) {
         return 0;
     };
     ar.sort(compare);
+    // fix loading
+    if(!Profile)
+    {
+        return <Loading/>
+    }
+    // chart by avg score
+    var arrChart = [];
+    arrChart.push({_id : "Gốc",avgScore : 0.0, name : "Gốc"})
+    // get avg score HK1
+    var avgHK1 = 0;
+    var avggHK1 = 0;
+    score.data.map(item => item.Semester === "HK1" ? avgHK1+=item.Number_Of_Credits * item.Final_Score : avgHK1 +=0);
+    score.data.map(item => item.Semester === "HK1" ? avggHK1+=item.Number_Of_Credits : avggHK1 +=0);
+    var avgScoreHK1 = Math.round(avgHK1/avggHK1 * 100)/100;
+    arrChart.push({_id : "HK1",avgScore : avgScoreHK1>=0 ? avgScoreHK1 : 0.0, name : "HK1"});
+    // get avg score HK2
+    var avgHK2 = 0;
+    var avggHK2 = 0;
+    score.data.map(item => item.Semester === "HK2" ? avgHK2+=item.Number_Of_Credits * item.Final_Score : avgHK2 +=0);
+    score.data.map(item => item.Semester === "HK2" ? avggHK2+=item.Number_Of_Credits : avggHK2 +=0);
+    var avgScoreHK2 = Math.round(avgHK2/avggHK2 * 100)/100;
+    arrChart.push({_id : "HK2",avgScore : avgScoreHK2>=0 ? avgScoreHK2 : 0.0, name : "HK2"});
+    // get avg score HK3
+    var avgHK3 = 0;
+    var avggHK3 = 0;
+    score.data.map(item => item.Semester === "HK3" ? avgHK3+=item.Number_Of_Credits * item.Final_Score : avgHK3 +=0);
+    score.data.map(item => item.Semester === "HK3" ? avggHK3+=item.Number_Of_Credits : avggHK3 +=0);
+    var avgScoreHK3 = Math.round(avgHK3/avggHK3 * 100)/100;
+    arrChart.push({_id : "HK3",avgScore : avgScoreHK3>=0 ? avgScoreHK3 : 0.0, name : "HK3"});
+    // get avg score HK4
+    var avgHK4 = 0;
+    var avggHK4 = 0;
+    score.data.map(item => item.Semester === "HK4" ? avgHK4+=item.Number_Of_Credits * item.Final_Score : avgHK4 +=0);
+    score.data.map(item => item.Semester === "HK4" ? avggHK4+=item.Number_Of_Credits : avggHK4 +=0);
+    var avgScoreHK4 = Math.round(avgHK4/avggHK4 * 100)/100;
+    arrChart.push({_id : "HK4",avgScore : avgScoreHK4>=0 ? avgScoreHK4 : 0.0, name : "HK4"});
+    // get avg score HK5
+    var avgHK5 = 0;
+    var avggHK5 = 0;
+    score.data.map(item => item.Semester === "HK5" ? avgHK5+=item.Number_Of_Credits * item.Final_Score : avgHK5 +=0);
+    score.data.map(item => item.Semester === "HK5" ? avggHK5+=item.Number_Of_Credits : avggHK5 +=0);
+    var avgScoreHK5 = Math.round(avgHK5/avggHK5 * 100)/100;
+    arrChart.push({_id : "HK5",avgScore : avgScoreHK5>=0 ? avgScoreHK5 : 0.0, name : "HK5"});
+    // get avg score HK6
+    var avgHK6 = 0;
+    var avggHK6 = 0;
+    score.data.map(item => item.Semester === "HK6" ? avgHK6+=item.Number_Of_Credits * item.Final_Score : avgHK6 +=0);
+    score.data.map(item => item.Semester === "HK6" ? avggHK6+=item.Number_Of_Credits : avggHK6 +=0);
+    var avgScoreHK6 = Math.round(avgHK6/avggHK6 * 100)/100;
+    arrChart.push({_id : "HK6",avgScore : avgScoreHK6>=0 ? avgScoreHK6 : 0.0, name : "HK6"});
+    // get avg score HK7
+    var avgHK7 = 0;
+    var avggHK7 = 0;
+    score.data.map(item => item.Semester === "HK7" ? avgHK7+=item.Number_Of_Credits * item.Final_Score : avgHK7 +=0);
+    score.data.map(item => item.Semester === "HK7" ? avggHK7+=item.Number_Of_Credits : avggHK7 +=0);
+    var avgScoreHK7 = Math.round(avgHK7/avggHK7 * 100)/100;
+    arrChart.push({_id : "HK7",avgScore : avgScoreHK7>=0 ? avgScoreHK7 : 0.0, name : "HK7"});
+    // get avg score HK8
+    var avgHK8 = 0;
+    var avggHK8 = 0;
+    score.data.map(item => item.Semester === "HK8" ? avgHK8+=item.Number_Of_Credits * item.Final_Score : avgHK8 +=0);
+    score.data.map(item => item.Semester === "HK8" ? avggHK8+=item.Number_Of_Credits : avggHK8 +=0);
+    var avgScoreHK8 = Math.round(avgHK8/avggHK8 * 100)/100;
+    arrChart.push({_id : "HK8",avgScore : avgScoreHK8>=0 ? avgScoreHK8 : 0.0, name : "HK8"});
+    // get avg score HK9
+    var avgHK9 = 0;
+    var avggHK9 = 0;
+    score.data.map(item => item.Semester === "HK9" ? avgHK9+=item.Number_Of_Credits * item.Final_Score : avgHK9 +=0);
+    score.data.map(item => item.Semester === "HK9" ? avggHK9+=item.Number_Of_Credits : avggHK9 +=0);
+    var avgScoreHK9 = Math.round(avgHK9/avggHK9 * 100)/100;
+    arrChart.push({_id : "HK9",avgScore : avgScoreHK9>=0 ? avgScoreHK9 : 0.0, name : "HK9"});
+    // get avg score HK10
+    var avgHK10 = 0;
+    var avggHK10 = 0;
+    score.data.map(item => item.Semester === "HK10" ? avgHK10+=item.Number_Of_Credits * item.Final_Score : avgHK10 +=0);
+    score.data.map(item => item.Semester === "HK10" ? avggHK10+=item.Number_Of_Credits : avggHK10 +=0);
+    var avgScoreHK10 = Math.round(avgHK10/avggHK10 * 100)/100;
+    arrChart.push({_id : "HK10",avgScore : avgScoreHK10>=0 ? avgScoreHK10 : 0.0, name : "HK10"});
     return (
         <div className="homeStudent">
             <div className="featured">
@@ -130,17 +202,13 @@ export default function Home({data, dataKey, grid ,color}) {
                     <span className="featuredSub">So với học kì trước</span>
                 </div>
             </div>
-            <div className="chart">
-                <h3 className="chartTitle">Biểu đồ thống kê điểm trung bình qua các học kỳ</h3>
-                <ResponsiveContainer width="100%" aspect={4 / 1}>
-                    <LineChart data={data}>
-                    <XAxis dataKey="name" stroke={color} />
-                    <Line type="monotone" dataKey={dataKey} stroke={color} />
-                    <Tooltip />
-                    {grid && <CartesianGrid stroke="#e0dfdf" strokeDasharray="5 5" />}
-                    </LineChart>
-                </ResponsiveContainer>
-            </div>
+            <Chart
+                data={arrChart}
+                title="Biểu đồ thống kê điểm trung bình qua các học kì."
+                grid
+                dataKey="avgScore"
+                color='#5550bd'
+            />
             <div className="homeWidgets">
                 <div className="widgetSm">
                     <span className="widgetSmTitle">Thông tin cá nhân</span>

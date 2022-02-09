@@ -5,6 +5,7 @@ import PermIdentity from "@mui/icons-material/MailOutline";
 import MailOutline from "@mui/icons-material/PermIdentity";
 import ClassIcon from "@mui/icons-material/Class";
 import { useSelector} from "react-redux";
+import Loading from "./../../../utils/loading/Loading";
 export default function ViewScore(){
     const Profile = useSelector(
         (state) => state.StudentsAccount.StudentsAccountApi.data[0]
@@ -22,6 +23,10 @@ export default function ViewScore(){
     score.data.map(item =>(
         (item.Final_Score) >= 5 ? avgNOC+=item.Number_Of_Credits : avgNOC += 0
     ));
+    if(!Profile)
+    {
+        return <Loading/>
+    }
     return(
     <div className="user">
       <div className="userContainer">

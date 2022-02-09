@@ -21,6 +21,7 @@ app.use('/student',require('./src/Students/Routers/userRouters'))
 app.use('/lecturer',require('./src/Lecturers/Routers/lecturerRouters'))
 app.use('/subject',require('./src/Students/Routers/subjectRouters'))
 app.use('/subjectScore',require('./src/Students/Routers/subjectScoreRouters'))
+app.use('/sendEmail',require('./src/MailService/MailServiceRouter'))
 
 // connect to mongodb
 const URI = process.env.MONGODB_URL

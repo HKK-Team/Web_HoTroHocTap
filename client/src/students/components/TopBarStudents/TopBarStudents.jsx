@@ -8,6 +8,8 @@ import logo from "./../../../images/tdmu-elearning-banner.png";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
+import {toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export default function TopBarLecturers() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -22,6 +24,9 @@ export default function TopBarLecturers() {
     window.sessionStorage.removeItem("StudentLogin");
     window.sessionStorage.removeItem("StudentEmail");
   };
+  const user = () =>{
+    toastSuccess("Hello")
+  }
   return (
     <div className="topBarLecturers">
       <div className="topbarWrapper">
@@ -52,6 +57,7 @@ export default function TopBarLecturers() {
               }}
             >
               <MenuItem>
+                <AccountCircleIcon/>
                 <Link
                   to="/HomeStudent/profileStudent"
                   style={{ color: "black" }}
@@ -60,6 +66,7 @@ export default function TopBarLecturers() {
                 </Link>
               </MenuItem>
               <MenuItem>
+                <LogoutIcon/>
                 <a href="/login" onClick={logout}>
                   Logout
                 </a>
@@ -71,9 +78,7 @@ export default function TopBarLecturers() {
               src="https://as2.ftcdn.net/v2/jpg/02/50/31/95/500_F_250319577_BuOE8gd49LUD41DFH6eY3mahs0Q6n8Jp.jpg"
               alt=""
               className="topAvatar"
-              onClick={() => {
-                alert("hello");
-              }}
+              onClick={user}
             />
           </div>
           <div className="topbarIconContainer">

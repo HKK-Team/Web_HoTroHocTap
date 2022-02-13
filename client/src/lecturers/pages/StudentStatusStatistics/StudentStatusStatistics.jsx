@@ -5,6 +5,7 @@ import PermIdentity from "@mui/icons-material/MailOutline";
 import MailOutline from "@mui/icons-material/PermIdentity";
 import ClassIcon from "@mui/icons-material/Class";
 import Loading from "./../../../utils/loading/Loading";
+import PeopleIcon from '@mui/icons-material/People';
 import {
     LineChart,
     Line,
@@ -21,7 +22,7 @@ export default function Home({data, dataKey, grid ,color}) {
     const student = useSelector((state) =>
     state.StudentsAccount.StudentsAccountApi.data.filter(
       (item) =>
-        item.Class === Profile.Class_Advisor
+        item.Class === Profile?.Class_Advisor
     )
     );
     // get student subject debt
@@ -41,11 +42,21 @@ export default function Home({data, dataKey, grid ,color}) {
     student.sort(compare);
     if(!Profile)
     {
-        return <Loading/>
+        return (
+            <div className="loading">
+              {" "}
+              <Loading />
+            </div>
+          );
     }
     if(!student)
     {
-        return <Loading/>
+        return (
+            <div className="loading">
+              {" "}
+              <Loading />
+            </div>
+        );
     }
     return (
         <div className="homeStudent">
@@ -54,7 +65,7 @@ export default function Home({data, dataKey, grid ,color}) {
                     <span className="featuredTitle">Số sinh viên còn đi học</span>
                     <div className="featuredSubjectContainer">
                         <span className="featuredSubject">
-                            {student.length}
+                            {student.length} <PeopleIcon/>
                         </span>
                         <span className="featuredSubjectRate">
                     </span>
@@ -65,7 +76,7 @@ export default function Home({data, dataKey, grid ,color}) {
                 <div className="featuredItem">
                     <span className="featuredTitle">Số sinh viên đã nghỉ học</span>
                     <div className="featuredSubjectContainer">
-                        <span className="featuredSubject">{60-student.length}</span>
+                        <span className="featuredSubject">{60-student.length} <PeopleIcon/></span>
                         <span className="featuredSubjectRate">
                         </span>
                     </div>
@@ -75,7 +86,7 @@ export default function Home({data, dataKey, grid ,color}) {
                 <div className="featuredItem">
                     <span className="featuredTitle">Số sinh viên nợ môn</span>
                     <div className="featuredSubjectContainer">
-                        <span className="featuredSubject">{SSD}</span>
+                        <span className="featuredSubject">{SSD} <PeopleIcon/></span>
                         <span className="featuredSubjectRate">
                             
                         </span>
@@ -85,7 +96,7 @@ export default function Home({data, dataKey, grid ,color}) {
                 <div className="featuredItem">
                     <span className="featuredTitle">Số sinh viên đã hoàn thành</span>
                     <div className="featuredSubjectContainer">
-                    <span className="featuredSubject">{SSE}</span>
+                    <span className="featuredSubject">{SSE} <PeopleIcon/></span>
                     <span className="featuredSubjectRate">
                         
                     </span>

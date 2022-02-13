@@ -14,7 +14,14 @@ import {subjectsSlice} from "../../../api/subjectApi.js";
 import {toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
 import CreditScoreIcon from '@mui/icons-material/CreditScore';
 import Loading from "./../../../utils/loading/Loading";
+import Tooltip from "@mui/material/Tooltip";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
+import * as XLSX from "xlsx";
 export default function InputScore() {
+  const Input = styled("input")({
+    display: "none",
+  });
   const data = useSelector(
     (state) => state.StudentsAccount.StudentsAccountApi.data[0]
   );
@@ -47,15 +54,15 @@ export default function InputScore() {
     Student_Id: data?._id,
     Email : data?.Email,
     FullName: data?.FullName,
-    Subject_Id: subjects.data[0].Subject_Id,
+    Subject_Id: subjects.data[0]?.Subject_Id,
     Subject_Name: keySubjectName[0],
-    Number_Of_Credits: subjects.data[0].Number_Of_Credits,
+    Number_Of_Credits: subjects.data[0]?.Number_Of_Credits,
     Class : data?.Class,
     Class_Subject_Id : "cq.01",
-    Education_Program : data.Education_Program,
-    Id_Next_Subject : subjects.data[0].Id_Next_Subject,
+    Education_Program : data?.Education_Program,
+    Id_Next_Subject : subjects.data[0]?.Id_Next_Subject,
     Process_Score : '',
-    Semester : subjects.data[0].Semester,
+    Semester : subjects.data[0]?.Semester,
     Final_Exam_Score : '',
     Final_Score : '',
     GPA : ''
@@ -105,8 +112,40 @@ export default function InputScore() {
     setsubjectScore({...subjectScore,GPA : avgScore})
   }
   if(!data){
-    return <Loading/>
+    return (
+      <div className="loading">
+        {" "}
+        <Loading />
+      </div>
+    );
   }
+  const readExcel = (file) => {
+    const promise = new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsArrayBuffer(file);
+
+      fileReader.onload = (e) => {
+        const bufferArray = e.target.result;
+
+        const wb = XLSX.read(bufferArray, { type: "buffer" });
+
+        const wsname = wb.SheetNames[0];
+
+        const ws = wb.Sheets[wsname];
+
+        const data = XLSX.utils.sheet_to_json(ws);
+
+        resolve(data);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+    promise.then((d) => {
+      console.log(d);
+    });
+  };
   return (
     <div className="user">
       <div className="userTitleContainer">
@@ -159,7 +198,29 @@ export default function InputScore() {
           </div>
         </div>
         <div className="userUpdate">
-          <span className="userUpdateTitle">Nhập Điểm Môn Học</span>
+          <span className="userUpdateTitle">Nhập Điểm Môn Học </span>
+            <label htmlFor="contained-button-file" className = "import-Excel">
+              <Input
+                id="contained-button-file"
+                multiple
+                type="file"
+                onChange={(e) => {
+                  const file = e.target.files[0];
+                    readExcel(file);
+                }}
+              />
+              <Tooltip title="Thêm dữ liệu bằng file Excel" arrow>
+                <Button
+                  variant="contained"
+                  component="span"
+                  color="success"
+                  size="medium"
+                  style={{ marginRight: 10 }}
+                >
+                <img className = "image-excel" src = "https://icons.iconarchive.com/icons/carlosjj/microsoft-office-2013/256/Excel-icon.png" alt= ""></img>Import Excel
+                </Button>
+              </Tooltip>
+            </label>
           <form className="userUpdateForm" onSubmit={EditUserSubmit}>
             <div className="userUpdateLeft">
                 <div className="box">
@@ -221,9 +282,6 @@ export default function InputScore() {
                     </div>
                     <button className = "btnNhapDiem" onClick = {setScore}><CreditScoreIcon/> Nhập Điểm</button>
                 </div>
-            </div>
-            <div className="userUpdateRight">
-              <button className="btnExcel"><img src="https://icons.iconarchive.com/icons/carlosjj/microsoft-office-2013/256/Excel-icon.png" className = "image-excel" alt=""/> Nhập Điểm Từ File Excel</button>
             </div>
           </form>
         </div>

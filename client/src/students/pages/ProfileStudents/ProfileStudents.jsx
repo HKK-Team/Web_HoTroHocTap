@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import {toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
 import Loading from "./../../../utils/loading/Loading";
+import SaveAsIcon from '@mui/icons-material/SaveAs';
 export default function ProfileStudent() {
   const data = useSelector(
     (state) => state.StudentsAccount.StudentsAccountApi.data[0]
@@ -39,7 +40,12 @@ export default function ProfileStudent() {
   };
   if(!data)
   {
-    return <Loading/>
+    return (
+      <div className="loading">
+        {" "}
+        <Loading />
+      </div>
+    );
   }
   return (
     <div className="user">
@@ -201,7 +207,7 @@ export default function ProfileStudent() {
                 </label>
                 <input type="file" id="file" style={{ display: "none" }} />
               </div>
-              <button className="userUpdateButton">Update</button>
+              <button className="userUpdateButton"><SaveAsIcon/> Update</button>
             </div>
           </form>
         </div>

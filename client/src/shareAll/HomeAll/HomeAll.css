@@ -28,6 +28,13 @@
   color: black;
   line-height: 1;
 }
+.Title-score{
+  color: black;
+  font-size: 20px;
+}
+.Search{
+  width: 200px;
+}
 @media only screen and (max-width:600px)
 {
   .information-lookup-box{

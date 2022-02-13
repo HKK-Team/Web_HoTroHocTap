@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router";
-import HomeAll from "../shareAll/HomeAll/HomeAll";
 import LoginAll from "../shareAll/LoginAll/LoginAll";
 import NotFound from "../utils/not_found/NotFound";
-
+import Home from "../shareAll/HomeAll/HomeAll";
 export default function PagesHome() {
   const param = useLocation();
   useEffect(() => {
@@ -24,7 +23,9 @@ export default function PagesHome() {
   const login = sessionStorage.getItem("StudentLogin") || "";
   return (
     <Routes>
-      <Route exact path="/" element={<HomeAll />} />
+      <Route exact path="/" element={
+          <Home/>
+        } />
       <Route
         exact
         path="/login"

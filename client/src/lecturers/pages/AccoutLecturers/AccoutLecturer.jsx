@@ -4,13 +4,14 @@ import { useSelector } from "react-redux";
 import "./AccountLecturer.css";
 import {toastError,toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
 import Loading from "./../../../utils/loading/Loading";
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
 export default function AccountLecturer() {
   // get user
   const lecturer = useSelector(
     (state) => state.LecturersAccount.LecturersAccountApi.data[0]
   );
   const [editPassWord,setEditPassWord] = useState({
-    id : lecturer._id,
+    id : lecturer?._id,
     PassWord : '',
     newPassWord : '',
     confirmPassWord : '',
@@ -36,7 +37,12 @@ export default function AccountLecturer() {
   };
   if(!lecturer)
   {
-    return <Loading/>
+    return (
+      <div className="loading">
+        {" "}
+        <Loading />
+      </div>
+    );
   }
   return (
     <div className="user">
@@ -85,7 +91,7 @@ export default function AccountLecturer() {
                 />
               </div>
               <div className="userUpdateItem" style={{paddingTop:10 }}>
-              <button className = "btn-Confirm">Xác nhận</button>
+              <button className = "btn-Confirm"><VpnKeyIcon/> Xác nhận</button>
               </div>
             </div>
           </form>

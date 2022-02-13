@@ -116,7 +116,8 @@ export default function LoginAll() {
             <Stack spacing={1} direction="row">
               <Button variant="contained" size="small">
                 <Link to="/" style={{ color: "white" }}>
-                  Trang chủ
+                  {" "}
+                  Trang Chủ
                 </Link>
               </Button>
             </Stack>

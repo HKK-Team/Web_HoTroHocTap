@@ -71,6 +71,11 @@ function PagesLecturers() {
             path="/HomeLecturer/StudentStatusStatistic"
             element={isLogged ? <StudentStatusStatistic /> : NotFound()}
           />
+          <Route
+            exact
+            path="/HomeLecturer"
+            element={isLogged ? <StudentStatusStatistic /> : NotFound()}
+          />
         </Routes>
 
         {/* end of  Link url */}

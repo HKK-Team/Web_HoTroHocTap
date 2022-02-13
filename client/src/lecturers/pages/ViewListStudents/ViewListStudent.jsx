@@ -15,7 +15,7 @@ export default function ViewListStudent() {
     const data = useSelector((state) =>
       state.StudentsAccount.StudentsAccountApi.data.filter(
         (item) =>
-          item.Class === lecturer.Class_Advisor
+          item.Class === lecturer?.Class_Advisor
       )
     );
     const columns = [
@@ -81,7 +81,12 @@ export default function ViewListStudent() {
   const classes = useStyles();
   if(!lecturer)
   {
-    return <Loading/>
+    return (
+      <div className="loading">
+        {" "}
+        <Loading />
+      </div>
+    );
   }
   return (
     <div className="productList">

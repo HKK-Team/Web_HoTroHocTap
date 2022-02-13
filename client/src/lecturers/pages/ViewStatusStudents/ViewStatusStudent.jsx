@@ -3,6 +3,7 @@ import { createTheme } from "@mui/material/styles";
 import { DataGridPro, GridToolbar } from "@mui/x-data-grid-pro";
 import { useSelector } from "react-redux";
 import Loading from "./../../../utils/loading/Loading";
+// import React,{useState} from "react";
 // import { Link } from "react-router-dom";
 import "./ViewStatusStudent.css";
 
@@ -15,7 +16,7 @@ export default function ViewStatusStudent() {
     const data = useSelector((state) =>
     state.StudentsAccount.StudentsAccountApi.data.filter(
       (item) =>
-        item.Class === lecturer.Class_Advisor
+        item.Class === lecturer?.Class_Advisor
     )
     );
     const columns = [
@@ -111,7 +112,12 @@ export default function ViewStatusStudent() {
   const classes = useStyles();
   if(!lecturer)
   {
-    return <Loading/>
+    return (
+      <div className="loading">
+        {" "}
+        <Loading />
+      </div>
+    );
   }
   return (
     <div className="productList">

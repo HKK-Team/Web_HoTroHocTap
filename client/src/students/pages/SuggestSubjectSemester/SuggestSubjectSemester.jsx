@@ -7,12 +7,17 @@ export default function SuggestSubjectSemester(){
         (state) => state.StudentsAccount.StudentsAccountApi.data[0]
     );
     // ép kiểu để lấy tên hk tiếp theo
-    let Semester = Profile.Current_Semester.slice(0,2) + (parseInt(Profile.Current_Semester.slice(2,3)) + 1);
+    let Semester = Profile?.Current_Semester.slice(0,2) + (parseInt(Profile?.Current_Semester.slice(2,3)) + 1);
     // Get subject
     const SuggestSD = useSelector((state) => state.Subject.SubjectApi.data.filter(item => item.Semester === Semester)); 
     if(!Profile)
     {
-      return <Loading/>
+      return (
+        <div className="loading">
+          {" "}
+          <Loading />
+        </div>
+      );
     }
     return(
     <div className="user">
@@ -27,7 +32,7 @@ export default function SuggestSubjectSemester(){
                         <tr>
                           <th><h1 className = "name">Subject Name</h1></th>
                           <th><h1>Subject Id</h1></th>
-                          <th><h1>Number Of Credits</h1></th>
+                          <th><h1>Credits</h1></th>
                           <th><h1>Start Time</h1></th>
                           <th><h1>End Time</h1></th>
                           <th><h1>Theory</h1></th>

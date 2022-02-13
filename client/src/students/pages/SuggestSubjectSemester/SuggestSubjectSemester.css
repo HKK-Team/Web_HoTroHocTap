@@ -64,7 +64,7 @@
     width: 1300px;
     margin: 0 auto;
     display: table;
-    padding: 0 0 2em 0;
+    padding: 0 0 1em 0;
  }
  
  .container td, .container th {
@@ -154,11 +154,4 @@
    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
    margin-left: 37%;
- }
- .avg{
-   width: 350px;  
- }
- .value{
-    width: 90px;
-    text-align: center;
  }

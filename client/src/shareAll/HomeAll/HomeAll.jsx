@@ -45,12 +45,14 @@ export default function HomeAll() {
       <section className="home"></section>
       <div className="information-lookup-box">
         <h2 className="information-lookup-box-title">
-          Chào mừng bạn đã đến với hệ thống Hỗ trợ học tập dành cho Sinh Viên <p>của Đại Học Thủ Dầu Một</p>
+          Chào mừng bạn đã đến với hệ thống Hỗ trợ học tập dành cho Sinh Viên 
+          <p>của Đại Học Thủ Dầu Một.</p>
         </h2>
+        <h2 className = "Title-score">Hệ Thống Tra cứu Điểm Thi.</h2>
         <div className="information-lookup-box-form">
           <FormControl>
             <InputLabel htmlFor="my-input">
-              Mã giảng viên hoặc tên lớp
+              Mã sinh viên hoặc tên lớp
             </InputLabel>
             <Input
               id="my-input"
@@ -61,16 +63,16 @@ export default function HomeAll() {
             <Button
               variant="contained"
               size="small"
-              style={{ marginTop: 10 }}
+              style={{ marginTop: 10 ,width : 260 }}
               onClick=""
             >
               Tìm
             </Button>
             <FormHelperText id="my-helper-text">
-              Nhập mã giảng viên nếu bạn là giảng viên
+              Nhập mã sinh viên nếu bạn là sinh viên.
             </FormHelperText>
             <FormHelperText id="my-helper-text">
-              Nhập tên lớp nếu bạn là sinh viên
+              Nhập tên lớp của bạn nếu là sinh viên.
             </FormHelperText>
           </FormControl>
         </div>

@@ -15,7 +15,6 @@ export default function ViewStudentDetail() {
             item.Student_Id === param.studentId
         )
     );
-    console.log(data);
     const columns = [
     { field: "_id", headerName: "ID", width: 220 },
     { field: "Subject_Name", headerName: "Tên môn học", width: 360 },

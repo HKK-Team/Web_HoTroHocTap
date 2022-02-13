@@ -8,6 +8,8 @@ import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 import Loading from "./../../../utils/loading/Loading";
 import { useSelector} from "react-redux";
 import Chart from "../../components/Chart/Chart";
+import SubjectIcon from '@mui/icons-material/Subject';
+import CreditScoreIcon from '@mui/icons-material/CreditScore';
 export default function Home() {
     const Profile = useSelector(
         (state) => state.StudentsAccount.StudentsAccountApi.data[0]
@@ -24,9 +26,9 @@ export default function Home() {
     ));
     // get avgCredis earned
     var avgCredis = 0;
-    score.data.map(item => ((item.Semester !== Profile.Current_Semester) && (item.Final_Score>=5)) ? avgCredis += item.Number_Of_Credits : avgCredis += 0);
+    score.data.map(item => ((item.Semester !== Profile?.Current_Semester) && (item.Final_Score>=5)) ? avgCredis += item.Number_Of_Credits : avgCredis += 0);
     // get % number of credis
-    var PercentCredis = ((Profile.Number_Of_Credits_Earned/avgCredis)-1)*100;
+    var PercentCredis = ((Profile?.Number_Of_Credits_Earned/avgCredis)-1)*100;
     var iconCredis;
     if(PercentCredis>=0)
     {
@@ -36,7 +38,7 @@ export default function Home() {
         iconCredis = <ArrowDownward className="featuredIcon negative" />
     }
     // get % number of credis dept
-    var PercentCredisDP = (1-(150-Profile.Number_Of_Credits_Earned)/(150-avgCredis))*100;
+    var PercentCredisDP = (1-(150-Profile?.Number_Of_Credits_Earned)/(150-avgCredis))*100;
     var iconCredisDP;
     if(PercentCredisDP>=0)
     {
@@ -46,9 +48,9 @@ export default function Home() {
         iconCredis = <ArrowDownward className="featuredIcon negative" />
     }
     var avgScore = 0;
-    score.data.map(item => (item.Semester !== Profile.Current_Semester) ? avgScore += (item.Final_Score*item.Number_Of_Credits) : avgScore+=0);
+    score.data.map(item => (item.Semester !== Profile?.Current_Semester) ? avgScore += (item.Final_Score*item.Number_Of_Credits) : avgScore+=0);
     var avgN = 0;
-    score.data.map(item => (item.Semester !== Profile.Current_Semester) ? avgN += item.Number_Of_Credits : avgN += 0);
+    score.data.map(item => (item.Semester !== Profile?.Current_Semester) ? avgN += item.Number_Of_Credits : avgN += 0);
     var avgScoreSemester = avgScore/avgN;
     var avgScores = ((Math.round((avgFinalScore/avgNumberofCredis)*100)/100)/avgScoreSemester- 1)*100;
     var iconCredisSS;
@@ -80,7 +82,12 @@ export default function Home() {
     // fix loading
     if(!Profile)
     {
-        return <Loading/>
+        return (
+            <div className="loading">
+              {" "}
+              <Loading />
+            </div>
+          );
     }
     // chart by avg score
     var arrChart = [];
@@ -162,7 +169,7 @@ export default function Home() {
                     <span className="featuredTitle">Số môn đã học</span>
                     <div className="featuredSubjectContainer">
                         <span className="featuredSubject">
-                            {Profile.Number_Of_Subjects_Studied}
+                            {Profile.Number_Of_Subjects_Studied} <SubjectIcon/>
                         </span>
                         <span className="featuredSubjectRate">
                     </span>
@@ -173,7 +180,7 @@ export default function Home() {
                 <div className="featuredItem">
                     <span className="featuredTitle">Tổng số tín chỉ đạt được</span>
                     <div className="featuredSubjectContainer">
-                        <span className="featuredSubject">{Profile.Number_Of_Credits_Earned}</span>
+                        <span className="featuredSubject">{Profile.Number_Of_Credits_Earned} <CreditScoreIcon/></span>
                         <span className="featuredSubjectRate">
                             {Math.abs(Math.round((PercentCredis*100))/100)}%{iconCredis}
                         </span>
@@ -184,7 +191,7 @@ export default function Home() {
                 <div className="featuredItem">
                     <span className="featuredTitle">Số tín chỉ còn thiếu</span>
                     <div className="featuredSubjectContainer">
-                        <span className="featuredSubject">{150-Profile.Number_Of_Credits_Earned}</span>
+                        <span className="featuredSubject">{150-Profile.Number_Of_Credits_Earned} <CreditScoreIcon/></span>
                         <span className="featuredSubjectRate">
                             {Math.abs(Math.round((PercentCredisDP*100))/100)}%{iconCredisDP}
                         </span>
@@ -194,7 +201,7 @@ export default function Home() {
                 <div className="featuredItem">
                     <span className="featuredTitle">Điểm trung bình tích lũy</span>
                     <div className="featuredSubjectContainer">
-                    <span className="featuredSubject">{Math.round((avgFinalScore/avgNumberofCredis)*100)/100}</span>
+                    <span className="featuredSubject">{Math.round((avgFinalScore/avgNumberofCredis)*100)/100} <CreditScoreIcon/></span>
                     <span className="featuredSubjectRate">
                         {Math.abs(Math.round((avgScores*100))/100)}%{iconCredisSS}
                     </span>

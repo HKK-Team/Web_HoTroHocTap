@@ -25,8 +25,24 @@ export default function ViewScore(){
     ));
     if(!Profile)
     {
-        return <Loading/>
+        return (
+            <div className="loading">
+              {" "}
+              <Loading />
+            </div>
+        );
     }
+    // get subject score Semester
+    var scoreHK1 = score.data.filter(item => item.Semester === "HK1");
+    var scoreHK2 = score.data.filter(item => item.Semester === "HK2");
+    var scoreHK3 = score.data.filter(item => item.Semester === "HK3");
+    var scoreHK4 = score.data.filter(item => item.Semester === "HK4");
+    var scoreHK5 = score.data.filter(item => item.Semester === "HK5");
+    var scoreHK6 = score.data.filter(item => item.Semester === "HK6");
+    var scoreHK7 = score.data.filter(item => item.Semester === "HK7");
+    var scoreHK8 = score.data.filter(item => item.Semester === "HK8");
+    var scoreHK9 = score.data.filter(item => item.Semester === "HK9");
+    var scoreHK10 = score.data.filter(item => item.Semester === "HK10");
     return(
     <div className="user">
       <div className="userContainer">
@@ -82,31 +98,198 @@ export default function ViewScore(){
                     </div>
                 </div>
                     <h3 className= "year">Bảng điểm tất cả môn học tính tới thời điểm hiện tại.</h3>
-                    <table class="container">
+                    <table class="container-table">
                         <thead>
                             <tr>
                             <th><h1 className = "name">Subject Name</h1></th>
+                            <th><h1>Credits</h1></th>
                             <th><h1>Subject Id</h1></th>
-                            <th><h1>Number Of Credits</h1></th>
                             <th><h1>Process Score</h1></th>
                             <th><h1>Final Exam Score</h1></th>
                             <th><h1>Final Score</h1></th>
                             <th><h1 className = "result">Result</h1></th>
                             </tr>
                         </thead>
-                        <tbody id = "myTbody">
-                            {score.data.map(item =>(
-                                <tr>
-                                    <td>{item.Subject_Name}</td>
-                                    <td>{item.Subject_Id}</td>
-                                    <td>{item.Number_Of_Credits}</td>
-                                    <td>{item.Process_Score}</td>
-                                    <td>{item.Final_Exam_Score}</td>
-                                    <td>{item.Final_Score}</td>
-                                    <td>{(item.Final_Score >= 5 ? "Đạt" : "Không Đạt")}</td>
-                                </tr>
-                            ))}
-                        </tbody>
+                        {
+                            scoreHK1.length !== 0 ? 
+                            <tbody id = "myTbody">
+                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 1</tr>
+                                {scoreHK1.map(item =>(
+                                    <tr>
+                                        <td>{item.Subject_Name}</td>
+                                        <td>{item.Number_Of_Credits}</td>
+                                        <td>{item.Subject_Id}</td>
+                                        <td>{item.Process_Score}</td>
+                                        <td>{item.Final_Exam_Score}</td>
+                                        <td>{item.Final_Score}</td>
+                                        <td>{(item.Final_Score >= 5 ? "Đạt" : "Không Đạt")}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                            : ""
+                        }
+                        {
+                            scoreHK2.length !== 0 ? 
+                            <tbody id = "myTbody">
+                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 2</tr>
+                                {scoreHK2.map(item =>(
+                                    <tr>
+                                        <td>{item.Subject_Name}</td>
+                                        <td>{item.Number_Of_Credits}</td>
+                                        <td>{item.Subject_Id}</td>
+                                        <td>{item.Process_Score}</td>
+                                        <td>{item.Final_Exam_Score}</td>
+                                        <td>{item.Final_Score}</td>
+                                        <td>{(item.Final_Score >= 5 ? "Đạt" : "Không Đạt")}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                            : ""
+                        }
+                        {
+                            scoreHK3.length !== 0 ? 
+                            <tbody id = "myTbody">
+                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 3</tr>
+                                {scoreHK3.map(item =>(
+                                    <tr>
+                                        <td>{item.Subject_Name}</td>
+                                        <td>{item.Number_Of_Credits}</td>
+                                        <td>{item.Subject_Id}</td>
+                                        <td>{item.Process_Score}</td>
+                                        <td>{item.Final_Exam_Score}</td>
+                                        <td>{item.Final_Score}</td>
+                                        <td>{(item.Final_Score >= 5 ? "Đạt" : "Không Đạt")}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                            : ""
+                        }
+                        {
+                            scoreHK4.length !== 0 ? 
+                            <tbody id = "myTbody">
+                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 4</tr>
+                                {scoreHK4.map(item =>(
+                                    <tr>
+                                        <td>{item.Subject_Name}</td>
+                                        <td>{item.Number_Of_Credits}</td>
+                                        <td>{item.Subject_Id}</td>
+                                        <td>{item.Process_Score}</td>
+                                        <td>{item.Final_Exam_Score}</td>
+                                        <td>{item.Final_Score}</td>
+                                        <td>{(item.Final_Score >= 5 ? "Đạt" : "Không Đạt")}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                            : ""
+                        }
+                        {
+                            scoreHK5.length !== 0 ? 
+                            <tbody id = "myTbody">
+                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 5</tr>
+                                {scoreHK5.map(item =>(
+                                    <tr>
+                                        <td>{item.Subject_Name}</td>
+                                        <td>{item.Number_Of_Credits}</td>
+                                        <td>{item.Subject_Id}</td>
+                                        <td>{item.Process_Score}</td>
+                                        <td>{item.Final_Exam_Score}</td>
+                                        <td>{item.Final_Score}</td>
+                                        <td>{(item.Final_Score >= 5 ? "Đạt" : "Không Đạt")}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                            : ""
+                        }
+                        {
+                            scoreHK6.length !== 0 ? 
+                            <tbody id = "myTbody">
+                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 6</tr>
+                                {scoreHK6.map(item =>(
+                                    <tr>
+                                        <td>{item.Subject_Name}</td>
+                                        <td>{item.Number_Of_Credits}</td>
+                                        <td>{item.Subject_Id}</td>
+                                        <td>{item.Process_Score}</td>
+                                        <td>{item.Final_Exam_Score}</td>
+                                        <td>{item.Final_Score}</td>
+                                        <td>{(item.Final_Score >= 5 ? "Đạt" : "Không Đạt")}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                            : ""
+                        }
+                        {
+                            scoreHK7.length !== 0 ? 
+                            <tbody id = "myTbody">
+                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 7</tr>
+                                {scoreHK7.map(item =>(
+                                    <tr>
+                                        <td>{item.Subject_Name}</td>
+                                        <td>{item.Number_Of_Credits}</td>
+                                        <td>{item.Subject_Id}</td>
+                                        <td>{item.Process_Score}</td>
+                                        <td>{item.Final_Exam_Score}</td>
+                                        <td>{item.Final_Score}</td>
+                                        <td>{(item.Final_Score >= 5 ? "Đạt" : "Không Đạt")}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                            : ""
+                        }
+                        {
+                            scoreHK8.length !== 0 ? 
+                            <tbody id = "myTbody">
+                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 8</tr>
+                                {scoreHK8.map(item =>(
+                                    <tr>
+                                        <td>{item.Subject_Name}</td>
+                                        <td>{item.Number_Of_Credits}</td>
+                                        <td>{item.Subject_Id}</td>
+                                        <td>{item.Process_Score}</td>
+                                        <td>{item.Final_Exam_Score}</td>
+                                        <td>{item.Final_Score}</td>
+                                        <td>{(item.Final_Score >= 5 ? "Đạt" : "Không Đạt")}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                            : ""
+                        }
+                        {
+                            scoreHK9.length !== 0 ? 
+                            <tbody id = "myTbody">
+                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 9</tr>
+                                {scoreHK9.map(item =>(
+                                    <tr>
+                                        <td>{item.Subject_Name}</td>
+                                        <td>{item.Number_Of_Credits}</td>
+                                        <td>{item.Subject_Id}</td>
+                                        <td>{item.Process_Score}</td>
+                                        <td>{item.Final_Exam_Score}</td>
+                                        <td>{item.Final_Score}</td>
+                                        <td>{(item.Final_Score >= 5 ? "Đạt" : "Không Đạt")}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                            : ""
+                        }
+                        {
+                            scoreHK10.length !== 0 ? 
+                            <tbody id = "myTbody">
+                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 10</tr>
+                                {scoreHK10.map(item =>(
+                                    <tr>
+                                        <td>{item.Subject_Name}</td>
+                                        <td>{item.Number_Of_Credits}</td>
+                                        <td>{item.Subject_Id}</td>
+                                        <td>{item.Process_Score}</td>
+                                        <td>{item.Final_Exam_Score}</td>
+                                        <td>{item.Final_Score}</td>
+                                        <td>{(item.Final_Score >= 5 ? "Đạt" : "Không Đạt")}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                            : ""
+                        }
                     </table>
                     <table className="avg">
                         <tbody>

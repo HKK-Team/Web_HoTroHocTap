@@ -76,6 +76,11 @@ function PagesStudents() {
           />
           <Route
             exact
+            path="/HomeStudent"
+            element={isLogged ? <StatisticalStudent/> : <NotFound />}
+          />
+          <Route
+            exact
             path="/HomeStudent/inputScore"
             element={isLogged ? <InputScore /> : <NotFound />}
           />

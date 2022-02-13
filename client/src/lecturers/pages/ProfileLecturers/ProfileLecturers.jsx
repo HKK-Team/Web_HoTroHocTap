@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import "./ProfileLecturer.css";
 import {toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
 import Loading from "./../../../utils/loading/Loading";
+import SaveAsIcon from '@mui/icons-material/SaveAs';
 // chỉnh sửa thông tin Thư ký
 export default function ProfileLecturer() {
   const data = useSelector(
@@ -40,7 +41,12 @@ export default function ProfileLecturer() {
   };
   if(!data)
   {
-    return <Loading/>
+    return (
+      <div className="loading">
+        {" "}
+        <Loading />
+      </div>
+    );
   }
   return (
     <div className="user">
@@ -138,7 +144,7 @@ export default function ProfileLecturer() {
                 <label>Address</label>
                 <input
                   type="text"
-                  placeholder={data?.Adress}
+                  placeholder={data?.Address}
                   name="Adress"
                   value={profile.Adress}
                   className="userUpdateInput"
@@ -191,7 +197,7 @@ export default function ProfileLecturer() {
                 </label>
                 <input type="file" id="file" style={{ display: "none" }} />
               </div>
-              <button className="userUpdateButton">Update</button>
+              <button className="userUpdateButton"><SaveAsIcon/> Update</button>
             </div>
           </form>
         </div>

@@ -8,6 +8,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "./../../../images/tdmu-elearning-banner.png";
 import {toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import PasswordIcon from '@mui/icons-material/Password';
 
 export default function Topbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -55,22 +57,25 @@ export default function Topbar() {
               }}
             >
               <MenuItem>
+                <AccountCircleIcon/>
                 <Link
                   to="/HomeLecturer/profileLecturer"
                   style={{ color: "black" }}
                 >
-                  Profile
+                   Profile
                 </Link>
               </MenuItem>
               <MenuItem>
+                <PasswordIcon/>
                 <Link
                   to="/HomeLecturer/accountLecturer"
                   style={{ color: "black" }}
                 >
-                  My Account
+                  PassWord
                 </Link>
               </MenuItem>
               <MenuItem>
+                <LogoutIcon/>
                 <a href="/login" onClick={Logout}>
                   Logout
                 </a>

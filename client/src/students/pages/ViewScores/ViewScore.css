@@ -115,6 +115,33 @@
    text-align: left;
    font-size: 18px;
    font-style: initial;
+   color: #2fb1ee;
+ }
+ .export-excel{
+   margin-left: 90%;
+   padding-bottom: 5px;
+   border-radius: 5px;
+   background-color: rgb(66, 92, 104); 
+   cursor: pointer;
+   font-size: 20px;
+   flex: row;
+   margin-bottom: 10px;
+ }
+ .export-excel:hover {
+   box-shadow: 2px 3px 15px rgb(30, 52, 73);
+   transform: translateY(-1px);
+   background-color:rgb(66, 92, 104);
+ }
+ .download-table-xls-button{
+   background-color: rgb(66, 92, 104);
+   border: none;
+   color: #56c0f1;
+   font-size: 18px;
+ }
+ .img-export{
+   margin-top: 5px;
+   margin-left: 2px;
+   color: #4DC3FA;
  }
  @media (max-width: 800px) {
  .container-table td:nth-child(4),

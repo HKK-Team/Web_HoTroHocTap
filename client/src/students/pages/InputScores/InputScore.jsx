@@ -14,14 +14,14 @@ import {subjectsSlice} from "../../../api/subjectApi.js";
 import {toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
 import CreditScoreIcon from '@mui/icons-material/CreditScore';
 import Loading from "./../../../utils/loading/Loading";
-import Tooltip from "@mui/material/Tooltip";
-import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
-import * as XLSX from "xlsx";
+// import Tooltip from "@mui/material/Tooltip";
+// import Button from "@mui/material/Button";
+// import { styled } from "@mui/material/styles";
+// import * as XLSX from "xlsx";
 export default function InputScore() {
-  const Input = styled("input")({
-    display: "none",
-  });
+  // const Input = styled("input")({
+  //   display: "none",
+  // });
   const data = useSelector(
     (state) => state.StudentsAccount.StudentsAccountApi.data[0]
   );
@@ -119,33 +119,34 @@ export default function InputScore() {
       </div>
     );
   }
-  const readExcel = (file) => {
-    const promise = new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsArrayBuffer(file);
+  // import excel
+  // const readExcel = (file) => {
+  //   const promise = new Promise((resolve, reject) => {
+  //     const fileReader = new FileReader();
+  //     fileReader.readAsArrayBuffer(file);
 
-      fileReader.onload = (e) => {
-        const bufferArray = e.target.result;
+  //     fileReader.onload = (e) => {
+  //       const bufferArray = e.target.result;
 
-        const wb = XLSX.read(bufferArray, { type: "buffer" });
+  //       const wb = XLSX.read(bufferArray, { type: "buffer" });
 
-        const wsname = wb.SheetNames[0];
+  //       const wsname = wb.SheetNames[0];
 
-        const ws = wb.Sheets[wsname];
+  //       const ws = wb.Sheets[wsname];
 
-        const data = XLSX.utils.sheet_to_json(ws);
+  //       const data = XLSX.utils.sheet_to_json(ws);
 
-        resolve(data);
-      };
+  //       resolve(data);
+  //     };
 
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-    promise.then((d) => {
-      console.log(d);
-    });
-  };
+  //     fileReader.onerror = (error) => {
+  //       reject(error);
+  //     };
+  //   });
+  //   promise.then((d) => {
+  //     console.log(d);
+  //   });
+  // };
   return (
     <div className="user">
       <div className="userTitleContainer">
@@ -199,7 +200,7 @@ export default function InputScore() {
         </div>
         <div className="userUpdate">
           <span className="userUpdateTitle">Nhập Điểm Môn Học </span>
-            <label htmlFor="contained-button-file" className = "import-Excel">
+            {/* <label htmlFor="contained-button-file" className = "import-Excel">
               <Input
                 id="contained-button-file"
                 multiple
@@ -220,7 +221,7 @@ export default function InputScore() {
                 <img className = "image-excel" src = "https://icons.iconarchive.com/icons/carlosjj/microsoft-office-2013/256/Excel-icon.png" alt= ""></img>Import Excel
                 </Button>
               </Tooltip>
-            </label>
+            </label> */}
           <form className="userUpdateForm" onSubmit={EditUserSubmit}>
             <div className="userUpdateLeft">
                 <div className="box">

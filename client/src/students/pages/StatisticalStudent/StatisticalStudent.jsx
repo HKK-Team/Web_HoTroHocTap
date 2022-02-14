@@ -162,6 +162,7 @@ export default function Home() {
     score.data.map(item => item.Semester === "HK10" ? avggHK10+=item.Number_Of_Credits : avggHK10 +=0);
     var avgScoreHK10 = Math.round(avgHK10/avggHK10 * 100)/100;
     arrChart.push({_id : "HK10",avgScore : avgScoreHK10>=0 ? avgScoreHK10 : 0.0, name : "HK10"});
+   console.log(Profile)
     return (
         <div className="homeStudent">
             <div className="featured">

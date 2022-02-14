@@ -6,6 +6,8 @@ import MailOutline from "@mui/icons-material/PermIdentity";
 import ClassIcon from "@mui/icons-material/Class";
 import { useSelector} from "react-redux";
 import Loading from "./../../../utils/loading/Loading";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import { FaFileExcel } from "react-icons/fa";
 export default function ViewScore(){
     const Profile = useSelector(
         (state) => state.StudentsAccount.StudentsAccountApi.data[0]
@@ -98,7 +100,21 @@ export default function ViewScore(){
                     </div>
                 </div>
                     <h3 className= "year">Bảng điểm tất cả môn học tính tới thời điểm hiện tại.</h3>
-                    <table class="container-table">
+                    <div className = "export-excel">
+                        <span>
+                            <FaFileExcel className = "img-export"/>
+                            <ReactHTMLTableToExcel
+                                id="test-table-xls-button"
+                                className="download-table-xls-button"
+                                table="table-to-xls"
+                                filename="BangDiem"
+                                sheet="tablexls"
+                                buttonText="Xuất Excel"
+                                
+                            />
+                        </span>
+                    </div>
+                    <table class="container-table" id = "table-to-xls">
                         <thead>
                             <tr>
                             <th><h1 className = "name">Subject Name</h1></th>

@@ -1,0 +1,109 @@
+.MailuserContainer {
+    display: flex;
+    margin-top: 20px;
+    width: 99%;
+}
+.MailuserShow {
+    flex: 1;
+    padding: 20px;
+}
+.Mail-Service-Right{
+    margin-right: 30%;
+}
+  /* Thiết kẻ thẻ select */
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: DeepSkyBlue;
+    background-image: none;
+  }
+  .select {
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    line-height: 3;
+    background: rgb(255, 255, 255);
+    overflow: hidden;
+    border-radius: .25em;
+    margin-left: 90px;
+  }
+  select {
+    flex: 1;
+    padding: 0 .5em;
+    color: #fff;
+    cursor: pointer;
+  }
+  /* thiết kế dấu mũi tên */
+  .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: DodgerBlue;
+    cursor: pointer;
+    pointer-events: none;
+    -webkit-transition: .25s all ease;
+    -o-transition: .25s all ease;
+    transition: .25s all ease;
+    color: white;
+  }
+  /* Transition */
+  .select:hover::after {
+    color: Gainsboro;
+  }
+  .mail-select{
+      text-align: center;
+  }
+  .mail-title{
+    margin-left: 30px;
+  }
+  .mail-textArea{
+    margin-top: 15px;
+  }
+  .mail-Content{
+    margin-left: 36%;
+  }
+  .Content{
+    margin-left: 36%;
+    border: none;
+    width: 220px;
+    height: 100px;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 3px 10px rgb(153, 156, 187);
+  }
+  .btnsubmit-mail{
+    margin-top: 10px;
+    margin-left: 57%;
+  }
+  .submit-mail{
+    width: 150px;
+    height: 35px;
+    border-radius: 10px;
+      text-align: center;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      background-color: #2b6b4c;
+      color: white;
+      font-weight: 600;
+      margin-bottom: 320px;
+      font-size: 18px;
+  }
+  .submit-mail:hover{
+    box-shadow: 2px 3px 15px rgb(35, 37, 66);
+    transform: translateY(-1px);
+  }
+  .submit-mail:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+  }
+  .submit-mail:hover {
+    background-color: #3e8e41;
+  }

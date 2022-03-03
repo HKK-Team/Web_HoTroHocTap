@@ -14,6 +14,7 @@ import {subjectsSlice} from "../../../api/subjectApi.js";
 import {toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
 import CreditScoreIcon from '@mui/icons-material/CreditScore';
 import Loading from "./../../../utils/loading/Loading";
+import { FaHome } from "react-icons/fa";
 // import Tooltip from "@mui/material/Tooltip";
 // import Button from "@mui/material/Button";
 // import { styled } from "@mui/material/styles";
@@ -119,39 +120,12 @@ export default function InputScore() {
       </div>
     );
   }
-  // import excel
-  // const readExcel = (file) => {
-  //   const promise = new Promise((resolve, reject) => {
-  //     const fileReader = new FileReader();
-  //     fileReader.readAsArrayBuffer(file);
-
-  //     fileReader.onload = (e) => {
-  //       const bufferArray = e.target.result;
-
-  //       const wb = XLSX.read(bufferArray, { type: "buffer" });
-
-  //       const wsname = wb.SheetNames[0];
-
-  //       const ws = wb.Sheets[wsname];
-
-  //       const data = XLSX.utils.sheet_to_json(ws);
-
-  //       resolve(data);
-  //     };
-
-  //     fileReader.onerror = (error) => {
-  //       reject(error);
-  //     };
-  //   });
-  //   promise.then((d) => {
-  //     console.log(d);
-  //   });
-  // };
   return (
     <div className="user">
       <div className="userTitleContainer">
         <h1 className="userTitle">Nhập Điểm Môn Học</h1>
       </div>
+      <span><h3><FaHome/> / InputScore</h3></span>
       <div className="userContainer">
         <div className="userShow">
           <div className="userShowTop">
@@ -200,28 +174,7 @@ export default function InputScore() {
         </div>
         <div className="userUpdate">
           <span className="userUpdateTitle">Nhập Điểm Môn Học </span>
-            {/* <label htmlFor="contained-button-file" className = "import-Excel">
-              <Input
-                id="contained-button-file"
-                multiple
-                type="file"
-                onChange={(e) => {
-                  const file = e.target.files[0];
-                    readExcel(file);
-                }}
-              />
-              <Tooltip title="Thêm dữ liệu bằng file Excel" arrow>
-                <Button
-                  variant="contained"
-                  component="span"
-                  color="success"
-                  size="medium"
-                  style={{ marginRight: 10 }}
-                >
-                <img className = "image-excel" src = "https://icons.iconarchive.com/icons/carlosjj/microsoft-office-2013/256/Excel-icon.png" alt= ""></img>Import Excel
-                </Button>
-              </Tooltip>
-            </label> */}
+
           <form className="userUpdateForm" onSubmit={EditUserSubmit}>
             <div className="userUpdateLeft">
                 <div className="box">

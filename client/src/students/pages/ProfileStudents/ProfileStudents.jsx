@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import {toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
 import Loading from "./../../../utils/loading/Loading";
 import SaveAsIcon from '@mui/icons-material/SaveAs';
+import { FaHome } from "react-icons/fa";
 export default function ProfileStudent() {
   const data = useSelector(
     (state) => state.StudentsAccount.StudentsAccountApi.data[0]
@@ -52,6 +53,7 @@ export default function ProfileStudent() {
       <div className="userTitleContainer">
         <h1 className="userTitle">Thông Tin Sinh Viên</h1>
       </div>
+      <span><h3><FaHome/> / Profile</h3></span>
       <div className="userContainer">
         <div className="userShow">
           <div className="userShowTop">

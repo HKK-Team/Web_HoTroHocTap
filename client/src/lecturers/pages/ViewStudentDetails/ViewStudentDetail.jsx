@@ -4,7 +4,7 @@ import { DataGridPro, GridToolbar } from "@mui/x-data-grid-pro";
 import { useSelector } from "react-redux";
 import {useParams } from "react-router-dom";
 import "./ViewStudentDetail.css";
-
+import { FaHome } from "react-icons/fa";
 
 export default function ViewStudentDetail() {
     const param = useParams();
@@ -79,6 +79,7 @@ export default function ViewStudentDetail() {
       <div className="header-table">
         <h1 className="header-table-title">Thống Kê Quá Trình Học Tập</h1>
       </div>
+      <span><h3><FaHome/> / ViewStatusStudent / ViewStudentDetails</h3></span>
       <DataGridPro
         className={classes.root}
         getRowId={(row) => row._id}

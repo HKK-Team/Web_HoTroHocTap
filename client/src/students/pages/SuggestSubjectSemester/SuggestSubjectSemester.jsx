@@ -2,6 +2,7 @@ import React from "react";
 import "./SuggestSubjectSemester.css";
 import { useSelector} from "react-redux";
 import Loading from "./../../../utils/loading/Loading";
+import { FaHome } from "react-icons/fa";
 export default function SuggestSubjectSemester(){
     const Profile = useSelector(
         (state) => state.StudentsAccount.StudentsAccountApi.data[0]
@@ -21,6 +22,7 @@ export default function SuggestSubjectSemester(){
     }
     return(
     <div className="user">
+      <span><h3><FaHome/> / SuggestSubjectSemester</h3></span>
       <div className="userContainer">
       <div className="view-score">
         <div className="userUpdate">

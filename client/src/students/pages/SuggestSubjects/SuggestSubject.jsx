@@ -1,6 +1,7 @@
 import React from "react";
 import "./SuggestSubject.css";
 import { useSelector} from "react-redux";
+import { FaHome } from "react-icons/fa";
 export default function SuggestSubject(){
     // Get subject
     const subject = useSelector((state) => state.Subject.SubjectApi);
@@ -34,6 +35,7 @@ export default function SuggestSubject(){
     var arSubjectSP = SuggestSP.filter(item => !SubjectsPass.map(sj => sj.Subject_Id).includes(item.Subject_Id));
     return(
     <div className="user">
+      <span><h3><FaHome/> / SuggestSubject</h3></span>
       <div className="userContainer">
       <div className="view-score">
         <div className="userUpdate">

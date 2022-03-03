@@ -8,6 +8,7 @@ import { useSelector} from "react-redux";
 import Loading from "./../../../utils/loading/Loading";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import { FaFileExcel } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 export default function ViewScore(){
     const Profile = useSelector(
         (state) => state.StudentsAccount.StudentsAccountApi.data[0]
@@ -47,6 +48,7 @@ export default function ViewScore(){
     var scoreHK10 = score.data.filter(item => item.Semester === "HK10");
     return(
     <div className="user">
+        <span><h3><FaHome/> / ViewScore</h3></span>
       <div className="userContainer">
       <div className="view-score">
         <div className="userUpdate">

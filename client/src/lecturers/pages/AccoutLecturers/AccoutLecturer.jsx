@@ -5,6 +5,7 @@ import "./AccountLecturer.css";
 import {toastError,toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
 import Loading from "./../../../utils/loading/Loading";
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import { FaHome } from "react-icons/fa";
 export default function AccountLecturer() {
   // get user
   const lecturer = useSelector(
@@ -49,6 +50,7 @@ export default function AccountLecturer() {
       <div className="userTitleContainer">
         <h1 className="userTitle">Đổi Mật Khẩu</h1>
       </div>
+      <span><h3><FaHome/> / PassWord</h3></span>
       <div className="userContainer">
         <div className="userUpdate">
           <span className="userUpdateTitle">Chỉnh sửa</span>

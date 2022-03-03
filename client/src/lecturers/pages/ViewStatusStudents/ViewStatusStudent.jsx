@@ -3,8 +3,8 @@ import { createTheme } from "@mui/material/styles";
 import { DataGridPro, GridToolbar } from "@mui/x-data-grid-pro";
 import { useSelector } from "react-redux";
 import Loading from "./../../../utils/loading/Loading";
-// import React,{useState} from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
 import "./ViewStatusStudent.css";
 
 export default function ViewStatusStudent() {
@@ -81,14 +81,14 @@ export default function ViewStatusStudent() {
       renderCell: (params) => {
         return (
           <>
-            {/* <Link to={"/HomeLecturer/ViewListStudent/" + params.id}></Link> */}
+            <Link to={"/HomeLecturer/MailService/" + params.id}>
               <button className="productListEdit">Gửi mail cảnh cáo</button>
+            </Link>
           </>
         );
       },
     },
   ];
-
   const defaultTheme = createTheme();
 
   const useStyles = makeStyles(
@@ -108,7 +108,6 @@ export default function ViewStatusStudent() {
     },
     { defaultTheme }
   );
-
   const classes = useStyles();
   if(!lecturer)
   {
@@ -124,6 +123,7 @@ export default function ViewStatusStudent() {
       <div className="header-table">
         <h1 className="header-table-title">Gửi Mail Cảnh Báo Tình Trạng Học Tập</h1>
       </div>
+      <span><h3><FaHome/> / ViewStatusStudent</h3></span>
       <DataGridPro
         className={classes.root}
         getRowId={(row) => row._id}

@@ -1,9 +1,10 @@
 import { FormControl, FormHelperText, Input, InputLabel } from "@mui/material";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect,useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "./../../../src/images/tdmu-elearning-banner.png";
+import {toastError}from "../toastMassage/toastMassage.js";
 import "./HomeAll.css";
 export default function HomeAll() {
 
@@ -22,7 +23,19 @@ export default function HomeAll() {
     containerAdminLecturers.style.display = "none";
     document.body.style.overflowY = "auto";
   }, []);
-
+  const [keyWord,setkeyWord] = useState({
+    id : ''
+  });
+  const onChangeInput = (e) => {
+    const { name, value } = e.target;
+    setkeyWord({ ...keyWord, [name]: value });
+  };
+  const check = () =>{
+    if(keyWord.id === "")
+    {
+      toastError("Bạn chưa nhập vào nội dung tìm kiếm. Vui lòng nhập thông tin vào form.");
+    }
+  }
   return (
     <Fragment>
       <div className="topbar">
@@ -52,27 +65,31 @@ export default function HomeAll() {
         <div className="information-lookup-box-form">
           <FormControl>
             <InputLabel htmlFor="my-input">
-              Mã sinh viên hoặc tên lớp
+              Nhập mã sinh viên hoặc Email...
             </InputLabel>
             <Input
               id="my-input"
               aria-describedby="my-helper-text"
-              onChange=""
-              value=""
+              onChange={onChangeInput}
+              name = "id"
+              value={keyWord.id}
+              required
             />
-            <Button
-              variant="contained"
-              size="small"
-              style={{ marginTop: 10 ,width : 260 }}
-              onClick=""
-            >
-              Tìm
-            </Button>
+            <Link to = {keyWord.id === "" ? "/" :"/SearchScore/" + keyWord.id}>
+              <Button
+                variant="contained"
+                size="small"
+                style={{ marginTop: 10 ,width : 260 }}
+                onClick = {check}
+              >
+                Tìm
+              </Button>
+            </Link>
             <FormHelperText id="my-helper-text">
               Nhập mã sinh viên nếu bạn là sinh viên.
             </FormHelperText>
             <FormHelperText id="my-helper-text">
-              Nhập tên lớp của bạn nếu là sinh viên.
+              Nhập Email của bạn nếu bạn là sinh viên.
             </FormHelperText>
           </FormControl>
         </div>

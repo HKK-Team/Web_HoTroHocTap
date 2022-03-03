@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import HeaderTable from "../../components/headerTable/headerTable";
 import "./ViewListStudent.css";
 import Loading from "./../../../utils/loading/Loading";
+import { FaHome } from "react-icons/fa";
 export default function ViewListStudent() {
     // get lecturer account
     const lecturer = useSelector(
@@ -95,7 +96,9 @@ export default function ViewListStudent() {
         name="Danh Sách Sinh Viên"
         urlNew="/HomeLecturer/ViewListStudent"
       />
+      <span><h3><FaHome/> / ViewListStudent</h3></span>
       <DataGridPro
+        id = "test-table-xls-button"
         className={classes.root}
         getRowId={(row) => row._id}
         rows={data}

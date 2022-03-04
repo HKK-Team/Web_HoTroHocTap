@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcrypt");
-// const Student = require('../Students/Models/userModels');
+const Lecturer = require('../Lecturers/Models/lecturerModels');
 const Excel = require("exceljs");
 class MailService{
   #codeOTP; // lưu trữ mã otp
@@ -59,7 +59,7 @@ class MailService{
     }
 
     const email = req.params.email;
-    const user = await Sercetarys.findOne({ email });
+    const user = await Lecturer.findOne({ email });
     // check email
     if (user === null) {
       isEmail = false;
@@ -118,10 +118,10 @@ class MailService{
       let mailOptions = {
         from: this.#mailManage,
         to: req.params.email,
-        subject: `Email đã được xác nhận hệ thống phân công lịch thi Đại Học Thủ Dầu Một`,
+        subject: `Mật Khẩu đã được thay đổi qua hệ thống Theo dõi quá trình học tập của Sinh Viên Đại Học Thủ Dầu Một`,
         html: `<h1>Xin chào.</h1> 
-        <h3>Email <strong>${req.params.email}</strong> thư ký của bạn đã được xác nhận.<h3>
-        <h3>Cảm ơn bạn đã sử dụng dịch vụ. Chúc bạn một ngày tốt lành</h3>
+        <h3>Mật Khẩu giảng viên <strong>${req.params.email}</strong> của bạn đã được thay đổi thành công.<h3>
+        <h3>Cảm ơn bạn đã sử dụng dịch vụ. Chúc bạn một ngày tốt lành!</h3>
         <h2>Trân trọng.</h2>`,
       };
       transporter.sendMail(mailOptions);
@@ -299,6 +299,7 @@ class MailService{
         <h4>Điểm trung bình : ${req.body.information.GPA}</h4>
         <h3>Nội dung : Xin chào ${req.body.information.FullName} tôi là cố vấn học tập của lớp ${req.body.information.Class}.</h3>
         <h3> - ${req.body.content}</h3>
+        <h3>Cảm ơn bạn, chúc bạn sớm tìm ra chiến lược học hành thật tốt để kịp hoàn thành tiến độ học tập của nhà trường đề ra, mong bạn cố gắng học hành thật tốt!</h3>
         <h2>Thanks You!</h2>
         </div>`,
         attachments: [
@@ -349,6 +350,7 @@ class MailService{
         <h4>Điểm trung bình : ${req.body.information.GPA}</h4>
         <h3>Nội dung : Xin chào ${req.body.information.FullName} tôi là cố vấn học tập của lớp ${req.body.information.Class}.</h3>
         <h3> - ${req.body.content}</h3>
+        <h3>Cảm ơn bạn, chúc bạn sớm tìm ra chiến lược học hành thật tốt để kịp hoàn thành tiến độ học tập của nhà trường đề ra, mong bạn cố gắng học hành thật tốt!</h3>
         <h2>Thanks You!</h2>
         </div>`,
       };
@@ -376,9 +378,9 @@ class MailService{
 
     const passwordHash = await bcrypt.hash(req.body.password, 10);
     try {
-      await Sercetarys.findOneAndUpdate(
+      await Lecturer.findOneAndUpdate(
         { email: req.body.email },
-        { passWord: passwordHash }
+        { Password: passwordHash }
       );
       return res.status(200).json("Bạn đã đổi mật khẩu thành công!");
     } catch (err) {

@@ -225,6 +225,16 @@ export default function LoginAll() {
               >
                 Login
               </button>
+              <Link
+                to="forget-password"
+                style={{
+                  marginTop: 10,
+                  textAlign: "right",
+                  display: "block",
+                }}
+              >
+                Quên mật khẩu?
+              </Link>
             </div>
           </form>
         </div>

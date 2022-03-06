@@ -1,6 +1,6 @@
 .productList {
     flex: 4;
-    /* overflow: auto; */
+    overflow: auto;
   }
   
   .productListItem {

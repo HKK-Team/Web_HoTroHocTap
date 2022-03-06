@@ -142,7 +142,7 @@ class MailService{
       const key = req.body.information.Study_Year;
       
       // tạo file excel 
-      const filename = `MonHocBiNo_${key}.xlsx`;
+      const filename = `DanhSachMonHocDangNo_${key}.xlsx`;
       let workbook = new Excel.Workbook();
       let worksheet = workbook.addWorksheet("Mon Hoc", {
         views: [{ state: "frozen", xSplit: 3 }],

@@ -1,7 +1,12 @@
+.productList {
+  flex: 4;
+  /* overflow: auto; */
+}
 .MailuserContainer {
     display: flex;
     margin-top: 20px;
     width: 99%;
+
 }
 .MailuserShow {
     flex: 1;

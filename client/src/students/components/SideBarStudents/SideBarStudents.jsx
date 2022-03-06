@@ -27,6 +27,7 @@ export default function SideBarLecturers() {
                 </li>
                 </Tooltip>
             </NavLink>
+
             <NavLink to="/HomeStudent/viewScore" className="link">
             <Tooltip title="Xem Điểm">
                 <li className="sidebarListItem">
@@ -38,6 +39,7 @@ export default function SideBarLecturers() {
                 </li>
               </Tooltip>
             </NavLink>
+
             <NavLink to="/HomeStudent/SuggestSubject" className="link">
             <Tooltip title="Xem gợi ý môn học">
                 <li className="sidebarListItem">
@@ -49,6 +51,7 @@ export default function SideBarLecturers() {
                 </li>
               </Tooltip>
             </NavLink>
+            
             <NavLink to="/HomeStudent/SuggestSubjectSemester" className="link">
             <Tooltip title="Gợi ý môn học cho học kỳ tới">
                 <li className="sidebarListItem">

@@ -20,7 +20,7 @@ export default function SuggestSubject(){
       }
     };
     // Suggest subject with level
-    var SubjectsPass = Subjects.data;
+    var SubjectsPass = Subjects.data.filter(item => item.Final_Score>5);
     var SuggestSP = [];
     for(let i = 0;i<subject.data.length;i++)
     {

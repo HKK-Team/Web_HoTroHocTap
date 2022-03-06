@@ -78,7 +78,7 @@ export default function ViewListStudent() {
     },
     { defaultTheme }
   );
-
+  
   const classes = useStyles();
   if(!lecturer)
   {

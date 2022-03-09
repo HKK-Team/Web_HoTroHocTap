@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "990906598560",
+    "project_id": "hotrohoctap-c4f04",
+    "storage_bucket": "hotrohoctap-c4f04.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:990906598560:android:9a69e6fd199eb5bc1275c5",
+        "android_client_info": {
+          "package_name": "com.modulesandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "990906598560-oskda73goaelhgpk43d9pjlr0mvifo0p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.modulesandroid",
+            "certificate_hash": "cb6f828c0fa633d9be8aaf7ab3bb3f5b9b090884"
+          }
+        },
+        {
+          "client_id": "990906598560-db6e2i5h2q4odjj10hjtqliuc81vap7g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCxBWLrGdfG3SoLfx-_YIEQqeCJQzpJHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "990906598560-db6e2i5h2q4odjj10hjtqliuc81vap7g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -29,7 +29,6 @@ export default function FilterSearchHome() {
   useEffect(() => {
     dispatch(getSubjectScoreClassApiAsync());
   }, [dispatch]);
-  console.log(data)
   const columns = [
     { field: "Subject_Id", headerName: "Mã môn học", width: 130 },
     { field: "Class_Subject_Id", headerName: "Mã lớp học", width: 130 },

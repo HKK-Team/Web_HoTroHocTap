@@ -173,7 +173,7 @@ export default function HomePage() {
             color={GoogleSigninButton.Color.Dark}
             onPress={signIn}
           />;
-          </Text>
+        </Text>
       </View>
     </Fragment>
   );

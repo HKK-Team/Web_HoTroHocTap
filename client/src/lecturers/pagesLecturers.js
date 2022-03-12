@@ -16,6 +16,7 @@ import {getSubjectScoreClassApiAsync} from "../api/subjectScoreClassApi";
 import ViewStatusStudent from "./pages/ViewStatusStudents/ViewStatusStudent";
 import StudentStatusStatistic from "./pages/StudentStatusStatistics/StudentStatusStatistics";
 import MailService from "../lecturers/pages/MailService/MailService";
+import NewSubjects from "./pages/NewSubject/NewSubject";
 function PagesLecturers() {
   const isLogged = sessionStorage.getItem("LecturerLogin");
   const param = useLocation();
@@ -81,6 +82,11 @@ function PagesLecturers() {
             exact
             path="HomeLecturer/Mailservice/:id"
             element={isLogged ? <MailService /> : NotFound()}
+          />
+          <Route
+            exact
+            path="HomeLecturer/NewSubject"
+            element={isLogged ? <NewSubjects /> : NotFound()}
           />
         </Routes>
 

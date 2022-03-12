@@ -6,6 +6,7 @@ import ClassIcon from '@mui/icons-material/Class';
 import { NavLink } from "react-router-dom";
 import { Tooltip } from "@mui/material";
 import InsightsIcon from '@mui/icons-material/Insights';
+import SubjectIcon from '@mui/icons-material/Subject';
 
 export default function Sidebar() {
   return (
@@ -45,6 +46,17 @@ export default function Sidebar() {
               <Tooltip title="Thống Kê Tình Trạng Sinh Viên">
                 <li className="sidebarListItem">
                   <InsightsIcon
+                    className="sidebarIcon"
+                    style={{ color: "#000000" }}
+                  />
+                  {/* Home */}
+                </li>
+              </Tooltip>
+            </NavLink>
+            <NavLink to="/HomeLecturer/NewSubject" className="link">
+              <Tooltip title="Tạo mới môn học">
+                <li className="sidebarListItem">
+                  <SubjectIcon
                     className="sidebarIcon"
                     style={{ color: "#000000" }}
                   />

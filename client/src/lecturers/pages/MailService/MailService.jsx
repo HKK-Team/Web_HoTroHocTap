@@ -16,7 +16,7 @@ import { sendMailWarning,sendMailAcademicWarning } from "../../../api/MailServic
 export default function MailService() {
     const param = useParams();
     const student = useSelector((state) =>
-        state.StudentsAccount.StudentsAccountApi.data.filter(
+        state.StudentsAccountApi.StudentsAccount.data.filter(
         (item) =>
             item._id === param.id
         )

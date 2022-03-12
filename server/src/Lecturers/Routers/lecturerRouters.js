@@ -8,4 +8,6 @@ router.route('/edituser')
     .post(lecturerCtrl.EditUser)
 router.route('/editpassword')
     .post(lecturerCtrl.EditPassWord)
+router.route('/getStudent')
+    .get(lecturerCtrl.getStudent)
 module.exports = router

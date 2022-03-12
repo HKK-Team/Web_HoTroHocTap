@@ -13,7 +13,7 @@ export default function Home() {
         (state) => state.LecturersAccount.LecturersAccountApi.data[0]
     );
     const student = useSelector((state) =>
-    state.StudentsAccount.StudentsAccountApi.data.filter(
+    state.StudentsAccountApi.StudentsAccount.data.filter(
       (item) =>
         item.Class === Profile?.Class_Advisor
     )

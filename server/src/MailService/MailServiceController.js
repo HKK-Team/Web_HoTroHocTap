@@ -361,6 +361,51 @@ class MailService{
     }
   };
 
+  // gửi mail buộc thôi học
+  sendMailStopAcademic = async (req, res) => {
+      try {
+        if(req.body.Student.length === 0){
+          res.status(400).json("Không có sinh viên nào bị buôc thôi học");
+        }
+        else{
+          // duyệt từng sinh viên trong danh sách và gửi mail
+          for(let i = 0;i<req.body.Student.length;i++){
+            const key = req.body.Semester;
+
+            let transporter = nodemailer.createTransport({
+              service: "Gmail",
+              auth: {
+                user: this.#mailManage,
+                pass: this.#passWordManage,
+              },
+            });
+            let mailOptions = {
+              from: this.#mailManage,
+              to: req.body.Student[i].Email,
+              subject: "Buộc thôi học đối với sinh viên có điểm trung bình năm học quá thấp.",
+              html: `<div>
+              <h1>Dear ${req.body.Student[i].FullName},</h1>
+              <h3>Xin gửi cho bạn email này nhằm báo cáo tình trạng buộc thôi học do điểm trung bình năm học ${key} của bạn quá thấp so với chương trình đào tạo.</h3>
+              <h4>Xin Chào sinh viên ${req.body.Student[i].FullName}!</h4>
+              <h4>Chương trình đào tạo : ${req.body.Student[i].Education_Program}</h4>
+              <h4>Điểm buộc thôi học : Nhỏ hơn hoặc bằng ${req.body.Score}</h4>
+              <h4>Học kỳ : (${req.body.Semester})</h4>
+              <h4>Điểm trung bình : ${req.body.Student[i].AVG}</h4>
+              <h3>Nội dung : Xin chào ${req.body.Student[i].FullName} tôi là cố vấn học tập của lớp ${req.body.Student[i].Class}.</h3>
+              <h3>Xin gửi đến bạn email này nhằm báo cáo buộc thôi học đến bạn do điểm trung bình trong học kỳ ${key} quá thấp so với yêu cầu của chương trình đào tạo.</h3>
+              <h3>Mọi thắc măc xin vui lòng liên hệ đến Phòng CTSV.</h3>
+              <h2>Trân trọng!</h2>
+              </div>`,
+            };
+            transporter.sendMail(mailOptions);
+          }
+          res.status(201).json("Send email successfully");
+        }
+      } catch (error) {
+        res.status(500).json({ message: error.message });
+      }
+  };
+
   // thay đổi pass word
   // [put]/editPassword
   editPassword = async (req, res) => {

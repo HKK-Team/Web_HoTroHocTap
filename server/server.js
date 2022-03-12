@@ -6,11 +6,13 @@ const fileUpload = require('express-fileupload');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const path = require('path');
+// const morgan = require("morgan");
 
 
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+// app.use(morgan("combined"));
 app.use(bodyParser.json());
 app.use(cors())
 app.use(fileUpload({

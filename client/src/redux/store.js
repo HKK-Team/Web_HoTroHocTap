@@ -1,17 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
 import studentsAccSlice from "../api/studentsAccountSlice";
-import lecturersAccSlice from "../api/lecturersAccountSlice";
+import {LecturersAccSlice} from "../api/lecturersAccountSlice";
 import subjects from "../api/subjectApi";
 import subjectScore from "../api/subjectScoreApi";
 import subjectScoreClass from "../api/subjectScoreClassApi";
+import {StudentsAccSlice} from "../api/lecturersAccountSlice";
 
 const store = configureStore({
   reducer: {
-    LecturersAccount: lecturersAccSlice.reducer,
+    LecturersAccount: LecturersAccSlice.reducer,
     StudentsAccount: studentsAccSlice.reducer,
     Subject : subjects.reducer,
     SubjectScore : subjectScore.reducer,
-    SubjectScoreClass : subjectScoreClass.reducer
+    SubjectScoreClass : subjectScoreClass.reducer,
+    StudentsAccountApi: StudentsAccSlice.reducer,
   },
 });
 export default store;

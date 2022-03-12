@@ -9,6 +9,7 @@ import Loading from "./../../../utils/loading/Loading";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import { FaFileExcel } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
+
 export default function ViewScore(){
     const Profile = useSelector(
         (state) => state.StudentsAccount.StudentsAccountApi.data[0]
@@ -109,10 +110,9 @@ export default function ViewScore(){
                                 id="test-table-xls-button"
                                 className="download-table-xls-button"
                                 table="table-to-xls"
-                                filename="BangDiem"
-                                sheet="tablexls"
+                                filename="BangDiemMonHoc"
+                                sheet="BangDiemMonHoc"
                                 buttonText="Xuất Excel"
-                                
                             />
                         </span>
                     </div>

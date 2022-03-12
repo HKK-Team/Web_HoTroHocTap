@@ -14,7 +14,7 @@ export default function ViewListStudent() {
     );
     // get List student from class
     const data = useSelector((state) =>
-      state.StudentsAccount.StudentsAccountApi.data.filter(
+      state.StudentsAccountApi.StudentsAccount.data.filter(
         (item) =>
           item.Class === lecturer?.Class_Advisor
       )

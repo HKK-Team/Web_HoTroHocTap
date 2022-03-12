@@ -32,7 +32,9 @@ export default function SuggestSubject(){
         }
       }
     };
-    var arSubjectSP = SuggestSP.filter(item => !SubjectsPass.map(sj => sj.Subject_Id).includes(item.Subject_Id));
+    var arraySubjectSp = SuggestSP.filter(item => !SubjectsPass.map(sj => sj.Subject_Id).includes(item.Subject_Id));
+    var arSubjectSP = arraySubjectSp.filter(item => !SubjectsDebt.map(sj => sj.Subject_Id).includes(item.Subject_Id));
+    console.log(arSubjectSP)
     return(
     <div className="user">
       <span><h3><FaHome/> / SuggestSubject</h3></span>

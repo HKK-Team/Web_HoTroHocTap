@@ -1,5 +1,6 @@
 const Lecturers = require('../Models/lecturerModels');
 const bcrypt = require('bcrypt')
+const Students = require('../../Students/Models/userModels');
 class APIfeatures {
     constructor(query, queryString){
         this.query = query;
@@ -67,6 +68,12 @@ const lecturersCtrl = {
         const passwordHash = await bcrypt.hash(req.body.newPassWord, 10);
         await Lecturers.findOneAndUpdate({_id : req.body.id},{Password : passwordHash});
         return res.status(200).json({msg : "Bạn đã đổi mật khẩu thành công!"});
+    },
+    getStudent : async(req,res) =>{
+        const features = new APIfeatures(Students.find(), req.query)
+            .filtering()
+        const students = await features.query
+        res.json(students);
     }
 }
 module.exports = lecturersCtrl

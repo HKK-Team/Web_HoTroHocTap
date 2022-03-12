@@ -38,18 +38,8 @@ export default function InputScore() {
         )
       )
   );
-  const setClassId = useSelector(
-    (state) =>
-      new Set(
-        state.Subject.SubjectApi.data.map((element) =>
-          element.Class_Id
-        )
-      )
-  );
   const keySubjectName = [...setSubjectName];
   const [key, setkey] = useState(keySubjectName[0]);
-  const keyClass = [...setClassId];
-  const [classid, setclassid] = useState(keyClass[0]);
   const dispatch = useDispatch();
   const [subjectScore, setsubjectScore] = useState({
     Student_Id: data?._id,
@@ -59,7 +49,7 @@ export default function InputScore() {
     Subject_Name: keySubjectName[0],
     Number_Of_Credits: subjects.data[0]?.Number_Of_Credits,
     Class : data?.Class,
-    Class_Subject_Id : "cq.01",
+    Class_Subject_Id : '',
     Education_Program : data?.Education_Program,
     Id_Next_Subject : subjects.data[0]?.Id_Next_Subject,
     Process_Score : '',
@@ -79,11 +69,6 @@ export default function InputScore() {
     const HK = SubjectID.map(item => item.Semester)
     setsubjectScore({ ...subjectScore, Subject_Name : event.target.value ,Subject_Id : id[0],Number_Of_Credits : NOC[0],Id_Next_Subject : INS[0],Semester : HK[0]})
     dispatch(subjectsSlice.actions.FilterSubjectName(event.target.value));
-  };
-  const handleChangeee = (event) => {
-    setclassid(event.target.value);
-    setsubjectScore({ ...subjectScore, Class_Subject_Id : event.target.value })
-    dispatch(subjectsSlice.actions.FilterclassId(event.target.value));
   };
   const onChangeInput = (e) => {
     const { name, value } = e.target;
@@ -187,6 +172,7 @@ export default function InputScore() {
                           name="demo-simple-select"
                           value={key}
                           label="Chọn Môn Học"
+                          required
                           onChange={handleChange}
                         >
                         {
@@ -202,10 +188,11 @@ export default function InputScore() {
                         <Select
                           labelId="demo-simple-select-label"
                           id="demo-simple-select"
-                          name="demo-simple-select"
-                          value={classid}
+                          name="Class_Subject_Id"
                           label="Mã Lớp"
-                          onChange={handleChangeee}
+                          value={subjectScore.Class_Subject_Id}
+                          required
+                          onChange={(e) => setsubjectScore({ ...subjectScore, Class_Subject_Id: e.target.value })}
                         >
                         <MenuItem value="cq.01">cq.01</MenuItem>
                         <MenuItem value="cq.02">cq.02</MenuItem>

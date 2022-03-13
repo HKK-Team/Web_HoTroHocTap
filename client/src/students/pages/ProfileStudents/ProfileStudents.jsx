@@ -12,6 +12,7 @@ import {toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
 import Loading from "./../../../utils/loading/Loading";
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import { FaHome } from "react-icons/fa";
+import TextField from "@mui/material/TextField";
 export default function ProfileStudent() {
   const data = useSelector(
     (state) => state.StudentsAccount.StudentsAccountApi.data[0]
@@ -120,83 +121,101 @@ export default function ProfileStudent() {
             <div className="userUpdateLeft">
               <div className="userUpdateItem">
                 <label>Họ và Tên</label>
-                <input
-                  type="text"
-                  placeholder={data?.FullName}
+                <TextField 
+                  id="outlined-basic" 
+                  label="Họ và tên" 
+                  variant="outlined" 
                   name="FullName"
                   value={profile.FullName}
-                  className="userUpdateInput"
+                  size="small"
+                  style={{marginRight: "10px",width: 320,marginTop: "5px"}}
+                  required
                   onChange={onChangeInput}
                 />
               </div>
               <div className="userUpdateItem">
                 <label>Email</label>
-                <input
-                  type="text"
-                  name="email"
-                  placeholder={data?.Email}
+                <TextField 
+                  id="outlined-basic" 
+                  label="Email" 
+                  variant="outlined" 
+                  name="Email"
                   value={profile.Email}
-                  className="userUpdateInput"
-                  onChange={onChangeInput}
+                  size="small"
+                  style={{marginRight: "10px",width: 320,marginTop: "5px"}}
+                  required
+                  InputProps={{
+                    readOnly: true,
+                  }}
                 />
               </div>
               <div className="userUpdateItem">
                 <label>Số điện thoại</label>
-                <input
-                  type="text"
-                  placeholder={data?.Phone}
+                <TextField 
+                  id="outlined-basic" 
+                  label="Số điện thoại" 
+                  variant="outlined" 
                   name="Phone"
                   value={profile.Phone}
-                  className="userUpdateInput"
+                  size="small"
+                  style={{marginRight: "10px",width: 320,marginTop: "5px"}}
+                  required
                   onChange={onChangeInput}
                 />
               </div>
               <div className="userUpdateItem">
-                <label>Địa chỉ</label>
-                <input
-                  type="text"
-                  placeholder={data?.Address}
+                <label>Address</label>
+                <TextField 
+                  id="outlined-basic" 
+                  label="Địa chỉ" 
+                  variant="outlined" 
                   name="Address"
                   value={profile.Address}
-                  className="userUpdateInput"
+                  size="small"
+                  style={{marginRight: "10px",width: 320,marginTop: "5px"}}
+                  required
                   onChange={onChangeInput}
                 />
               </div>
               <div className="userUpdateItem">
-                <label>Chương trình đào tạo</label>
-                <input
-                  type="text"
-                  placeholder={data?.Education_Program}
-                  name="Education_Program"
-                  value={profile.Education_Program}
-                  className="userUpdateInput"
-                  onChange={onChangeInput}
-                />
-              </div>
-              <div className="userUpdateItem">
-                <label>
-                  <span style={{ color: "red" }}>*</span> Khoa
-                </label>
-                <input
-                  type="text"
-                  placeholder={data?.Khoa}
-                  name="Khoa"
-                  value={profile.Khoa}
-                  className="userUpdateInput"
-                  onChange={onChangeInput}
-                />
-              </div>
-              <div className="userUpdateItem">
-                <label>
-                  {" "}
-                  <span style={{ color: "red" }}>*</span> Lớp
-                </label>
-                <input
-                  type="text"
-                  placeholder={data?.Class}
+                <label>Class - Advisor</label>
+                <TextField 
+                  id="outlined-basic" 
+                  label="Lớp" 
+                  variant="outlined" 
                   name="Class"
                   value={profile.Class}
-                  className="userUpdateInput"
+                  size="small"
+                  style={{marginRight: "10px",width: 320,marginTop: "5px"}}
+                  required
+                  onChange={onChangeInput}
+                />
+              </div>
+              <div className="userUpdateItem">
+                <label>Education - Program</label>
+                <TextField 
+                  id="outlined-basic" 
+                  label="Chương trình đào tạo" 
+                  variant="outlined" 
+                  name="Education_Program"
+                  value={profile.Education_Program}
+                  size="small"
+                  style={{marginRight: "10px",width: 320,marginTop: "5px"}}
+                  required
+                  onChange={onChangeInput}
+                />
+              </div>
+              <div className="userUpdateItem">
+                <label>Khoa</label>
+                <TextField 
+                  id="outlined-basic" 
+                  label="Khoa" 
+                  variant="outlined" 
+                  name="Khoa"
+                  value={profile.Khoa}
+                  size="small"
+                  style={{marginRight: "10px",width: 320,marginTop: "5px"}}
+                  required
                   onChange={onChangeInput}
                 />
               </div>

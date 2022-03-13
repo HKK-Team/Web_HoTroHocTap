@@ -45,7 +45,7 @@ export default function AccountLecturer() {
         <Loading />
       </div>
     );
-  }console.log(editPassWord);
+  }
   return (
     <div className="user">
       <div className="userTitleContainer">

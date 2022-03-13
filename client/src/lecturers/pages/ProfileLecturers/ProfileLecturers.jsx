@@ -11,6 +11,7 @@ import {toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
 import Loading from "./../../../utils/loading/Loading";
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import { FaHome } from "react-icons/fa";
+import TextField from "@mui/material/TextField";
 // chỉnh sửa thông tin Thư ký
 export default function ProfileLecturer() {
   const data = useSelector(
@@ -21,7 +22,7 @@ export default function ProfileLecturer() {
     Email: data?.Email,
     FullName: data?.FullName,
     Phone: data?.Phone,
-    Adress : data?.Address,
+    Address : data?.Address,
     Education_Program : data?.Education_Program,
     Class_Advisor : data?.Class_Advisor,
     Khoa : data?.Khoa
@@ -111,78 +112,99 @@ export default function ProfileLecturer() {
             <div className="userUpdateLeft">
               <div className="userUpdateItem">
                 <label>Họ và Tên</label>
-                <input
-                  type="text"
-                  placeholder={data?.FullName}
+                <TextField 
+                  id="outlined-basic" 
+                  label="Họ và tên" 
+                  variant="outlined" 
                   name="FullName"
                   value={profile.FullName}
-                  className="userUpdateInput"
+                  size="small"
+                  style={{marginRight: "10px",width: 280,marginTop: "5px"}}
+                  required
                   onChange={onChangeInput}
                 />
               </div>
               <div className="userUpdateItem">
                 <label>Email</label>
-                <input
-                  type="text"
-                  name="email"
-                  placeholder={data?.Email}
+                <TextField 
+                  id="outlined-basic" 
+                  label="Email" 
+                  variant="outlined" 
+                  name="Email"
                   value={profile.Email}
-                  className="userUpdateInput"
+                  size="small"
+                  style={{marginRight: "10px",width: 280,marginTop: "5px"}}
+                  required
                   onChange={onChangeInput}
                 />
               </div>
               <div className="userUpdateItem">
                 <label>Số điện thoại</label>
-                <input
-                  type="text"
-                  placeholder={data?.Phone}
+                <TextField 
+                  id="outlined-basic" 
+                  label="Số điện thoại" 
+                  variant="outlined" 
                   name="Phone"
                   value={profile.Phone}
-                  className="userUpdateInput"
+                  size="small"
+                  style={{marginRight: "10px",width: 280,marginTop: "5px"}}
+                  required
                   onChange={onChangeInput}
                 />
               </div>
               <div className="userUpdateItem">
                 <label>Address</label>
-                <input
-                  type="text"
-                  placeholder={data?.Address}
-                  name="Adress"
-                  value={profile.Adress}
-                  className="userUpdateInput"
+                <TextField 
+                  id="outlined-basic" 
+                  label="Địa chỉ" 
+                  variant="outlined" 
+                  name="Address"
+                  value={profile.Address}
+                  size="small"
+                  style={{marginRight: "10px",width: 280,marginTop: "5px"}}
+                  required
                   onChange={onChangeInput}
                 />
               </div>
               <div className="userUpdateItem">
                 <label>Class - Advisor</label>
-                <input
-                  type="text"
-                  placeholder={data?.Class_Advisor}
+                <TextField 
+                  id="outlined-basic" 
+                  label="Lớp" 
+                  variant="outlined" 
                   name="Class_Advisor"
                   value={profile.Class_Advisor}
-                  className="userUpdateInput"
+                  size="small"
+                  style={{marginRight: "10px",width: 280,marginTop: "5px"}}
+                  required
                   onChange={onChangeInput}
                 />
               </div>
               <div className="userUpdateItem">
                 <label>Education - Program</label>
-                <input
-                  type="text"
-                  placeholder={data?.Education_Program}
+                <TextField 
+                  id="outlined-basic" 
+                  label="Chương trình đào tạo" 
+                  variant="outlined" 
                   name="Education_Program"
                   value={profile.Education_Program}
-                  className="userUpdateInput"
+                  size="small"
+                  style={{marginRight: "10px",width: 280,marginTop: "5px"}}
+                  required
                   onChange={onChangeInput}
                 />
               </div>
               <div className="userUpdateItem">
                 <label>Khoa</label>
-                <input
-                  type="text"
-                  placeholder={data?.Khoa}
+                <TextField 
+                  id="outlined-basic" 
+                  label="Khoa" 
+                  variant="outlined" 
                   name="Khoa"
                   value={profile.Khoa}
-                  className="userUpdateInput"
+                  size="small"
+                  style={{marginRight: "10px",width: 280,marginTop: "5px"}}
+                  required
                   onChange={onChangeInput}
                 />
               </div>

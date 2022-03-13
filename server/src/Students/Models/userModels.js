@@ -23,27 +23,21 @@ const studentSchema = new Schema({
     Current_Semester : String,
     Number_Of_Subjects_Studied : {
         type : Number,
-        default : 0
     },
     Number_Of_Registered_Credits : {
         type : Number,
-        default : 0
     },
     Number_Of_Credits_Earned : {
         type : Number,
-        default : 0
     },
     Outstanding_Number_Of_Credits: {
         type : Number,
-        default : 0
     },
     Number_Of_Subjects_Debt : {
         type : Number,
-        default : 0
     },
     GPA : {
         type : Number,
-        default : 0
     }
 
 })

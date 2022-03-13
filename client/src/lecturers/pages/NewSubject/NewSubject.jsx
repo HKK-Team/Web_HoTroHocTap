@@ -97,6 +97,7 @@ export default function NewSubjects() {
                 variant="outlined" 
                 name="Number_Of_Credits"
                 value={subject.Number_Of_Credits}
+                type="number"
                 size="small"
                 style={{marginRight: "10px",width: 250}}
                 required
@@ -220,6 +221,7 @@ export default function NewSubjects() {
                 variant="outlined" 
                 name="Theory"
                 value={subject.Theory}
+                type="number"
                 size="small"
                 style={{marginRight: "10px",width: 250}}
                 required
@@ -234,6 +236,7 @@ export default function NewSubjects() {
                 variant="outlined" 
                 name="Practice"
                 value={subject.Practice}
+                type="number"
                 size="small"
                 style={{marginRight: "10px",width: 250}}
                 required

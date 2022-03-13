@@ -87,6 +87,8 @@ export default function MailService() {
             <h1 className="header-table-title">Thông Tin Chi Tiết Gửi Mail.</h1>
         </div>
         <span><h3><FaHome/> / ViewStatusStudent / MailService</h3></span>
+        <p className="header-table-ps"><span>P/s</span>  : Cố vấn học tập chọn hình thức gửi mail cảnh cáo.</p>
+        <p className="header-table-ps"><span>P/s</span> : Có 2 hình thức gửi mail là cảnh cáo học vụ do điểm trung bình tích lũy quá thấp và cảnh cáo đối với sinh viên nợ quá nhiều môn.</p>
         <div className="MailuserContainer">
             <div className="userUpdate">
                 <span className="userUpdateTitle">Thông tin sinh viên.</span>

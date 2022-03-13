@@ -1,10 +1,6 @@
-import React from "react";
+import React , {useState} from "react";
 import axios from "axios";
-import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router";
-import { getLecturersAccLogin } from "../../../redux/selectors";
-import { toastPromise } from "../../../shareAll/toastMassage/toastMassage";
+import { toastError,toastSuccess } from "../../../shareAll/toastMassage/toastMassage";
 import logo from "./../../../images/tdmu-elearning-banner.png";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
@@ -15,46 +11,55 @@ import "./NewSubject.css";
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DateTimePicker from '@mui/lab/DateTimePicker';
-
-// thêm sản phẩm mới
+import { FaHome } from "react-icons/fa";
 export default function NewSubjects() {
-  const navigate = useNavigate();
-  const {
-    handleSubmit,
-    // formState: { errors },
-  } = useForm();
-
-  const secretaryAccount = useSelector(getLecturersAccLogin);
-  const maKhoa = secretaryAccount?.maKhoa;
-  const chuongTrinhDaoTao = secretaryAccount?.chuongTrinhDaoTao;
-
-  const onSubmit = (data) => {
-    data.maKhoa = maKhoa;
-    data.maChuongTrinh = chuongTrinhDaoTao;
-    toastPromise(
-      axios.post("http://localhost:5000/import/createMonThi", {
-        ...data,
-      }),
-      () => {
-        setTimeout(() => {
-          navigate("/HomeSecretary/subjects");
-        }, 1000);
-        return "Thêm Thành Công";
-      }
-    );
-  };
+  // function formatter date time picker yyyy-MM-dd HH:mm:ss
   function getFormattedDate(date) {
-    var day = date.getDate();
-    var month = date.getMonth() + 1;
-    var year = date.getFullYear().toString()
-    return year + '-' + month + '-' + day;
+    var data = date.toJSON();
+    return data;
+  }
+  // declare state
+  const [value, setValue] = useState(new Date());
+  const [date, setDate] = useState(new Date());
+  const [subject,setSubject] = useState({
+    Subject_Id : '',
+    Subject_Name : '',
+    Number_Of_Credits : '',
+    Khoa : '',
+    Education_Program : '',
+    Semester : '',
+    Id_Next_Subject : '',
+    Level : '',
+    Start_Time : getFormattedDate(value),
+    End_Time : getFormattedDate(date),
+    Practice : '',
+    Theory : '',
+  });
+  // handle change
+  const onChangeInput = (event) => {
+    const { name, value } = event.target;
+    setSubject({
+      ...subject,
+      [name]: value
+    });
+  }
+  const handleSubmitCreateNewSubject = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:5000/subject/NewSubject", { ...subject, Start_Time : getFormattedDate(value),End_Time : getFormattedDate(date) });
+        setTimeout(() =>{
+          window.location.href = "/HomeLecturer";
+      });
+      toastSuccess("Tạo môn học thành công!");
+    } catch (err) {
+      toastError(err.response.data.msg);
     }
-  const [value, setValue] = React.useState(new Date());
-  console.log(getFormattedDate(value));
+  };
   return (
     <div className="newProduct">
       <h1 className="addProductTitle">Thêm Môn Học</h1>
-      <form className="addProductForm" onSubmit={handleSubmit(onSubmit)}>
+      <span><h3><FaHome/> / NewSubject</h3></span>
+      <form className="addProductForm" onSubmit={handleSubmitCreateNewSubject}>
         <div className="addProductForm-warrper">
           <div className="addProductItem">
           <label>Mã học phần.</label>
@@ -62,12 +67,12 @@ export default function NewSubjects() {
                 id="outlined-basic" 
                 label="Mã học phần" 
                 variant="outlined" 
-                name="Score"
-                // value={warning.Score}
+                name="Subject_Id"
+                value={subject.Subject_Id}
                 size="small"
                 style={{marginRight: "10px",width: 250}}
                 required
-                // onChange = {(e) => setWarning({...warning, Score: e.target.value})}
+                onChange={onChangeInput}
             />
           </div>
           <div className="addProductItem">
@@ -76,12 +81,12 @@ export default function NewSubjects() {
                 id="outlined-basic" 
                 label="Tên học phần" 
                 variant="outlined" 
-                name="Score"
-                // value={warning.Score}
+                name="Subject_Name"
+                value={subject.Subject_Name}
                 size="small"
                 style={{marginRight: "10px",width: 250}}
                 required
-                // onChange = {(e) => setWarning({...warning, Score: e.target.value})}
+                onChange={onChangeInput}
             />
           </div>
           <div className="addProductItem">
@@ -90,12 +95,12 @@ export default function NewSubjects() {
                 id="outlined-basic" 
                 label="Số tín chỉ" 
                 variant="outlined" 
-                name="Score"
-                // value={warning.Score}
+                name="Number_Of_Credits"
+                value={subject.Number_Of_Credits}
                 size="small"
                 style={{marginRight: "10px",width: 250}}
                 required
-                // onChange = {(e) => setWarning({...warning, Score: e.target.value})}
+                onChange={onChangeInput}
             />
           </div>
           <div className="addProductItem">
@@ -104,12 +109,12 @@ export default function NewSubjects() {
                 id="outlined-basic" 
                 label="Mã học phần kế tiếp" 
                 variant="outlined" 
-                name="Score"
-                // value={warning.Score}
+                name="Id_Next_Subject"
+                value={subject.Id_Next_Subject}
                 size="small"
                 style={{marginRight: "10px",width: 250}}
                 required
-                // onChange = {(e) => setWarning({...warning, Score: e.target.value})}
+                onChange={onChangeInput}
             />
           </div>
           <div className="addProductItem">
@@ -119,11 +124,11 @@ export default function NewSubjects() {
                 <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                name="Semester"
-                // value={warning.Semester}
+                name="Level"
+                value={subject.Level}
                 label="Cấp độ"
                 required
-                //onChange={(e) => setWarning({...warning, Semester: e.target.value})}
+                onChange={(e) => setSubject({...subject, Level: e.target.value})}
                 >
                 <MenuItem value="1">1</MenuItem>
                 <MenuItem value="2">2</MenuItem>
@@ -145,11 +150,11 @@ export default function NewSubjects() {
                 <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                name="Semester"
-                // value={warning.Semester}
+                name="Khoa"
+                value={subject.Khoa}
                 label="Khoa"
                 required
-                //onChange={(e) => setWarning({...warning, Semester: e.target.value})}
+                onChange={(e) => setSubject({...subject, Khoa: e.target.value})}
                 >
                 <MenuItem value="KT-CN">KT-CN</MenuItem>
                 <MenuItem value="SP-KT">SP-KT</MenuItem>
@@ -168,16 +173,16 @@ export default function NewSubjects() {
                 <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                name="Semester"
-                // value={warning.Semester}
+                name="Education_Program"
+                value={subject.Education_Program}
                 label="Chương trình đào tạo"
                 required
-                //onChange={(e) => setWarning({...warning, Semester: e.target.value})}
+                onChange={(e) => setSubject({...subject, Education_Program: e.target.value})}
                 >
-                <MenuItem value="KTPM">KTPM</MenuItem>
-                <MenuItem value="CNTT">CNTT</MenuItem>
-                <MenuItem value="HTTT">HTTT</MenuItem>
-                <MenuItem value="TTNT">TTNT</MenuItem>
+                <MenuItem value="KT-PM">KTPM</MenuItem>
+                <MenuItem value="CN-TT">CNTT</MenuItem>
+                <MenuItem value="HT-TT">HTTT</MenuItem>
+                <MenuItem value="TT-NT">TTNT</MenuItem>
                 </Select>
             </FormControl>
           </div>
@@ -189,10 +194,10 @@ export default function NewSubjects() {
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 name="Semester"
-                // value={warning.Semester}
+                value={subject.Semester}
                 label="Học kỳ"
                 required
-                //onChange={(e) => setWarning({...warning, Semester: e.target.value})}
+                onChange={(e) => setSubject({...subject, Semester: e.target.value})}
                 >
                 <MenuItem value="HK1">HK1</MenuItem>
                 <MenuItem value="HK2">HK2</MenuItem>
@@ -213,12 +218,12 @@ export default function NewSubjects() {
                 id="outlined-basic" 
                 label="Số buổi lý thuyết" 
                 variant="outlined" 
-                name="Score"
-                // value={warning.Score}
+                name="Theory"
+                value={subject.Theory}
                 size="small"
                 style={{marginRight: "10px",width: 250}}
                 required
-                // onChange = {(e) => setWarning({...warning, Score: e.target.value})}
+                onChange={onChangeInput}
             />
           </div>
           <div className="addProductItem">
@@ -227,12 +232,12 @@ export default function NewSubjects() {
                 id="outlined-basic" 
                 label="Số buổi thực hành" 
                 variant="outlined" 
-                name="Score"
-                // value={warning.Score}
+                name="Practice"
+                value={subject.Practice}
                 size="small"
                 style={{marginRight: "10px",width: 250}}
                 required
-                // onChange = {(e) => setWarning({...warning, Score: e.target.value})}
+                onChange={onChangeInput}
             />
           </div>
           <div className="addProductItem">
@@ -251,14 +256,14 @@ export default function NewSubjects() {
           <div className="addProductItem">
             <label>Ngày kết thúc.</label>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <DateTimePicker
-                    renderInput={(props) => <TextField {...props} />}
-                    label="Ngày kết thúc."
-                    value={value}
-                    onChange={(newValue) => {
-                        setValue(newValue);
-                    }}
-                />
+            <DateTimePicker
+                clearable
+                value={date}
+                onChange={(newValue) => setDate(newValue)}
+                renderInput={(params) => (
+                  <TextField {...params} label="Ngày kết thúc" />
+                )}
+              />
             </LocalizationProvider>
           </div>
 

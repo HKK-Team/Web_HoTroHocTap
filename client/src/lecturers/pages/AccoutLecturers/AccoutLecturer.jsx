@@ -6,6 +6,7 @@ import {toastError,toastSuccess} from "../../../shareAll/toastMassage/toastMassa
 import Loading from "./../../../utils/loading/Loading";
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import { FaHome } from "react-icons/fa";
+import TextField from "@mui/material/TextField";
 export default function AccountLecturer() {
   // get user
   const lecturer = useSelector(
@@ -44,7 +45,7 @@ export default function AccountLecturer() {
         <Loading />
       </div>
     );
-  }
+  }console.log(editPassWord);
   return (
     <div className="user">
       <div className="userTitleContainer">
@@ -57,39 +58,48 @@ export default function AccountLecturer() {
           <form className="userUpdateForm" onSubmit ={EditPassWordSubmit}>
             <div className="userUpdateLeft">
               <div className="userUpdateItem">
-                <label>Mật khẩu cũ</label>
-                <input 
-                  type="password" 
-                  className="userUpdateInput"
-                  name = "PassWord"
-                  value = {editPassWord.PassWord}
-                  placeholder = "abc123....."
-                  onChange = {onChangeInput}
+                <label>Mật khẩu cũ.</label>
+                <TextField 
+                  id="outlined-basic" 
+                  label="Mật khẩu cũ" 
+                  variant="outlined" 
+                  name="PassWord"
+                  value={editPassWord.PassWord}
+                  type="password"
+                  size="small"
+                  style={{marginRight: "10px",width: 250,marginTop: "5px"}}
                   required
+                  onChange={onChangeInput}
                 />
               </div>
               <div className="userUpdateItem">
-                <label>Mật khẩu mới</label>
-                <input 
-                  type="password" 
-                  className="userUpdateInput" 
-                  name = "newPassWord"
-                  value = {editPassWord.newPassWord}
-                  placeholder = "abc123....."
-                  onChange = {onChangeInput}
+                <label>Mật khẩu mới.</label>
+                <TextField 
+                  id="outlined-basic" 
+                  label="Mật khẩu mới" 
+                  variant="outlined" 
+                  name="newPassWord"
+                  value={editPassWord.newPassWord}
+                  type="password"
+                  size="small"
+                  style={{marginRight: "10px",width: 250,marginTop: "5px"}}
                   required
+                  onChange={onChangeInput}
                 />
               </div>
               <div className="userUpdateItem">
-                <label>Nhập lại mật khẩu</label>
-                <input 
-                  type="password" 
-                  className="userUpdateInput" 
-                  name = "confirmPassWord"
-                  value = {editPassWord.confirmPassWord}
-                  placeholder = "abc123....."
-                  onChange = {onChangeInput}
+                <label>Nhập lại mật khẩu.</label>
+                <TextField 
+                  id="outlined-basic" 
+                  label="Nhập lại mât khẩu" 
+                  variant="outlined" 
+                  name="confirmPassWord"
+                  value={editPassWord.confirmPassWord}
+                  type="password"
+                  size="small"
+                  style={{marginRight: "10px",width: 250,marginTop: "5px"}}
                   required
+                  onChange={onChangeInput}
                 />
               </div>
               <div className="userUpdateItem" style={{paddingTop:10 }}>

@@ -15,14 +15,7 @@ import {toastSuccess} from "../../../shareAll/toastMassage/toastMassage.js";
 import CreditScoreIcon from '@mui/icons-material/CreditScore';
 import Loading from "./../../../utils/loading/Loading";
 import { FaHome } from "react-icons/fa";
-// import Tooltip from "@mui/material/Tooltip";
-// import Button from "@mui/material/Button";
-// import { styled } from "@mui/material/styles";
-// import * as XLSX from "xlsx";
 export default function InputScore() {
-  // const Input = styled("input")({
-  //   display: "none",
-  // });
   const data = useSelector(
     (state) => state.StudentsAccount.StudentsAccountApi.data[0]
   );
@@ -50,7 +43,7 @@ export default function InputScore() {
     Number_Of_Credits: subjects.data[0]?.Number_Of_Credits,
     Class : data?.Class,
     Class_Subject_Id : '',
-    Education_Program : data?.Education_Program,
+    Education_Program : subjects.data[0]?.Education_Program,
     Id_Next_Subject : subjects.data[0]?.Id_Next_Subject,
     Process_Score : '',
     Semester : subjects.data[0]?.Semester,
@@ -66,8 +59,9 @@ export default function InputScore() {
     const id = SubjectID.map((item)=>(item.Subject_Id));
     const NOC = SubjectID.map((item)=>(item.Number_Of_Credits));
     const INS = SubjectID.map((item) =>(item.Id_Next_Subject));
+    const EPG = SubjectID.map((item) =>(item.Education_Program));
     const HK = SubjectID.map(item => item.Semester)
-    setsubjectScore({ ...subjectScore, Subject_Name : event.target.value ,Subject_Id : id[0],Number_Of_Credits : NOC[0],Id_Next_Subject : INS[0],Semester : HK[0]})
+    setsubjectScore({ ...subjectScore, Subject_Name : event.target.value ,Subject_Id : id[0],Number_Of_Credits : NOC[0],Id_Next_Subject : INS[0],Semester : HK[0],Education_Program : EPG[0]});
     dispatch(subjectsSlice.actions.FilterSubjectName(event.target.value));
   };
   const onChangeInput = (e) => {

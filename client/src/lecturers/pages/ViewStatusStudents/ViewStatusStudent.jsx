@@ -140,6 +140,7 @@ export default function ViewStatusStudent() {
     }
     return 0;
   }
+  // send mail stop academic
   const handleSendEmailStopAcademic = async (e) => {
     try {
       e.preventDefault();

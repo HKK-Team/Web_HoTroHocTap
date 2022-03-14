@@ -38,7 +38,16 @@ const studentsCtrl = {
                     Image : req.body.image,
                     AccessToken : req.body.accessToken,
                     Token_ID : req.body.token_ID,
-                    Api : req.body.Api
+                    Api : req.body.Api,
+                    Class : '',
+                    Study_Year : '',
+                    Current_Semester : '',
+                    Number_Of_Subjects_Studied : 0,
+                    Number_Of_Subjects_Debt : 0,
+                    Number_Of_Registered_Credits : 0,
+                    Number_Of_Credits_Earned : 0,
+                    Outstanding_Number_Of_Credits : 0,
+                    GPA : 0.0,
                 });
                 await newStudent.save();
             }

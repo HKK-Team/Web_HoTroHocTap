@@ -9,8 +9,8 @@ export const getStudentsAccApiAsync = createAsyncThunk(
   "StudentsAccount/getStudentsAccApi",
   async () => {
     try {
-      const users =  await AsyncStorage.getItem("StudentEmail");
-      const res = await axios.get(`http://10.0.2.2:5000/student/getuser?email[regex]=${users}`);
+      const users =  await AsyncStorage.getItem("UserEmail");
+      const res = await axios.get(`http://10.0.2.2:5000/student/getuser?Email[regex]=${users}`);
       return res.data;
     } catch (err) {
       return isRejectedWithValue(err.response.data);

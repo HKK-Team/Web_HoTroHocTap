@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
     "subjectScores/getSubjectScoresApi",
     async () => {
       try {
-        const email = await AsyncStorage.getItem("StudentEmail");
+        const email = await AsyncStorage.getItem("UserEmail");
         const res = await axios.get(`http://10.0.2.2:5000/subjectScore/getsubjectScore?Email[regex]=${email}`);
         return res.data;
       } catch (err) {

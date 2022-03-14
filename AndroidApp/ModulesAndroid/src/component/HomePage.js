@@ -1,6 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
-import * as Google from "expo-google-app-auth";
 import React, {useEffect, Fragment, useState } from "react";
 import { Alert, StyleSheet, Text, TextInput, View } from "react-native";
 import { Button } from "react-native-elements";
@@ -53,57 +52,6 @@ export default function HomePage() {
   const navigation = useNavigation();
   const [keyWord, SetKeyWord] = useState(null);
   const [loginClick, SetLoginClick] = useState(false);
-
-  const handleGoogleLogin = () => {
-    SetLoginClick(true);
-    const config = {
-      androidClientId: `430133284141-aripstm3g93ktpocm2mv473sgiaj34c0.apps.googleusercontent.com`,
-      scopes: [`profile`, `email`],
-    };
-
-    Google.logInAsync(config)
-      .then((result) => {
-        const { type, user, accessToken, idToken } = result;
-        const users = {
-          email: user.email,
-          fullName: user.name,
-          firstName: user.familyName,
-          lastName: user.givenName,
-          ID: user.id,
-          image: user.photoUrl,
-          accessToken: accessToken,
-          token_ID: idToken,
-          Api: "Google",
-        };
-        let reg = /^([0-9]{13})+@student.tdmu.edu.vn$/i;
-        if (type === "success" && reg.test(users.email)) {
-          axios
-            .post("http://10.0.2.2:5000/lecturer/login", {
-              ...users,
-            })
-            .then((res) => {
-              async function saveDataUser() {
-                try {
-                  await AsyncStorage.setItem("UserLogin", `${true}`);
-                  await AsyncStorage.setItem("UserEmail", `${users.email}`);
-                } catch (error) {
-                  Alert.alert(error);
-                  SetLoginClick(false);
-                }
-              }
-              saveDataUser();
-              navigation.navigate("Menu");
-            });
-        } else {
-          Alert.alert("Vui lòng sử dụng Email của bạn trong trường TDMU");
-          SetLoginClick(false);
-        }
-      })
-      .catch((err) => {
-        Alert.alert(err);
-        SetLoginClick(false);
-      });
-  };
   useEffect (() => {
     GoogleSignin.configure({
       scopes: ['https://www.googleapis.com/auth/drive.readonly'], // [Android] what API you want to access on behalf of the user, default is email and profile
@@ -123,7 +71,33 @@ export default function HomePage() {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
       // this.setState({ userInfo });
-      console.log(userInfo);
+      const students = {
+        firstName: userInfo.user.familyName,
+        lastName: userInfo.user.givenName,
+        fullName: userInfo.user.name,
+        email: userInfo.user.email,
+        ID: userInfo.user.id,
+        Student_Id : userInfo.user.email.slice(0,13),
+        image: userInfo.user.photo,
+        accessToken: userInfo.idToken,
+        token_ID: userInfo.idToken,
+        Api: "Google"
+      };
+      let reg = /^([0-9]{13})+@student.tdmu.edu.vn$/i;
+        if (reg.test(students.email)) {
+          await axios.post("http://10.0.2.2:5000/student/login", {
+              ...students,
+          });
+          await AsyncStorage.setItem("UserLogin", `${true}`);
+          await AsyncStorage.setItem("UserEmail", `${students.email}`);
+          // Alert.alert("Đăng nhập thành công");
+          navigation.navigate("Menu");
+
+        } 
+        else {
+          Alert.alert("Email không tồn tại trong cơ sở dữ liệu. Vui lòng sử dụng Email của bạn trong trường TDMU");
+          SetLoginClick(false);
+        }
     } catch (error) {
       console.log(error);
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -168,7 +142,7 @@ export default function HomePage() {
         <Text>OR</Text>
         <Text>
           <GoogleSigninButton
-            style={{ width: 192, height: 48 }}
+            style={{ width: 270, height: 50}}
             size={GoogleSigninButton.Size.Wide}
             color={GoogleSigninButton.Color.Dark}
             onPress={signIn}

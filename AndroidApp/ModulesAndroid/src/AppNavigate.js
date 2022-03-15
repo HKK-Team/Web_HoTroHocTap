@@ -8,12 +8,12 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import ChangeProfiles from "./component/ChangeProfiles";
 import HomePage from "./component/HomePage";
 import Profiles from "./component/Profiles";
-// import SchudeleExams from "./components/SchudeleExams";
 import SearchScore from "./component/SearchScore";
 import { useDispatch } from "react-redux";
 import { getStudentsAccApiAsync } from "./Api/StudentsApi";
 import { getSubjectScoreApiAsync } from "./Api/SubjectScoreApi";
 import { getSubjectScoreClassApiAsync } from "./Api/SubjectScoreClassApi";
+import ViewScore from "./component/ViewScore";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -55,20 +55,30 @@ export function TabPage() {
       }}
     >
       <Tab.Screen
-        name="View Suggest Score"
+        name="Home"
         component={Profiles}
         options={{
-          tabBarLabel: "Profile",
+          tabBarLabel: "Trang Chủ",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="home" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Xem Điểm"
+        component={ViewScore}
+        options={{
+          tabBarLabel: "Xem Điểm",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),
         }}
       />
       <Tab.Screen
-        name="View Score"
+        name="Suggest_Subject"
         component={Profiles}
         options={{
-          tabBarLabel: "Profile",
+          tabBarLabel: "Gợi ý môn học",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),
@@ -78,7 +88,7 @@ export function TabPage() {
         name="Profiles"
         component={Profiles}
         options={{
-          tabBarLabel: "Profile",
+          tabBarLabel: "Tài khoản",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),

@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useSelector } from "react-redux";
+import Ionicons from 'react-native-vector-icons/Ionicons';
 export default function Profiles() {
   const navigation = useNavigation();
   const student = useSelector((state) => state?.StudentsAccount?.StudentsAccountApi.data[0]);
@@ -28,7 +29,9 @@ export default function Profiles() {
       </View>
       <View style={style.functionBox}>
         <View style={style.functionCard}>
+        <Ionicons name="settings-outline" size={22} />
           <Text
+            style={{marginLeft:5}}
             onPress={(e) => {
               navigation.navigate("Tài khoản");
             }}
@@ -37,11 +40,13 @@ export default function Profiles() {
           </Text>
         </View>
         <View style={style.functionCard}>
+          <Ionicons name="exit-outline" size={22} />
           <Text
+            style={{marginLeft:5}}
             onPress={async (e) => {
               await AsyncStorage.removeItem("UserEmail");
               await AsyncStorage.removeItem("UserLogin");
-              navigation.navigate("Trang chủ");
+              navigation.navigate("Home Student");
             }}
           >
             Logout
@@ -93,6 +98,8 @@ const style = StyleSheet.create({
     backgroundColor: "#fff",
   },
   functionCard: {
+    flexDirection: 'row', 
+    alignItems: 'center',
     padding: 20,
     borderBottomColor: "#ccc",
     borderBottomWidth: 1,

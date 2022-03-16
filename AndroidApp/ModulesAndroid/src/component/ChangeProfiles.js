@@ -1,9 +1,11 @@
 // import { useNavigation } from "@react-navigation/native";
 import React,{useState} from "react";
 import { ActivityIndicator, Alert, View ,TextInput,StyleSheet,ScrollView ,Image} from "react-native";
-import { Button, Input, Text } from "react-native-elements";
+import { Button, Text } from "react-native-elements";
 import { useSelector } from "react-redux";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import  Axios from "axios";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 export default function ChangeProfiles() {
   const student = useSelector((state) => state?.StudentsAccount?.StudentsAccountApi.data[0]);
   const [profile, setProfile] = useState({
@@ -35,29 +37,16 @@ export default function ChangeProfiles() {
     );
   }
   return (
-    <ScrollView >
-      {/* <View style = {{marginBottom : 10}}>
-        <Image
-          style={{
-            width: 80,
-            height: 80,
-            borderRadius: 50,
-            marginLeft: "40%"
-          }}
-          source={{
-            uri: student?.Image,
-          }}
-        >
-        </Image>
-        <Text style = {{textAlign : "center", fontSize : 20, fontStyle : "normal"}}>{student.FullName}</Text>
-        <Text style = {{textAlign : "center", fontSize : 15, fontStyle : "normal"}}>{student.Email}</Text>
-      </View> */}
+    <ScrollView style = {{backgroundColor : "#414360"}}>
       <View style={styles.box}>
         <Text style={styles.boxTitle}>Thông tin cá nhân</Text>
       </View>
       <View style={styles.functionBox}>
         <View style={styles.functionCard}>
-          <Text style={{fontSize: 18, marginRight: 271}}>Họ và tên.</Text>
+          <View style = {{flexDirection : "row"}}>
+            <MaterialCommunityIcons name="account" size={22} style = {{marginLeft : 25,marginRight : 5}} color = "rgb(189, 147, 249)"/>
+            <Text style={{fontSize: 18, marginRight: 271, color : "rgb(255, 121, 198)"}}>Họ và tên.</Text>
+          </View>
           <TextInput
             style={styles.input}
             onChangeText={(text) => { setProfile({...profile,FullName:text})}}
@@ -69,7 +58,10 @@ export default function ChangeProfiles() {
       </View>
       <View style={styles.functionBox}>
         <View style={styles.functionCard}>
-          <Text style={{fontSize: 18, marginRight: 303}}>Email.</Text>
+          <View style = {{flexDirection : "row"}}>
+            <MaterialCommunityIcons name="email" size={22} style = {{marginLeft : 25,marginRight : 5}} color = "rgb(189, 147, 249)"/>
+            <Text style={{fontSize: 18, marginRight: 303, color : "rgb(255, 121, 198)"}}>Email.</Text>
+          </View>
           <TextInput
             style={styles.input}
             onChangeText={(text) => { setProfile({...profile,Email:text})}}
@@ -81,7 +73,10 @@ export default function ChangeProfiles() {
       </View>
       <View style={styles.functionBox}>
         <View style={styles.functionCard}>
-          <Text style={{fontSize: 18, marginRight: 241}}>Số điện thoại.</Text>
+          <View style = {{flexDirection : "row"}}>
+            <MaterialCommunityIcons name="phone" size={22} style = {{marginLeft : 25,marginRight : 5}} color = "rgb(189, 147, 249)"/>
+            <Text style={{fontSize: 18, marginRight: 241, color : "rgb(255, 121, 198)"}}>Số điện thoại.</Text>
+          </View>
           <TextInput
             style={styles.input}
             onChangeText={(text) => { setProfile({...profile,Phone:text})}}
@@ -93,7 +88,10 @@ export default function ChangeProfiles() {
       </View>
       <View style={styles.functionBox}>
         <View style={styles.functionCard}>
-          <Text style={{fontSize: 18, marginRight: 293}}>Địa chỉ.</Text>
+          <View style = {{flexDirection : "row"}}>
+            <FontAwesome name="address-book" size={22} style = {{marginLeft : 25,marginRight : 5}} color = "rgb(189, 147, 249)"/>
+            <Text style={{fontSize: 18, marginRight: 293, color : "rgb(255, 121, 198)"}}>Địa chỉ.</Text>
+          </View>
           <TextInput
             style={styles.input}
             onChangeText={(text) => { setProfile({...profile,Address:text})}}
@@ -108,7 +106,10 @@ export default function ChangeProfiles() {
       </View>
       <View style={styles.functionBox}>
         <View style={styles.functionCard}>
-          <Text style={{fontSize: 18, marginRight: 246}}>Mã sinh viên.</Text>
+          <View style = {{flexDirection : "row"}}>
+            <MaterialCommunityIcons name="account-box" size={22} style = {{marginLeft : 25,marginRight : 5}} color = "rgb(189, 147, 249)"/>
+            <Text style={{fontSize: 18, marginRight: 246, color : "rgb(255, 121, 198)"}}>Mã sinh viên.</Text>
+          </View>
           <TextInput
             style={styles.input}
             onChangeText={(text) => { setProfile({...profile,Student_Id:text})}}
@@ -120,7 +121,10 @@ export default function ChangeProfiles() {
       </View>
       <View style={styles.functionBox}>
         <View style={styles.functionCard}>
-          <Text style={{fontSize: 18, marginRight: 306}}>Khoa.</Text>
+          <View style = {{flexDirection : "row"}}>
+            <MaterialCommunityIcons name="sim-outline" size={22} style = {{marginLeft : 25,marginRight : 5}} color = "rgb(189, 147, 249)"/>
+            <Text style={{fontSize: 18, marginRight: 306, color : "rgb(255, 121, 198)"}}>Khoa.</Text>
+          </View>
           <TextInput
             style={styles.input}
             onChangeText={(text) => { setProfile({...profile,Khoa:text})}}
@@ -132,7 +136,10 @@ export default function ChangeProfiles() {
       </View>
       <View style={styles.functionBox}>
         <View style={styles.functionCard}>
-          <Text style={{fontSize: 18, marginRight: 176}}>Chương trình đào tạo.</Text>
+          <View style = {{flexDirection : "row"}}>
+            <MaterialCommunityIcons name="square-edit-outline" size={22} style = {{marginLeft : 25,marginRight : 5}} color = "rgb(189, 147, 249)"/>
+            <Text style={{fontSize: 18, marginRight: 176, color : "rgb(255, 121, 198)"}}>Chương trình đào tạo.</Text>
+          </View>
           <TextInput
             style={styles.input}
             onChangeText={(text) => { setProfile({...profile,Education_Program:text})}}
@@ -144,7 +151,10 @@ export default function ChangeProfiles() {
       </View>
       <View style={styles.functionBox}>
         <View style={styles.functionCard}>
-          <Text style={{fontSize: 18, marginRight: 317}}>Lớp.</Text>
+          <View style = {{flexDirection : "row"}}>
+            <MaterialCommunityIcons name="google-classroom" size={22} style = {{marginLeft : 25,marginRight : 5}} color = "rgb(189, 147, 249)"/>
+            <Text style={{fontSize: 18, marginRight: 317, color : "rgb(255, 121, 198)"}}>Lớp.</Text>
+          </View>
           <TextInput
             style={styles.input}
             onChangeText={(text) => { setProfile({...profile,Class:text})}}
@@ -159,7 +169,10 @@ export default function ChangeProfiles() {
       </View>
       <View style={styles.functionBox}>
         <View style={styles.functionCard}>
-          <Text style={{fontSize: 18, marginRight: 291}}>Học Kỳ.</Text>
+          <View style = {{flexDirection : "row"}}>
+            <MaterialCommunityIcons name="send-lock-outline" size={22} style = {{marginLeft : 25,marginRight : 5}} color = "rgb(189, 147, 249)"/>
+            <Text style={{fontSize: 18, marginRight: 291, color : "rgb(255, 121, 198)"}}>Học Kỳ.</Text>
+          </View>
           <TextInput
             style={styles.input}
             onChangeText={(text) => { setProfile({...profile,Current_Semester:text})}}
@@ -171,7 +184,10 @@ export default function ChangeProfiles() {
       </View>
       <View style={styles.functionBox}>
         <View style={styles.functionCard}>
-          <Text style={{fontSize: 18, marginRight: 264}}>Niên Khóa.</Text>
+          <View style = {{flexDirection : "row"}}>
+            <MaterialCommunityIcons name="format-list-numbered" size={22} style = {{marginLeft : 25,marginRight : 5}} color = "rgb(189, 147, 249)"/>
+            <Text style={{fontSize: 18, marginRight: 264, color : "rgb(255, 121, 198)"}}>Niên Khóa.</Text>
+          </View>
           <TextInput
             style={styles.input}
             onChangeText={(text) => { setProfile({...profile,Study_Year:text})}}
@@ -187,6 +203,7 @@ export default function ChangeProfiles() {
           backgroundColor: "rgba(78, 116, 289, 1)",
           borderRadius: 10,
           marginBottom: 10,
+          borderColor : "rgb(189, 147, 249)"
         }}
         containerStyle={{
           marginLeft : 175,
@@ -215,7 +232,7 @@ const styles = StyleSheet.create({
   boxTitle: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "gray",
+    color: "rgb(80, 250, 123)",
   },
   input: {
     height: 40,
@@ -223,10 +240,12 @@ const styles = StyleSheet.create({
     width : "100%",
     borderWidth: 1,
     padding: 10,
-    borderRadius : 5
+    borderRadius : 5,
+    borderColor : "yellowgreen",
+    color : "rgb(248, 248, 242)",
   },
   functionBox: {
-    backgroundColor: "#fff",
+    backgroundColor: "#1F2739",
   },
   functionCard: {
     width: "100%",

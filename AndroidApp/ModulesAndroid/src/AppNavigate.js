@@ -10,6 +10,7 @@ import HomePage from "./component/HomePage";
 import Profiles from "./component/Profiles";
 import SearchScore from "./component/SearchScore";
 import SuggestSubject from './component/SuggestSubject';
+import HomePageStudent from './component/HomePageStudent';
 import SuggestSubjectSemester from './component/SuggestSubjectSemester';
 import { useDispatch } from "react-redux";
 import { getStudentsAccApiAsync } from "./Api/StudentsApi";
@@ -33,6 +34,7 @@ export default function AppNavigate() {
     };
     getEmail();
   }, []);
+  console.log(email);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getStudentsAccApiAsync());
@@ -60,7 +62,7 @@ export function TabPage() {
     >
       <Tab.Screen
         name="Home"
-        component={Profiles}
+        component={HomePageStudent}
         options={{
           tabBarLabel: "Trang Chủ",
           tabBarIcon: ({ color, size }) => (
@@ -74,7 +76,7 @@ export function TabPage() {
         options={{
           tabBarLabel: "Xem Điểm",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account" color={color} size={size} />
+            <MaterialCommunityIcons name="point-of-sale" color={color} size={size} />
           ),
         }}
       />
@@ -84,7 +86,7 @@ export function TabPage() {
         options={{
           tabBarLabel: "Gợi ý môn học",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account" color={color} size={size} />
+            <MaterialCommunityIcons name="lightbulb-multiple-outline" color={color} size={size} />
           ),
         }}
       />
@@ -94,7 +96,7 @@ export function TabPage() {
         options={{
           tabBarLabel: "Gợi ý học kỳ",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account" color={color} size={size} />
+            <MaterialCommunityIcons name="home-lightning-bolt-outline" color={color} size={size} />
           ),
         }}
       />

@@ -15,7 +15,7 @@ export default function SuggestSubjectSemester() {
     const subjects = useSelector((state) => state.Subjects.SubjectsApi.data);
     // declare data for table
     var arr = ['STT','Tên MH','Mã MH','Tín Chỉ','Ngày BĐ','Ngày KT','Lý Thuyết','Thực Hành'];
-    var SubgestSubjectSemester = ['Gợi ý môn học cho học kỳ tới.'];
+    var SubgestSubjectSemester = ['  Gợi ý môn học cho học kỳ tới.'];
     // get data for table
     let Semester = user?.Current_Semester.slice(0,2) + (parseInt(user?.Current_Semester.slice(2,3)) + 1);
     const data = subjects.filter(item => item.Semester=== Semester);
@@ -36,17 +36,19 @@ export default function SuggestSubjectSemester() {
     };
     return (
         <ScrollView>
-            <View style = {styles.title}>
-                <Ionicons name="settings-outline" size={22} color = "#fff" style = {{marginTop : 8,marginLeft : 10}}/>
-                <Text style = {{fontSize : 20, color : "#fff",marginTop : 5}}> Gợi ý môn học cho học kỳ tới</Text>
-            </View>
-            <View style = {{backgroundColor : "#1F2739",width : "99%", marginTop : 5, marginLeft : 2}}>
-                <View style={styles.container}>
-                    <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
-                        <Row data={arr} style={styles.head} textStyle={styles.textHeader}/>
-                        <Row data={SubgestSubjectSemester} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                        <Rows data={arraySubject} style = {styles.data} textStyle={styles.text}/>
-                    </Table>
+            <View style = {{backgroundColor : "#414360"}}>
+                <View style = {styles.title}>
+                    <Ionicons name="settings-outline" size={22} color = "#fff" style = {{marginTop : 8,marginLeft : 10}}/>
+                    <Text style = {{fontSize : 20, color : "#fff",marginTop : 5}}> Gợi ý môn học cho học kỳ tới</Text>
+                </View>
+                <View style = {{backgroundColor : "#1F2739",width : "96%", marginTop : 10, marginLeft : 8,borderRadius : 10}}>
+                    <View style={styles.container}>
+                        <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
+                            <Row data={arr} style={styles.head} textStyle={styles.textHeader}/>
+                            <Row data={SubgestSubjectSemester} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
+                            <Rows data={arraySubject} style = {styles.data} textStyle={styles.text}/>
+                        </Table>
+                    </View>
                 </View>
             </View>
         </ScrollView>
@@ -55,25 +57,29 @@ export default function SuggestSubjectSemester() {
 const styles = StyleSheet.create({
     title : {
         backgroundColor : "#07689F", 
-        width : "99%",
+        width : "96%",
+        marginLeft : 8,
         height : 40, 
-        marginLeft : 2,
-        flexDirection : "row"
+        flexDirection : "row",
+        borderRadius : 10,
+        marginTop : 10
     },
     textHeader : {
-        color : "white",
+        color : "rgb(80, 250, 123)",
         margin: 6 ,
         textAlign : "center",
     },
     container: { 
         flex: 1, 
         padding: 16, 
-        paddingTop: 30, 
-        backgroundColor: '#1F2739'
+        paddingTop: 10, 
+        backgroundColor: '#1F2739',
+        borderRadius: 10,
+        marginBottom : 10
     },
     head: { 
         height: 80,
-        backgroundColor: '#20232a', 
+        backgroundColor: '#1F2739', 
     },
     text: { 
         color : "#A7A1AE",
@@ -82,7 +88,7 @@ const styles = StyleSheet.create({
     },
     TextTitleSemester : {
         backgroundColor : "#20232a",
-        color : "white",
+        color : "rgb(189, 147, 249)",
     },
     titleSemester: { 
         color : "#A7A1AE",

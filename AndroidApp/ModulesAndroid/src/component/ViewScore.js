@@ -1,6 +1,5 @@
 import React from "react";
 import {
-    ActivityIndicator,
     StyleSheet,
     Text,
     View,
@@ -19,16 +18,16 @@ export default function ViewScore() {
     - Số tín chỉ đã học : ${user?.Number_Of_Credits_Earned} chỉ.
     - Số tín chỉ còn thiếu : ${150 - parseInt(user?.Number_Of_Credits_Earned)} chỉ.`];
     var arr = ['STT','Tên MH','Mã MH','Tín Chỉ','Điểm QT','Điểm Thi','Điểm Tổng','Kết Quả'];
-    var HK1 = [` Bảng điểm HKI năm học ${user?.Study_Year.slice(0,4)} - ${parseInt(user?.Study_Year.slice(0,4))+1}`];
-    var HK2 = [` Bảng điểm HKII năm học ${user?.Study_Year.slice(0,4)} - ${parseInt(user?.Study_Year.slice(0,4))+1}`];
-    var HK3 = [` Bảng điểm HKIII năm học ${parseInt(user?.Study_Year.slice(0,4))+1} - ${parseInt(user?.Study_Year.slice(0,4))+2}`];
-    var HK4 = [` Bảng điểm HKIV năm học ${parseInt(user?.Study_Year.slice(0,4))+1} - ${parseInt(user?.Study_Year.slice(0,4))+2}`];
-    var HK5 = [` Bảng điểm HKV năm học ${parseInt(user?.Study_Year.slice(0,4))+1} - ${parseInt(user?.Study_Year.slice(0,4))+2}`];
-    var HK6 = [` Bảng điểm HKVI năm học ${parseInt(user?.Study_Year.slice(0,4))+2} - ${parseInt(user?.Study_Year.slice(0,4))+3}`];
-    var HK7 = [` Bảng điểm HKVII năm học ${parseInt(user?.Study_Year.slice(0,4))+2} - ${parseInt(user?.Study_Year.slice(0,4))+3}`];
-    var HK8 = [` Bảng điểm HKVIII năm học ${parseInt(user?.Study_Year.slice(0,4))+2} - ${parseInt(user?.Study_Year.slice(0,4))+3}`];
-    var HK9 = [` Bảng điểm HKIX năm học ${parseInt(user?.Study_Year.slice(0,4))+3} - ${parseInt(user?.Study_Year.slice(0,4))+4}`];
-    var HK10 = [` Bảng điểm HKX năm học ${parseInt(user?.Study_Year.slice(0,4))+3} - ${parseInt(user?.Study_Year.slice(0,4))+4}`];
+    var HK1 = [`  Bảng điểm HKI năm học ${user?.Study_Year.slice(0,4)} - ${parseInt(user?.Study_Year.slice(0,4))+1}`];
+    var HK2 = [`  Bảng điểm HKII năm học ${user?.Study_Year.slice(0,4)} - ${parseInt(user?.Study_Year.slice(0,4))+1}`];
+    var HK3 = [`  Bảng điểm HKIII năm học ${parseInt(user?.Study_Year.slice(0,4))+1} - ${parseInt(user?.Study_Year.slice(0,4))+2}`];
+    var HK4 = [`  Bảng điểm HKIV năm học ${parseInt(user?.Study_Year.slice(0,4))+1} - ${parseInt(user?.Study_Year.slice(0,4))+2}`];
+    var HK5 = [`  Bảng điểm HKV năm học ${parseInt(user?.Study_Year.slice(0,4))+1} - ${parseInt(user?.Study_Year.slice(0,4))+2}`];
+    var HK6 = [`  Bảng điểm HKVI năm học ${parseInt(user?.Study_Year.slice(0,4))+2} - ${parseInt(user?.Study_Year.slice(0,4))+3}`];
+    var HK7 = [`  Bảng điểm HKVII năm học ${parseInt(user?.Study_Year.slice(0,4))+2} - ${parseInt(user?.Study_Year.slice(0,4))+3}`];
+    var HK8 = [`  Bảng điểm HKVIII năm học ${parseInt(user?.Study_Year.slice(0,4))+2} - ${parseInt(user?.Study_Year.slice(0,4))+3}`];
+    var HK9 = [`  Bảng điểm HKIX năm học ${parseInt(user?.Study_Year.slice(0,4))+3} - ${parseInt(user?.Study_Year.slice(0,4))+4}`];
+    var HK10 = [`  Bảng điểm HKX năm học ${parseInt(user?.Study_Year.slice(0,4))+3} - ${parseInt(user?.Study_Year.slice(0,4))+4}`];
     // get data for table Hoc ky
     const data = subject.filter(item => item.Semester === "HK1");
     var arraySubject = [];
@@ -41,7 +40,7 @@ export default function ViewScore() {
             data[i].Process_Score,
             data[i].Final_Exam_Score,
             data[i].Final_Score,
-            data[i].Final_Score >= 5 ? 'Đạt' : 'Không Đạt'
+            data[i].Final_Score >= 5 ? 'Đạt' : 'Rớt'
         ]);
     };
     const dataHK2 = subject.filter(item => item.Semester === "HK2");
@@ -55,7 +54,7 @@ export default function ViewScore() {
             dataHK2[i].Process_Score,
             dataHK2[i].Final_Exam_Score,
             dataHK2[i].Final_Score,
-            dataHK2[i].Final_Score >= 5 ? 'Đạt' : 'Không Đạt'
+            dataHK2[i].Final_Score >= 5 ? 'Đạt' : 'Rớt'
         ]);
     };
     const dataHK3 = subject.filter(item => item.Semester === "HK3");
@@ -69,7 +68,7 @@ export default function ViewScore() {
             dataHK3[i].Process_Score,
             dataHK3[i].Final_Exam_Score,
             dataHK3[i].Final_Score,
-            dataHK3[i].Final_Score >= 5 ? 'Đạt' : 'Không Đạt'
+            dataHK3[i].Final_Score >= 5 ? 'Đạt' : 'Rớt'
         ]);
     };
     const dataHK4 = subject.filter(item => item.Semester === "HK4");
@@ -83,7 +82,7 @@ export default function ViewScore() {
             dataHK4[i].Process_Score,
             dataHK4[i].Final_Exam_Score,
             dataHK4[i].Final_Score,
-            dataHK4[i].Final_Score >= 5 ? 'Đạt' : 'Không Đạt'
+            dataHK4[i].Final_Score >= 5 ? 'Đạt' : 'Rớt'
         ]);
     };
     const dataHK5 = subject.filter(item => item.Semester === "HK5");
@@ -97,7 +96,7 @@ export default function ViewScore() {
             dataHK5[i].Process_Score,
             dataHK5[i].Final_Exam_Score,
             dataHK5[i].Final_Score,
-            dataHK5[i].Final_Score >= 5 ? 'Đạt' : 'Không Đạt'
+            dataHK5[i].Final_Score >= 5 ? 'Đạt' : 'Rớt'
         ]);
     };
     const dataHK6 = subject.filter(item => item.Semester === "HK6");
@@ -111,7 +110,7 @@ export default function ViewScore() {
             dataHK6[i].Process_Score,
             dataHK6[i].Final_Exam_Score,
             dataHK6[i].Final_Score,
-            dataHK6[i].Final_Score >= 5 ? 'Đạt' : 'Không Đạt'
+            dataHK6[i].Final_Score >= 5 ? 'Đạt' : 'Rớt'
         ]);
     };
     const dataHK7 = subject.filter(item => item.Semester === "HK7");
@@ -125,7 +124,7 @@ export default function ViewScore() {
             dataHK7[i].Process_Score,
             dataHK7[i].Final_Exam_Score,
             dataHK7[i].Final_Score,
-            dataHK7[i].Final_Score >= 5 ? 'Đạt' : 'Không Đạt'
+            dataHK7[i].Final_Score >= 5 ? 'Đạt' : 'Rớt'
         ]);
     };
     const dataHK8 = subject.filter(item => item.Semester === "HK8");
@@ -139,7 +138,7 @@ export default function ViewScore() {
             dataHK8[i].Process_Score,
             dataHK8[i].Final_Exam_Score,
             dataHK8[i].Final_Score,
-            dataHK8[i].Final_Score >= 5 ? 'Đạt' : 'Không Đạt'
+            dataHK8[i].Final_Score >= 5 ? 'Đạt' : 'Rớt'
         ]);
     };
     const dataHK9 = subject.filter(item => item.Semester === "HK9");
@@ -153,7 +152,7 @@ export default function ViewScore() {
             dataHK9[i].Process_Score,
             dataHK9[i].Final_Exam_Score,
             dataHK9[i].Final_Score,
-            dataHK9[i].Final_Score >= 5 ? 'Đạt' : 'Không Đạt'
+            dataHK9[i].Final_Score >= 5 ? 'Đạt' : 'Rớt'
         ]);
     };
     const dataHK10 = subject.filter(item => item.Semester === "HK10");
@@ -167,42 +166,44 @@ export default function ViewScore() {
             dataHK10[i].Process_Score,
             dataHK10[i].Final_Exam_Score,
             dataHK10[i].Final_Score,
-            dataHK10[i].Final_Score >= 5 ? 'Đạt' : 'Không Đạt'
+            dataHK10[i].Final_Score >= 5 ? 'Đạt' : 'Rớt'
         ]);
     };
     return (
         <ScrollView>
-            <View style = {styles.title}>
-                <Ionicons name="settings-outline" size={22} color = "#fff" style = {{marginTop : 8,marginLeft : 10}}/>
-                <Text style = {{fontSize : 20, color : "#fff",marginTop : 5}}> Xem Điểm</Text>
-            </View>
-            <View style = {{backgroundColor : "#1F2739",width : "99%", marginTop : 5, marginLeft : 2}}>
-                <Text style = {{fontSize : 18, textAlign : "center", marginTop : 20, color : "yellowgreen"}}>Bảng điểm môn học tính tới thời điểm hiện tại.</Text>
-                <View style={styles.container}>
-                    <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
-                        <Row data={arr} style={styles.head} textStyle={styles.textHeader}/>
-                        <Row data={HK1} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                        <Rows data={arraySubject} style = {styles.data} textStyle={styles.text}/>
-                        <Row data={HK2} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                        <Rows data={arraySubjectHK2} style = {styles.data} textStyle={styles.text}/>
-                        <Row data={HK3} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                        <Rows data={arraySubjectHK3} style = {styles.data} textStyle={styles.text}/>
-                        <Row data={HK4} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                        <Rows data={arraySubjectHK4} style = {styles.data} textStyle={styles.text}/>
-                        <Row data={HK5} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                        <Rows data={arraySubjectHK5} style = {styles.data} textStyle={styles.text}/>
-                        <Row data={HK6} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                        <Rows data={arraySubjectHK6} style = {styles.data} textStyle={styles.text}/>
-                        <Row data={HK7} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                        <Rows data={arraySubjectHK7} style = {styles.data} textStyle={styles.text}/>
-                        <Row data={HK8} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                        <Rows data={arraySubjectHK8} style = {styles.data} textStyle={styles.text}/>
-                        <Row data={HK9} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                        <Rows data={arraySubjectHK9} style = {styles.data} textStyle={styles.text}/>
-                        <Row data={HK10} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                        <Rows data={arraySubjectHK10} style = {styles.data} textStyle={styles.text}/>
-                        <Row data = {tableData} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                    </Table>
+            <View style = {{backgroundColor : "#414360"}}>
+                <View style = {styles.title}>
+                    <Ionicons name="settings-outline" size={22} color = "#fff" style = {{marginTop : 8,marginLeft : 10}}/>
+                    <Text style = {{fontSize : 20, color : "#fff",marginTop : 5}}> Xem Điểm</Text>
+                </View>
+                <View style = {{backgroundColor : "#1F2739",width : "96%", marginTop : 10, marginLeft : 8,borderRadius : 10}}>
+                    <Text style = {{fontSize : 18, textAlign : "center", marginTop : 20, color : "rgb(255, 121, 198)"}}>Bảng điểm môn học tính tới thời điểm hiện tại.</Text>
+                    <View style={styles.container}>
+                        <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
+                            <Row data={arr} style={styles.head} textStyle={styles.textHeader}/>
+                            <Row data={HK1} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
+                            <Rows data={arraySubject} style = {styles.data} textStyle={styles.text}/>
+                            <Row data={HK2} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
+                            <Rows data={arraySubjectHK2} style = {styles.data} textStyle={styles.text}/>
+                            <Row data={HK3} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
+                            <Rows data={arraySubjectHK3} style = {styles.data} textStyle={styles.text}/>
+                            <Row data={HK4} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
+                            <Rows data={arraySubjectHK4} style = {styles.data} textStyle={styles.text}/>
+                            <Row data={HK5} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
+                            <Rows data={arraySubjectHK5} style = {styles.data} textStyle={styles.text}/>
+                            <Row data={HK6} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
+                            <Rows data={arraySubjectHK6} style = {styles.data} textStyle={styles.text}/>
+                            <Row data={HK7} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
+                            <Rows data={arraySubjectHK7} style = {styles.data} textStyle={styles.text}/>
+                            <Row data={HK8} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
+                            <Rows data={arraySubjectHK8} style = {styles.data} textStyle={styles.text}/>
+                            <Row data={HK9} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
+                            <Rows data={arraySubjectHK9} style = {styles.data} textStyle={styles.text}/>
+                            <Row data={HK10} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
+                            <Rows data={arraySubjectHK10} style = {styles.data} textStyle={styles.text}/>
+                            <Row data = {tableData} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
+                        </Table>
+                    </View>
                 </View>
             </View>
         </ScrollView>
@@ -211,25 +212,28 @@ export default function ViewScore() {
 const styles = StyleSheet.create({
     title : {
         backgroundColor : "#07689F", 
-        width : "99%",
+        width : "96%",
+        marginLeft : 8,
         height : 40, 
-        marginLeft : 2,
-        flexDirection : "row"
+        flexDirection : "row",
+        borderRadius : 10,
+        marginTop : 10
     },
     textHeader : {
-        color : "white",
+        color : "rgb(80, 250, 123)",
         margin: 6 ,
         textAlign : "center",
     },
     container: { 
         flex: 1, 
         padding: 16, 
-        paddingTop: 30, 
-        backgroundColor: '#1F2739'
+        paddingTop: 10, 
+        backgroundColor: '#1F2739',
+        marginBottom : 10
     },
     head: { 
         height: 80,
-        backgroundColor: '#20232a', 
+        backgroundColor: '#1F2739', 
     },
     text: { 
         color : "#A7A1AE",
@@ -237,8 +241,8 @@ const styles = StyleSheet.create({
         textAlign : "center",
     },
     TextTitleSemester : {
-        backgroundColor : "#20232a",
-        color : "white",
+        backgroundColor : "#1F2739",
+        color : "rgb(189, 147, 249)",
     },
     titleSemester: { 
         color : "#A7A1AE",

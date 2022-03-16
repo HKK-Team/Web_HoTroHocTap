@@ -15,8 +15,8 @@ export default function SuggestSubject() {
     const subjects = useSelector((state) => state.Subjects.SubjectsApi.data);
     // declare data for table
     var arr = ['STT','Tên MH','Mã MH','Tín Chỉ','Ngày BĐ','Ngày KT','Lý Thuyết','Thực Hành'];
-    var SubgestSubjectDebt = ['Gợi ý môn học lại.'];
-    var SubgestSubjectLevel = ['Gợi ý môn học theo cấp độ.'];
+    var SubgestSubjectDebt = ['  Gợi ý môn học lại.'];
+    var SubgestSubjectLevel = ['  Gợi ý môn học theo cấp độ.'];
     // get data for table
     const data = subject.filter(item => item.Final_Score < 5);
     var arraySubject = [];
@@ -26,18 +26,23 @@ export default function SuggestSubject() {
       for(let j = 0 ;j < data.length;j++)
       {
         if(subjects[i].Subject_Id === data[j].Subject_Id){
-            arraySubject.push([
-                i+1,
-                subjects[i].Subject_Name,
-                subjects[i].Subject_Id,
-                subjects[i].Number_Of_Credits,
-                subjects[i].Start_Time.slice(0,10),
-                subjects[i].End_Time.slice(0,10),
-                subjects[i].Theory,
-                subjects[i].Practice
-            ]);
+            arraySubject.push(subjects[i]);
         }
       }
+    };
+    var arraySubjectDebt = [];
+    for(let i = 0;i<arraySubject.length;i++)
+    {
+        arraySubjectDebt.push([
+            i+1,
+            arraySubject[i].Subject_Name,
+            arraySubject[i].Subject_Id,
+            arraySubject[i].Number_Of_Credits,
+            arraySubject[i].Start_Time.slice(0,10),
+            arraySubject[i].End_Time.slice(0,10),
+            arraySubject[i].Theory,
+            arraySubject[i].Practice
+        ]);
     };
     // Suggest subject with level
     var SubjectsPass = subject.filter(item => item.Final_Score>5);
@@ -70,19 +75,21 @@ export default function SuggestSubject() {
     }
     return (
         <ScrollView>
-            <View style = {styles.title}>
-                <Ionicons name="settings-outline" size={22} color = "#fff" style = {{marginTop : 8,marginLeft : 10}}/>
-                <Text style = {{fontSize : 20, color : "#fff",marginTop : 5}}> Gợi ý môn học</Text>
-            </View>
-            <View style = {{backgroundColor : "#1F2739",width : "99%", marginTop : 5, marginLeft : 2}}>
-                <View style={styles.container}>
-                    <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
-                        <Row data={arr} style={styles.head} textStyle={styles.textHeader}/>
-                        <Row data={SubgestSubjectDebt} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                        <Rows data={arraySubject} style = {styles.data} textStyle={styles.text}/>
-                        <Row data={SubgestSubjectLevel} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                        <Rows data={arraySubjectLevel} style = {styles.data} textStyle={styles.text}/>
-                    </Table>
+            <View style = {{backgroundColor : "#414360"}}>
+                <View style = {styles.title}>
+                    <Ionicons name="settings-outline" size={22} color = "#fff" style = {{marginTop : 8,marginLeft : 10}}/>
+                    <Text style = {{fontSize : 20, color : "#fff",marginTop : 5}}> Gợi ý môn học</Text>
+                </View>
+                <View style = {{backgroundColor : "#1F2739",width : "96%", marginTop : 10, marginLeft : 8,borderRadius : 10}}>
+                    <View style={styles.container}>
+                        <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
+                            <Row data={arr} style={styles.head} textStyle={styles.textHeader}/>
+                            <Row data={SubgestSubjectDebt} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
+                            <Rows data={arraySubjectDebt} style = {styles.data} textStyle={styles.text}/>
+                            <Row data={SubgestSubjectLevel} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
+                            <Rows data={arraySubjectLevel} style = {styles.data} textStyle={styles.text}/>
+                        </Table>
+                    </View>
                 </View>
             </View>
         </ScrollView>
@@ -91,25 +98,28 @@ export default function SuggestSubject() {
 const styles = StyleSheet.create({
     title : {
         backgroundColor : "#07689F", 
-        width : "99%",
+        width : "96%",
+        marginLeft : 8,
         height : 40, 
-        marginLeft : 2,
-        flexDirection : "row"
+        flexDirection : "row",
+        borderRadius : 10,
+        marginTop : 10
     },
     textHeader : {
-        color : "white",
+        color : "rgb(80, 250, 123)",
         margin: 6 ,
         textAlign : "center",
     },
     container: { 
         flex: 1, 
         padding: 16, 
-        paddingTop: 30, 
-        backgroundColor: '#1F2739'
+        paddingTop: 10, 
+        backgroundColor: '#1F2739',
+        borderRadius : 10
     },
     head: { 
         height: 80,
-        backgroundColor: '#20232a', 
+        backgroundColor: '#1F2739', 
     },
     text: { 
         color : "#A7A1AE",
@@ -117,8 +127,8 @@ const styles = StyleSheet.create({
         textAlign : "center",
     },
     TextTitleSemester : {
-        backgroundColor : "#20232a",
-        color : "white",
+        backgroundColor : "#1F2739",
+        color : "rgb(189, 147, 249)",
     },
     titleSemester: { 
         color : "#A7A1AE",

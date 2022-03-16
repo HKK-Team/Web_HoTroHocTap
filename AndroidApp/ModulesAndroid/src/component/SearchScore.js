@@ -25,7 +25,7 @@ export default function SearchSubjectScore({ route }) {
   } 
   else
   return (
-      <ScrollView>
+      <ScrollView style = {{backgroundColor : "#414360"}}>
         <View style={style.titleBox}>
           <Text style={style.title}>Hệ Thống Tra Cứu Điểm Thi.</Text>
           <Text style={style.keyword}>Từ Khóa: {keyWord}</Text>
@@ -64,30 +64,30 @@ export default function SearchSubjectScore({ route }) {
 }
 const style = StyleSheet.create({
   title : {
-    color : "#a697ce",
+    color : "rgb(255, 121, 198)",
     fontSize : 25,
     textAlign : "center",
   },
   titleBox: {
-    backgroundColor: "#20232a",
+    backgroundColor: "#414360",
     width: "100%",
     padding: 10,
   },
   keyword: {
-    color: "#a697ce",
+    color: "rgb(80, 250, 123)",
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold",
   },
   ListDataBox: {
-    backgroundColor: "#20232a",
+    backgroundColor: "#414360",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     overflow: "scroll",
   },
   DataBox: {
-    borderColor: "gray",
+    borderColor: "yellowgreen",
     borderWidth: 1,
     shadowColor: "black",
     width: 350,
@@ -96,7 +96,7 @@ const style = StyleSheet.create({
     padding: 5,
     marginBottom: 10,
 
-    shadowColor: '#FF99FF',
+    shadowColor: '#551A8B',
     shadowOffset: {width: -2, peak: 4},
     shadowOpacity: 0.2,
     shadowRadius: 8,
@@ -104,7 +104,7 @@ const style = StyleSheet.create({
     elevation: 12,
   },
   fieldText: {
-    color : "#A7A1AE",
+    color : "rgb(189, 147, 249)",
     paddingBottom: 5,
     fontWeight: "bold",
   },

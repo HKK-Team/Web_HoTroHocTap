@@ -11,7 +11,7 @@ import {
 } from '@react-native-community/google-signin';
 const style = StyleSheet.create({
   ViewBox: {
-    backgroundColor: "#2dfbff",
+    backgroundColor: "#414360",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -24,20 +24,29 @@ const style = StyleSheet.create({
   title: {
     fontSize: 25,
     fontWeight: "bold",
-    color: "#808080",
+    color: "rgb(255, 121, 198)",
+    textAlign: "center",
+  },
+  texttitle: {
+    fontSize: 25,
+    fontWeight: "bold",
+    color: "rgb(80, 250, 123)",
     textAlign: "center",
   },
   InputBox: {
     marginBottom: 10,
   },
   input: {
+    color : "rgb(248, 248, 242)",
     width: 265,
     height: 40,
     padding: 10,
     borderBottomWidth: 2,
     marginBottom: 3,
+    borderColor : "yellowgreen",
   },
   button: {
+    color : "rgb(80, 250, 123)",
     width: 265,
     borderRadius: 25,
     padding: 5,
@@ -90,9 +99,10 @@ export default function HomePage() {
           });
           await AsyncStorage.setItem("UserLogin", `${true}`);
           await AsyncStorage.setItem("UserEmail", `${students.email}`);
-          Alert.alert("Đăng nhập thành công");
-          navigation.navigate("Menu");
-
+          Alert.alert("Thông báo!","Đăng nhập thành công!",
+          [
+            { text: "OK", onPress: () => navigation.navigate("Menu") }
+          ]);
         } 
         else {
           Alert.alert("Email không tồn tại trong cơ sở dữ liệu. Vui lòng sử dụng Email của bạn trong trường TDMU");
@@ -116,7 +126,7 @@ export default function HomePage() {
       <View style={style.ViewBox}>
         <View style={style.TextBox}>
           <Text style={style.title}>Hệ Thống Tra cứu Điểm Thi.</Text>
-          <Text style={style.title}>Đại học Thủ Dầu Một</Text>
+          <Text style={style.texttitle}>Đại học Thủ Dầu Một</Text>
         </View>
         <View style={style.InputBox}>
           <TextInput
@@ -139,10 +149,10 @@ export default function HomePage() {
             }}
           />
         </View>
-        <Text>OR</Text>
+        <Text style = {{color : "rgb(189, 147, 249)"}}>OR</Text>
         <Text>
           <GoogleSigninButton
-            style={{ width: 270, height: 50}}
+            style={{ width: 270, height: 50,}}
             size={GoogleSigninButton.Size.Wide}
             color={GoogleSigninButton.Color.Dark}
             onPress={signIn}

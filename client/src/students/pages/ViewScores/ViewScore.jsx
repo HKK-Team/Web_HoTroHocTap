@@ -131,7 +131,7 @@ export default function ViewScore(){
                         {
                             scoreHK1.length !== 0 ? 
                             <tbody id = "myTbody">
-                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 1</tr>
+                                <tr className = "HK1"> - Bảng điểm HKI năm học {Profile?.Study_Year.slice(0,4)} - {parseInt(Profile?.Study_Year.slice(0,4))+1}</tr>
                                 {scoreHK1.map(item =>(
                                     <tr>
                                         <td>{item.Subject_Name}</td>
@@ -149,7 +149,7 @@ export default function ViewScore(){
                         {
                             scoreHK2.length !== 0 ? 
                             <tbody id = "myTbody">
-                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 2</tr>
+                                <tr className = "HK1"> - Bảng điểm HKII năm học {Profile?.Study_Year.slice(0,4)} - {parseInt(Profile?.Study_Year.slice(0,4))+1}</tr>
                                 {scoreHK2.map(item =>(
                                     <tr>
                                         <td>{item.Subject_Name}</td>
@@ -167,7 +167,7 @@ export default function ViewScore(){
                         {
                             scoreHK3.length !== 0 ? 
                             <tbody id = "myTbody">
-                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 3</tr>
+                                <tr className = "HK1"> - Bảng điểm HKIII năm học {parseInt(Profile?.Study_Year.slice(0,4))+1} - {parseInt(Profile?.Study_Year.slice(0,4))+2}</tr>
                                 {scoreHK3.map(item =>(
                                     <tr>
                                         <td>{item.Subject_Name}</td>
@@ -185,7 +185,7 @@ export default function ViewScore(){
                         {
                             scoreHK4.length !== 0 ? 
                             <tbody id = "myTbody">
-                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 4</tr>
+                                <tr className = "HK1"> - Bảng điểm HKIV năm học {parseInt(Profile?.Study_Year.slice(0,4))+1} - {parseInt(Profile?.Study_Year.slice(0,4))+2}</tr>
                                 {scoreHK4.map(item =>(
                                     <tr>
                                         <td>{item.Subject_Name}</td>
@@ -203,7 +203,7 @@ export default function ViewScore(){
                         {
                             scoreHK5.length !== 0 ? 
                             <tbody id = "myTbody">
-                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 5</tr>
+                                <tr className = "HK1"> - Bảng điểm HKV năm học {parseInt(Profile?.Study_Year.slice(0,4))+1} - {parseInt(Profile?.Study_Year.slice(0,4))+2}</tr>
                                 {scoreHK5.map(item =>(
                                     <tr>
                                         <td>{item.Subject_Name}</td>
@@ -221,7 +221,7 @@ export default function ViewScore(){
                         {
                             scoreHK6.length !== 0 ? 
                             <tbody id = "myTbody">
-                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 6</tr>
+                                <tr className = "HK1"> - Bảng điểm HKVI năm học {parseInt(Profile?.Study_Year.slice(0,4))+2} - {parseInt(Profile?.Study_Year.slice(0,4))+3}</tr>
                                 {scoreHK6.map(item =>(
                                     <tr>
                                         <td>{item.Subject_Name}</td>
@@ -239,7 +239,7 @@ export default function ViewScore(){
                         {
                             scoreHK7.length !== 0 ? 
                             <tbody id = "myTbody">
-                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 7</tr>
+                                <tr className = "HK1"> - Bảng điểm HKVII năm học {parseInt(Profile?.Study_Year.slice(0,4))+2} - {parseInt(Profile?.Study_Year.slice(0,4))+3}</tr>
                                 {scoreHK7.map(item =>(
                                     <tr>
                                         <td>{item.Subject_Name}</td>
@@ -257,7 +257,7 @@ export default function ViewScore(){
                         {
                             scoreHK8.length !== 0 ? 
                             <tbody id = "myTbody">
-                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 8</tr>
+                                <tr className = "HK1"> - Bảng điểm HKVIII năm học {parseInt(Profile?.Study_Year.slice(0,4))+2} - {parseInt(Profile?.Study_Year.slice(0,4))+3}</tr>
                                 {scoreHK8.map(item =>(
                                     <tr>
                                         <td>{item.Subject_Name}</td>
@@ -275,7 +275,7 @@ export default function ViewScore(){
                         {
                             scoreHK9.length !== 0 ? 
                             <tbody id = "myTbody">
-                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 9</tr>
+                                <tr className = "HK1"> - Bảng điểm HKIX năm học {parseInt(Profile?.Study_Year.slice(0,4))+3} - {parseInt(Profile?.Study_Year.slice(0,4))+4}</tr>
                                 {scoreHK9.map(item =>(
                                     <tr>
                                         <td>{item.Subject_Name}</td>
@@ -293,7 +293,7 @@ export default function ViewScore(){
                         {
                             scoreHK10.length !== 0 ? 
                             <tbody id = "myTbody">
-                                <tr className = "HK1"> - Bảng Điểm Học Kỳ 10</tr>
+                                <tr className = "HK1"> - Bảng điểm HKX năm học {parseInt(Profile?.Study_Year.slice(0,4))+3} - {parseInt(Profile?.Study_Year.slice(0,4))+4}</tr>
                                 {scoreHK10.map(item =>(
                                     <tr>
                                         <td>{item.Subject_Name}</td>

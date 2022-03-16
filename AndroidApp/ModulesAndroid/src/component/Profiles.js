@@ -46,7 +46,7 @@ export default function Profiles() {
             onPress={async (e) => {
               await AsyncStorage.removeItem("UserEmail");
               await AsyncStorage.removeItem("UserLogin");
-              navigation.navigate("Home Student");
+              navigation.navigate("Trang chủ");
             }}
           >
             Logout

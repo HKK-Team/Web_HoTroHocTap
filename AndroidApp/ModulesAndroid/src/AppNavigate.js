@@ -9,10 +9,12 @@ import ChangeProfiles from "./component/ChangeProfiles";
 import HomePage from "./component/HomePage";
 import Profiles from "./component/Profiles";
 import SearchScore from "./component/SearchScore";
+import SuggestSubject from './component/SuggestSubject';
 import { useDispatch } from "react-redux";
 import { getStudentsAccApiAsync } from "./Api/StudentsApi";
 import { getSubjectScoreApiAsync } from "./Api/SubjectScoreApi";
 import { getSubjectScoreClassApiAsync } from "./Api/SubjectScoreClassApi";
+import { getSubjectsApiAsync } from "./Api/SubjectApi";
 import ViewScore from "./component/ViewScore";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -35,6 +37,7 @@ export default function AppNavigate() {
     dispatch(getStudentsAccApiAsync());
     dispatch(getSubjectScoreApiAsync());
     dispatch(getSubjectScoreClassApiAsync());
+    dispatch(getSubjectsApiAsync());
   }, [dispatch]);
   return (
     <NavigationContainer>
@@ -76,7 +79,7 @@ export function TabPage() {
       />
       <Tab.Screen
         name="Suggest_Subject"
-        component={Profiles}
+        component={SuggestSubject}
         options={{
           tabBarLabel: "Gợi ý môn học",
           tabBarIcon: ({ color, size }) => (

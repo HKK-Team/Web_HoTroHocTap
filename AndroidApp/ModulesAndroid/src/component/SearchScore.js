@@ -9,7 +9,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { getSubjectScoreClassApiAsync } from "../Api/SubjectScoreClassApi";
 
-export default function SearchSchudele({ route }) {
+export default function SearchSubjectScore({ route }) {
   const { keyWord } = route.params;
   const { loading } = useSelector((state) => state.SubjectScoreClass.SubjectScoreClassApi.loading);
   const data = useSelector((state) => state.SubjectScoreClass.SubjectScoreClassApi.data.filter(item => item.Email === keyWord || item.Email.slice(0,13) === keyWord));
@@ -47,7 +47,7 @@ export default function SearchSchudele({ route }) {
                 </Text>
                 <Text style={style.fieldText}>Học Kỳ : {item?.Semester}</Text>
                 <Text style={style.fieldText}>
-                  Điểm Qúa Trình : {item?.Process_Score}
+                  Điểm Quá Trình : {item?.Process_Score}
                 </Text>
                 <Text style={style.fieldText}>
                   Điểm Thi : {item?.Final_Exam_Score}
@@ -64,22 +64,23 @@ export default function SearchSchudele({ route }) {
 }
 const style = StyleSheet.create({
   title : {
-    color : "blue",
+    color : "#a697ce",
     fontSize : 25,
     textAlign : "center",
   },
   titleBox: {
-    backgroundColor: "#3c96ff",
+    backgroundColor: "#20232a",
     width: "100%",
     padding: 10,
   },
   keyword: {
+    color: "#a697ce",
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold",
   },
   ListDataBox: {
-    backgroundColor: "#3c96ff",
+    backgroundColor: "#20232a",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -91,22 +92,19 @@ const style = StyleSheet.create({
     shadowColor: "black",
     width: 350,
     height: 250,
-    backgroundColor: "white",
     borderRadius: 10,
     padding: 5,
     marginBottom: 10,
 
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 0.37,
-    shadowRadius: 7.49,
-    backgroundColor : "#2dfbff",
+    shadowColor: '#FF99FF',
+    shadowOffset: {width: -2, peak: 4},
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    backgroundColor : "#1F2739",
     elevation: 12,
   },
   fieldText: {
+    color : "#A7A1AE",
     paddingBottom: 5,
     fontWeight: "bold",
   },

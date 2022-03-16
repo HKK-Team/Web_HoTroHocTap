@@ -10,6 +10,7 @@ import HomePage from "./component/HomePage";
 import Profiles from "./component/Profiles";
 import SearchScore from "./component/SearchScore";
 import SuggestSubject from './component/SuggestSubject';
+import SuggestSubjectSemester from './component/SuggestSubjectSemester';
 import { useDispatch } from "react-redux";
 import { getStudentsAccApiAsync } from "./Api/StudentsApi";
 import { getSubjectScoreApiAsync } from "./Api/SubjectScoreApi";
@@ -82,6 +83,16 @@ export function TabPage() {
         component={SuggestSubject}
         options={{
           tabBarLabel: "Gợi ý môn học",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Gợi ý môn học cho học kỳ tới"
+        component={SuggestSubjectSemester}
+        options={{
+          tabBarLabel: "Gợi ý học kỳ",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),

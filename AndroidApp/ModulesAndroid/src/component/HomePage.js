@@ -90,7 +90,7 @@ export default function HomePage() {
           });
           await AsyncStorage.setItem("UserLogin", `${true}`);
           await AsyncStorage.setItem("UserEmail", `${students.email}`);
-          // Alert.alert("Đăng nhập thành công");
+          Alert.alert("Đăng nhập thành công");
           navigation.navigate("Menu");
 
         } 

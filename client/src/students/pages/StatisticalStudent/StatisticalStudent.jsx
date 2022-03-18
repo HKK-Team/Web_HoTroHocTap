@@ -37,7 +37,7 @@ export default function Home() {
     else{
         iconCredis = <ArrowDownward className="featuredIcon negative" />
     }
-    // get % number of credis dept
+    // get % number of credis debt
     var PercentCredisDP = (1-(150-Profile?.Number_Of_Credits_Earned)/(150-avgCredis))*100;
     var iconCredisDP;
     if(PercentCredisDP>=0)

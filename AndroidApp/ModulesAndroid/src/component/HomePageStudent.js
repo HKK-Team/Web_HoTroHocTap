@@ -1,11 +1,19 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { Table, Row, Rows } from 'react-native-table-component';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { getStudentsAccApiAsync } from "../Api/StudentsApi";
+import { getSubjectScoreApiAsync } from "../Api/SubjectScoreApi";
 export default function HomePageStudent() {
+  // get data from redux
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getStudentsAccApiAsync());
+    dispatch(getSubjectScoreApiAsync());
+  }, [dispatch]);
   const student = useSelector((state) => state?.StudentsAccount?.StudentsAccountApi.data[0]);
   const score = useSelector((state) => state.SubjectScore.SubjectScoreApi.data);
   var arr = ['STT','Tên MH','Mã MH','Tín Chỉ','Điểm QT','Điểm Thi','Điểm Tổng'];
@@ -36,6 +44,53 @@ export default function HomePageStudent() {
         ar[i]?.Final_Exam_Score,
         ar[i]?.Final_Score
       ]);
+  };
+  // get avg score
+  var avgFinalScore = 0;
+  var avgNumberofCredis = 0;
+  score.map(item =>(
+      avgNumberofCredis +=item.Number_Of_Credits
+  ));
+  score.map(item =>(
+      avgFinalScore += item.Final_Score*item.Number_Of_Credits
+  ));
+  // get avgCredis earned
+  var avgCredis = 0;
+  score.map(item => ((item.Semester !== student?.Current_Semester) && (item.Final_Score>=5)) ? avgCredis += item.Number_Of_Credits : avgCredis += 0);
+  // get % number of credis
+  var PercentCredis = ((student?.Number_Of_Credits_Earned/avgCredis)-1)*100;
+  var iconCredis;
+  if(PercentCredis>=0)
+  {
+    iconCredis = <MaterialCommunityIcons name="arrow-up" color = "rgb(80, 250, 123)" size={22}/>
+  }
+  else{
+    iconCredis = <MaterialCommunityIcons name="arrow-down" color= "rgb(190 11 53)" size={22}/>
+  }
+  // get % number of credis debt
+  var PercentCredisDP = (1-(150-student?.Number_Of_Credits_Earned)/(150-avgCredis))*100;
+  var iconCredisDP;
+  if(PercentCredisDP>=0)
+  {
+    iconCredisDP = <MaterialCommunityIcons name="arrow-up" color = "rgb(80, 250, 123)" size={22}/>
+  }
+  else{
+    iconCredisDP = <MaterialCommunityIcons name="arrow-down" color= "rgb(190 11 53)" size={22}/>
+  }
+  // get % avg score
+  var avgScore = 0;
+  score.map(item => (item.Semester !== student?.Current_Semester) ? avgScore += (item.Final_Score*item.Number_Of_Credits) : avgScore+=0);
+  var avgN = 0;
+  score.map(item => (item.Semester !== student?.Current_Semester) ? avgN += item.Number_Of_Credits : avgN += 0);
+  var avgScoreSemester = avgScore/avgN;
+  var avgScores = ((Math.round((avgFinalScore/avgNumberofCredis)*100)/100)/avgScoreSemester- 1)*100;
+  var iconCredisSS;
+  if(avgScores>=0)
+  {
+    iconCredisSS = <MaterialCommunityIcons name="arrow-up" color = "rgb(80, 250, 123)" size={22}/>
+  }
+  else{
+    iconCredisSS = <MaterialCommunityIcons name="arrow-down" color= "rgb(190 11 53)" size={22}/>
   }
   return (
     <ScrollView style = {style.Suggest}>
@@ -111,6 +166,7 @@ export default function HomePageStudent() {
                 <View style = {style.featuredResult}>
                     <Text style = {style.featuredText}>{student?.Number_Of_Credits_Earned}</Text>
                     <MaterialCommunityIcons name="credit-card-check-outline" size={25} color = "rgb(189, 147, 249)" style = {{marginLeft : 5}}/>
+                    <Text style = {style.featuredText}>   {Math.abs(Math.round((PercentCredis*100))/100)}% {iconCredis}</Text>
                 </View>
                 <View style = {style.featuredTitle}>
                     <Text style = {style.featuredText}>So với học kỳ trước.</Text>
@@ -125,6 +181,7 @@ export default function HomePageStudent() {
                 <View style = {style.featuredResult}>
                     <Text style = {style.featuredText}>{ 150 - parseInt(student?.Number_Of_Credits_Earned)}</Text>
                     <MaterialCommunityIcons name="credit-card-check-outline" size={25} color = "rgb(189, 147, 249)" style = {{marginLeft : 5}}/>
+                    <Text style = {style.featuredText}>   {Math.abs(Math.round((PercentCredisDP*100))/100)}% {iconCredisDP}</Text>
                 </View>
                 <View style = {style.featuredTitle}>
                     <Text style = {style.featuredText}>So với học kỳ trước.</Text>
@@ -137,6 +194,7 @@ export default function HomePageStudent() {
                 <View style = {style.featuredResult}>
                     <Text style = {style.featuredText}>{student?.GPA}</Text>
                     <MaterialCommunityIcons name="format-list-numbered" size={25} color = "rgb(189, 147, 249)" style = {{marginLeft : 5}}/>
+                    <Text style = {style.featuredText}>   {Math.abs(Math.round((avgScores*100))/100)}% {iconCredisSS}</Text>
                 </View>
                 <View style = {style.featuredTitle}>
                     <Text style = {style.featuredText}>So với học kỳ trước.</Text>

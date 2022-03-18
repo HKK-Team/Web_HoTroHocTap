@@ -34,7 +34,6 @@ export default function AppNavigate() {
     };
     getEmail();
   }, []);
-  console.log(email);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getStudentsAccApiAsync());
@@ -58,6 +57,11 @@ export function TabPage() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
+        tabBarStyle: {
+          backgroundColor : "#AD40AF",
+        },
+        tabBarActiveTintColor : 'rgb(255, 255, 255)',
+        tabBarInactiveTintColor : 'rgb(252, 146, 158)',
       }}
     >
       <Tab.Screen
@@ -66,7 +70,7 @@ export function TabPage() {
         options={{
           tabBarLabel: "Trang Chủ",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="home" color={color} size={size} />
+            <MaterialCommunityIcons name="home" color = "rgb(250, 200, 99)" size={size} />
           ),
         }}
       />
@@ -76,7 +80,7 @@ export function TabPage() {
         options={{
           tabBarLabel: "Xem Điểm",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="point-of-sale" color={color} size={size} />
+            <MaterialCommunityIcons name="point-of-sale" color = "rgb(250, 200, 99)" size={size} />
           ),
         }}
       />
@@ -86,7 +90,7 @@ export function TabPage() {
         options={{
           tabBarLabel: "Gợi ý môn học",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="lightbulb-multiple-outline" color={color} size={size} />
+            <MaterialCommunityIcons name="lightbulb-multiple-outline" color = "rgb(250, 200, 99)" size={size} />
           ),
         }}
       />
@@ -96,7 +100,7 @@ export function TabPage() {
         options={{
           tabBarLabel: "Gợi ý học kỳ",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="home-lightning-bolt-outline" color={color} size={size} />
+            <MaterialCommunityIcons name="home-lightning-bolt-outline" color = "rgb(250, 200, 99)" size={size} />
           ),
         }}
       />
@@ -106,7 +110,7 @@ export function TabPage() {
         options={{
           tabBarLabel: "Tài khoản",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account" color={color} size={size} />
+            <MaterialCommunityIcons name="account" color = "rgb(250, 200, 99)" size={size} />
           ),
         }}
       />

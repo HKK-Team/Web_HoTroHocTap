@@ -96,7 +96,7 @@ function PagesStudents() {
           />
           <Route
             exact
-            path="/HomeStudent/SuggestSubjectSemester"
+            path="/HomeStudent/SuggestSemesterSubject"
             element={isLogged ? <SuggestSubjectSemester/> : <NotFound />}
           />
         </Routes>

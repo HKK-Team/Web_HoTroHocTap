@@ -1,6 +1,5 @@
 import React from "react";
 import {
-    ActivityIndicator,
     StyleSheet,
     Text,
     View,
@@ -10,6 +9,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Table, Row, Rows } from 'react-native-table-component';
 import {useSelector} from "react-redux"
 export default function SuggestSubjectSemester() {
+    // set width of table auto scroll
+    const width = [40,200,80,80,90,90,80,80]
     // get data from redux
     const user = useSelector((state) => state?.StudentsAccount?.StudentsAccountApi.data[0]);
     const subjects = useSelector((state) => state.Subjects.SubjectsApi.data);
@@ -35,19 +36,22 @@ export default function SuggestSubjectSemester() {
         ]);
     };
     return (
-        <ScrollView>
+        <ScrollView style = {{backgroundColor : "#414360"}} >
             <View style = {{backgroundColor : "#414360"}}>
                 <View style = {styles.title}>
                     <Ionicons name="settings-outline" size={22} color = "#fff" style = {{marginTop : 8,marginLeft : 10}}/>
                     <Text style = {{fontSize : 20, color : "#fff",marginTop : 5}}> Gợi ý môn học cho học kỳ tới</Text>
                 </View>
                 <View style = {{backgroundColor : "#1F2739",width : "96%", marginTop : 10, marginLeft : 8,borderRadius : 10}}>
+                <Text style = {{fontSize : 18, textAlign : "center", marginTop : 20, color : "rgb(255, 121, 198)"}}>Gợi ý môn học cho học kỳ tới.</Text>
                     <View style={styles.container}>
-                        <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
-                            <Row data={arr} style={styles.head} textStyle={styles.textHeader}/>
-                            <Row data={SubgestSubjectSemester} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                            <Rows data={arraySubject} style = {styles.data} textStyle={styles.text}/>
-                        </Table>
+                        <ScrollView horizontal>
+                            <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
+                                <Row data={arr} style={styles.head} textStyle={styles.textHeader} widthArr = {width}/>
+                                <Row data={SubgestSubjectSemester} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
+                                <Rows data={arraySubject} style = {styles.data} textStyle={styles.text} widthArr = {width}/>
+                            </Table>
+                        </ScrollView>
                     </View>
                 </View>
             </View>

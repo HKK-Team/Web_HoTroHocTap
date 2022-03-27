@@ -8,6 +8,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { getStudentsAccApiAsync } from "../Api/StudentsApi";
 import { getSubjectScoreApiAsync } from "../Api/SubjectScoreApi";
 export default function HomePageStudent() {
+  // set width of table auto scroll
+  const width = [40,200,80,80,80,80,80]
   // get data from redux
   const dispatch = useDispatch();
   useEffect(() => {
@@ -16,7 +18,7 @@ export default function HomePageStudent() {
   }, [dispatch]);
   const student = useSelector((state) => state?.StudentsAccount?.StudentsAccountApi.data[0]);
   const score = useSelector((state) => state.SubjectScore.SubjectScoreApi.data);
-  var arr = ['STT','Tên MH','Mã MH','Tín Chỉ','Điểm QT','Điểm Thi','Điểm Tổng'];
+  var arr = ['STT','Tên Môn học','Mã MH','Tín Chỉ','Điểm QT','Điểm Thi','Điểm Tổng'];
   // get 10 subjects with the highest GPA
   function compare( a, b ) {
       if ( a.Final_Score > b.Final_Score ){
@@ -204,12 +206,13 @@ export default function HomePageStudent() {
         <View style = {style.StaticSubjectScore}>
             <Text style = {{marginLeft : 10, color : "rgb(255, 121, 198)", fontSize : 18, marginTop : 10}}>Top 10 môn học có điểm trung bình cao nhất</Text>
             <View style={style.container}>
-                    <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
-                        <Row data={arr} style={style.head} textStyle={style.textHeader}/>
-                        <Row data="" style = {style.TextTitleSemester} textStyle = {style.TextTitleSemester}/>
-                        <Rows data={arrayTop10SubjectScore.slice(0,10)} style = {style.data} textStyle={style.text}/>
-                    </Table>
-                </View>
+              <ScrollView horizontal>
+                <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
+                  <Row data={arr} style={style.head} textStyle={style.textHeader} widthArr = {width} />
+                  <Rows data={arrayTop10SubjectScore.slice(0,10)} style = {style.data} textStyle={style.text} widthArr = {width}/>
+                </Table>
+              </ScrollView>
+            </View>
         </View>
     </ScrollView>
   );

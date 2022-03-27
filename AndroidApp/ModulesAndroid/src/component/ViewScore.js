@@ -9,6 +9,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Table, Row, Rows } from 'react-native-table-component';
 import {useSelector} from "react-redux"
 export default function ViewScore() {
+    // set width of table auto scroll
+    const width = [40,200,80,80,80,80,80,80]
     // get data from redux
     const user = useSelector((state) => state?.StudentsAccount?.StudentsAccountApi.data[0]);
     const subject = useSelector((state) => state.SubjectScore.SubjectScoreApi.data);
@@ -17,7 +19,7 @@ export default function ViewScore() {
     - Điểm trung bình tích lũy : ${user?.GPA}
     - Số tín chỉ đã học : ${user?.Number_Of_Credits_Earned} chỉ.
     - Số tín chỉ còn thiếu : ${150 - parseInt(user?.Number_Of_Credits_Earned)} chỉ.`];
-    var arr = ['STT','Tên MH','Mã MH','Tín Chỉ','Điểm QT','Điểm Thi','Điểm Tổng','Kết Quả'];
+    var arr = ['STT','Tên Môn học','Mã MH','Tín Chỉ','Điểm QT','Điểm Thi','Điểm Tổng','Kết Quả'];
     var HK1 = [`  Bảng điểm HKI năm học ${user?.Study_Year.slice(0,4)} - ${parseInt(user?.Study_Year.slice(0,4))+1}`];
     var HK2 = [`  Bảng điểm HKII năm học ${user?.Study_Year.slice(0,4)} - ${parseInt(user?.Study_Year.slice(0,4))+1}`];
     var HK3 = [`  Bảng điểm HKIII năm học ${parseInt(user?.Study_Year.slice(0,4))+1} - ${parseInt(user?.Study_Year.slice(0,4))+2}`];
@@ -179,30 +181,32 @@ export default function ViewScore() {
                 <View style = {{backgroundColor : "#1F2739",width : "96%", marginTop : 10, marginLeft : 8,borderRadius : 10}}>
                     <Text style = {{fontSize : 18, textAlign : "center", marginTop : 20, color : "rgb(255, 121, 198)"}}>Bảng điểm môn học tính tới thời điểm hiện tại.</Text>
                     <View style={styles.container}>
-                        <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
-                            <Row data={arr} style={styles.head} textStyle={styles.textHeader}/>
-                            <Row data={HK1} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                            <Rows data={arraySubject} style = {styles.data} textStyle={styles.text}/>
-                            <Row data={HK2} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                            <Rows data={arraySubjectHK2} style = {styles.data} textStyle={styles.text}/>
-                            <Row data={HK3} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                            <Rows data={arraySubjectHK3} style = {styles.data} textStyle={styles.text}/>
-                            <Row data={HK4} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                            <Rows data={arraySubjectHK4} style = {styles.data} textStyle={styles.text}/>
-                            <Row data={HK5} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                            <Rows data={arraySubjectHK5} style = {styles.data} textStyle={styles.text}/>
-                            <Row data={HK6} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                            <Rows data={arraySubjectHK6} style = {styles.data} textStyle={styles.text}/>
-                            <Row data={HK7} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                            <Rows data={arraySubjectHK7} style = {styles.data} textStyle={styles.text}/>
-                            <Row data={HK8} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                            <Rows data={arraySubjectHK8} style = {styles.data} textStyle={styles.text}/>
-                            <Row data={HK9} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                            <Rows data={arraySubjectHK9} style = {styles.data} textStyle={styles.text}/>
-                            <Row data={HK10} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                            <Rows data={arraySubjectHK10} style = {styles.data} textStyle={styles.text}/>
-                            <Row data = {tableData} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
-                        </Table>
+                        <ScrollView horizontal>
+                            <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
+                                <Row data={arr} style={styles.head} textStyle={styles.textHeader} widthArr = {width}/>
+                                <Row data={HK1} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester}/>
+                                <Rows data={arraySubject} style = {styles.data} textStyle={styles.text} widthArr = {width}/>
+                                <Row data={HK2} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester} />
+                                <Rows data={arraySubjectHK2} style = {styles.data} textStyle={styles.text} widthArr = {width}/>
+                                <Row data={HK3} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester} />
+                                <Rows data={arraySubjectHK3} style = {styles.data} textStyle={styles.text} widthArr = {width}/>
+                                <Row data={HK4} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester} />
+                                <Rows data={arraySubjectHK4} style = {styles.data} textStyle={styles.text} widthArr = {width}/>
+                                <Row data={HK5} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester} />
+                                <Rows data={arraySubjectHK5} style = {styles.data} textStyle={styles.text} widthArr = {width}/>
+                                <Row data={HK6} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester} />
+                                <Rows data={arraySubjectHK6} style = {styles.data} textStyle={styles.text} widthArr = {width}/>
+                                <Row data={HK7} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester} />
+                                <Rows data={arraySubjectHK7} style = {styles.data} textStyle={styles.text} widthArr = {width}/>
+                                <Row data={HK8} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester} />
+                                <Rows data={arraySubjectHK8} style = {styles.data} textStyle={styles.text} widthArr = {width}/>
+                                <Row data={HK9} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester} />
+                                <Rows data={arraySubjectHK9} style = {styles.data} textStyle={styles.text} widthArr = {width}/>
+                                <Row data={HK10} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester} />
+                                <Rows data={arraySubjectHK10} style = {styles.data} textStyle={styles.text} widthArr = {width}/>
+                                <Row data = {tableData} style = {styles.TextTitleSemester} textStyle = {styles.TextTitleSemester} />
+                            </Table>
+                        </ScrollView>
                     </View>
                 </View>
             </View>
